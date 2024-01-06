@@ -91,6 +91,10 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 - Meritorious Award in Mathematical Contest in Modeling, 2019
 - Second Prize in Shanghai, China Undergraduate Mathematical Contest in Modeling, 2019
 
+# 🧐 Service
+- Conference reviewer: CVPR 2024, ACL 2023, EACL 2023, CoNLL 2023, CVPR 2023 Workshop, AAAI 2023 Workshop</li>
+- Journal reviewer: IEEE Transactions on Circuits and Systems for Video Technology</li>
+
 # 📖 Educations
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/unc_logo.png' alt="sym" width="35%"></div></div>
 <div class='paper-box-text' markdown="1">
