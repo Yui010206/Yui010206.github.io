@@ -24,6 +24,7 @@ While at UNC, I spent my summer time at Amazon Alexa (2023). Prior to UNC, I did
 I am interested in wide topics in computer vision, especially in video, including video+X (language, audio, robotics), video understanding, generation, reasoning, representation learning.
 
 # 🔥 News
+- *2024.01*: 🎬 I will intern at Adobe as Research Intern for Summer 2024.
 - *2023.09*: ⛓️ We have one paper accepted to **NeurIPS 2023**. Check SeViLA for Video Loc+QA.
 - *2023.07*: 🦴 We have one paper accepted to **IEEE TCSVT**. Check MoPRL for skeletal anomaly detection.
 - *2023.05*: 🌞 I will intern at Amazon as Research Scientist Intern for Summer 2023.
@@ -33,10 +34,22 @@ I am interested in wide topics in computer vision, especially in video, includin
 
 # 📝 Pre-print
 
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/crema.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[CREMA: Multimodal Compositional Video Reasoning via Efficient Modular Adaptation and Fusion](https://arxiv.org/pdf/2402.05889.pdf)
+
+**Shoubin Yu\***, Jaehong Yoon\*, Mohit Bansal
+
+[**Code**](https://github.com/Yui010206/CREMA) | [**Project Page**](https://crema-videollm.github.io/)
+- We present CREMA, an efficient & modular modality-fusion framework for injecting any new modality into video reasoning.
+</div>
+</div>
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/llovi.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[A Simple LLM Framework for Long-Range Video Question-Answering](https://arxiv.org/pdf/2312.17235.pdff)
+[A Simple LLM Framework for Long-Range Video Question-Answering](https://arxiv.org/pdf/2312.17235.pdf)
 
 Ce Zhang, Taixi Lu, Md Mohaiminul Islam, Ziyang Wang, **Shoubin Yu**, Mohit Bansal, Gedas Bertasius
 
