@@ -34,6 +34,19 @@ I am interested in wide topics in computer vision, especially in video, includin
 
 # 📝 Pre-print
 
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/raccoon.jpg' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[RACCooN: Remove, Add, and Change Video Content with Auto-Generated Narratives](https://arxiv.org/pdf/2405.18406)
+
+Jaehong Yoon\*, **Shoubin Yu\***, Mohit Bansal
+
+[**Code**](https://github.com/jaehong31/raccoon) | [**Project Page**](https://raccoon-mllm-gen.github.io/)
+- We present RACCooN, a versatile and user-friendly video-to-paragraph-to-video framework, enables users to remove, add, or change video content via updating auto-generated narratives.
+</div>
+</div>
+
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/crema.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
