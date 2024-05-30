@@ -62,7 +62,7 @@ Jaehong Yoon\*, **Shoubin Yu\***, Mohit Bansal
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/crema.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[CREMA: Multimodal Compositional Video Reasoning via Efficient Modular Adaptation and Fusion](https://arxiv.org/pdf/2402.05889.pdf)
+[CREMA: Generalizable and Efficient Video-Language Reasoning via Multimodal Modular Fusion](https://arxiv.org/pdf/2402.05889.pdf)
 
 **Shoubin Yu\***, Jaehong Yoon\*, Mohit Bansal
 
