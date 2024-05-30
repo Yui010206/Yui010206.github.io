@@ -32,7 +32,19 @@ I am interested in wide topics in computer vision, especially in video, includin
 - *2022.04*: ⛪️ I will join <a href="https://murgelab.cs.unc.edu/index.html"> UNC-CH MURGe-Lab </a> in Fall 2022.
 - *2021.10*: 🌟 We have one paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
 
-# 📝 Pre-print
+# 📝 Pre-print (*: equal contribution/co-first author)
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/videotree.jpg' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos](https://arxiv.org/pdf/2405.19209)
+
+Ziyang Wang\*, **Shoubin Yu\***, Elias Stengel-Eskin\*, Jaehong Yoon, Feng Cheng, Gedas Bertasius, Mohit Bansal
+
+[**Code**](https://github.com/Ziyang412/VideoTree) | [**Project Page**](https://videotree2024.github.io/)
+- We present VideoTree, an adaptive tree-based video presentation/prompting with simple visual clusturing for long video reasoning with LLM. 
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/raccoon.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
