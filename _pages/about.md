@@ -24,6 +24,7 @@ While at UNC, I spent my summer time at Amazon Alexa (2023). Prior to UNC, I did
 I am interested in wide topics in computer vision, especially in video, including video+X (language, audio, robotics), video understanding, generation, reasoning, representation learning.
 
 # 🔥 News
+- *2024.06*: 💬 Gave an invited talk at Google.
 - *2024.01*: 🎬 I will intern at Adobe as Research Intern for Summer 2024.
 - *2023.09*: ⛓️ We have one paper accepted to **NeurIPS 2023**. Check SeViLA for Video Loc+QA.
 - *2023.07*: 🦴 We have one paper accepted to **IEEE TCSVT**. Check MoPRL for skeletal anomaly detection.
