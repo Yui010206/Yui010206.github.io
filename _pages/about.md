@@ -19,9 +19,9 @@ redirect_from:
 
 Hi, thanks for stopping by! I am now a second-year Ph.D. Student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). Previously, I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
 
-While at UNC, I spent my summer time at Amazon Alexa (2023). Prior to UNC, I did research at SenseTime (2021), MIT-IBM Watson AI Lab (2021).
+While at UNC, I spent my summer time at Amazon Alexa (2023). Prior to UNC, I did research projects at SenseTime (2021), and with MIT-IBM Watson AI Lab (2021).
 
-I am interested in wide topics in computer vision, especially in video, including video+X (language, audio, robotics), video understanding, generation, reasoning, representation learning.
+I am interested in wide topics in computer vision, especially in video, including video+X (language, audio, robotics) understanding & generation, trustworthy video reasoning, and robust video representation learning.
 
 # 🔥 News
 - *2024.06*: 💬 Gave an invited talk at Google.
@@ -131,7 +131,7 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 - Second Prize in Shanghai, China Undergraduate Mathematical Contest in Modeling, 2019
 
 # 🧐 Service
-- Conference reviewer: CVPR 2024, ACL 2023, EACL 2023, CoNLL 2023, CVPR 2023 Workshop, AAAI 2023 Workshop
+- Conference reviewer: CVPR, ECCV, NeurIPS, ACL, EACL, CoNLL, AAAI 
 - Journal reviewer: IEEE Transactions on Circuits and Systems for Video Technology
 
 # 📖 Educations
