@@ -19,19 +19,20 @@ redirect_from:
 
 Hi, thanks for stopping by! I am now a second-year Ph.D. Student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). Previously, I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
 
-While at UNC, I spent my summer time at Amazon Alexa (2023). Prior to UNC, I did research projects at SenseTime (2021), and with MIT-IBM Watson AI Lab (2021).
+While at UNC, I spent my summer time at Adobe Research (2024), Amazon Alexa (2023). Prior to UNC, I did research projects at SenseTime Research (2021), and with MIT-IBM Watson AI Lab (2021).
 
 I am interested in wide topics in computer vision, especially in video, including video+X (language, audio, robotics) understanding & generation, trustworthy video reasoning, and robust video representation learning.
 
 # 🔥 News
+- *2024.07*: 📹 One paper accepted to **ACM MM 2024**. Check IVA-0 for controllable image animation.
 - *2024.06*: 💬 Gave an invited talk at Google.
-- *2024.01*: 🎬 I will intern at Adobe as Research Intern for Summer 2024.
-- *2023.09*: ⛓️ We have one paper accepted to **NeurIPS 2023**. Check SeViLA for Video Loc+QA.
-- *2023.07*: 🦴 We have one paper accepted to **IEEE TCSVT**. Check MoPRL for skeletal anomaly detection.
-- *2023.05*: 🌞 I will intern at Amazon as Research Scientist Intern for Summer 2023.
-- *2022.06*: 🎓 Graduate from Shanghai Jiao Tong University! (excellent graduates).
-- *2022.04*: ⛪️ I will join <a href="https://murgelab.cs.unc.edu/index.html"> UNC-CH MURGe-Lab </a> in Fall 2022.
-- *2021.10*: 🌟 We have one paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
+- *2024.05*: 🎬 Start summer intern at Adobe as Research Scientist.
+- *2023.09*: ⛓️ One paper accepted to **NeurIPS 2023**. Check SeViLA for Video Loc+QA.
+- *2023.07*: 🦴 One paper accepted to **IEEE TCSVT**. Check MoPRL for skeletal anomaly detection.
+- *2023.05*: 🌞 Start summer intern at Amazon as Research Scientist.
+- *2022.09*: ⛪️ Join <a href="https://murgelab.cs.unc.edu/index.html"> UNC-CH MURGe-Lab </a>.
+- *2022.06*: 🎓 Graduate from Shanghai Jiao Tong University (excellent graduates).
+- *2021.10*: 🌟 One paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
@@ -85,6 +86,19 @@ Ce Zhang, Taixi Lu, Md Mohaiminul Islam, Ziyang Wang, **Shoubin Yu**, Mohit Bans
 </div>
 
 # 📝 Publications 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACM MM 2024</div><img src='images/iva0.jpg' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Zero-Shot Controllable Image-to-Video Animation via Motion Decomposition]()
+
+**Shoubin Yu**, Jacob Zhiyuan Fang, Skyler Zheng, Gunnar Sigurdsson, Vicente Ordonez, Robinson Piramuthu, Mohit Bansal
+
+(To appear) [**Code**]() | [**Homepage**]()
+- We present IVA-0, a Image-to-Video animationor, enables precise control from users through in-place and out-of-place motion decomposition.
+</div>
+</div>
+
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">NeurIPS 2023</div><img src='images/sevila.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
