@@ -23,6 +23,8 @@ While at UNC, I spent my summer time at Adobe Research (2024), Amazon Alexa (202
 
 I am interested in wide topics in computer vision, especially in video, including video+X (language, audio, robotics) understanding & generation, trustworthy video reasoning, and robust video representation learning.
 
+Find me here: shoubin -atsign- cs . unc . edu
+
 # 🔥 News
 - *2024.07*: 📹 One paper accepted to **ACM MM 2024**. Check IVA-0 for controllable image animation.
 - *2024.06*: 💬 Gave an invited talk at Google.
