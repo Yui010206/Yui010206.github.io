@@ -38,6 +38,18 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/groundmore.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Motion-Grounded Video Reasoning: Understanding and Perceiving Motion at Pixel Level]()
+
+Andong Deng, Tongjia Chen, **Shoubin Yu**, Wenshuo Chen, Taojiannan Yang, Lincoln Spencer, Erhang Zhang, Yapeng Tian, Ajmal Saeed Mian, Mohit Bansal, Chen Chen
+
+(To appear)[**Code**]() | [**Project Page**](https://groundmore.github.io/)
+- We present GroundMoRe, a new benchmark for novel Motion-Grounded Video Reasoning, designed to assess multimodal models' reasoning and perception capabilities for motion understanding. 
+</div>
+</div>
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/videotree.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
