@@ -104,11 +104,11 @@ Ce Zhang, Taixi Lu, Md Mohaiminul Islam, Ziyang Wang, **Shoubin Yu**, Mohit Bans
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACM MM 2024</div><img src='images/iva0.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Zero-Shot Controllable Image-to-Video Animation via Motion Decomposition]()
+[Zero-Shot Controllable Image-to-Video Animation via Motion Decomposition](https://www.amazon.science/publications/zero-shot-controllable-image-to-video-animation-via-motion-decomposition)
 
 **Shoubin Yu**, Jacob Zhiyuan Fang, Skyler Zheng, Gunnar Sigurdsson, Vicente Ordonez, Robinson Piramuthu, Mohit Bansal
 
-(To appear) [**Code**]() | [**Homepage**](https://img2vidanim-0.github.io/)
+[**Code**](https://github.com/Yui010206/IVA-0) | [**Homepage**](https://img2vidanim-0.github.io/)
 - We present IVA-0, a Image-to-Video animationor, enables precise control from users through in-place and out-of-place motion decomposition.
 </div>
 </div>
