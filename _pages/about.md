@@ -26,6 +26,7 @@ I am interested in wide topics in computer vision, especially in video, includin
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
+- *2024.09*: 📓 One paper accepted to **EMNLP main 2024**. Check LLoVi for long VideoQA with LLM.
 - *2024.07*: 📹 One paper accepted to **ACM MM 2024**. Check IVA-0 for controllable image animation.
 - *2024.06*: 💬 Gave an invited talk at Google.
 - *2024.05*: 🎬 Start summer intern at Adobe as Research Scientist.
@@ -87,7 +88,10 @@ Jaehong Yoon\*, **Shoubin Yu\***, Mohit Bansal
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/llovi.jpg' alt="sym" width="100%"></div></div>
+
+# 📝 Publications 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP main</div><img src='images/llovi.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [A Simple LLM Framework for Long-Range Video Question-Answering](https://arxiv.org/pdf/2312.17235.pdf)
@@ -98,8 +102,6 @@ Ce Zhang, Taixi Lu, Md Mohaiminul Islam, Ziyang Wang, **Shoubin Yu**, Mohit Bans
 - We present LLoVi, a simple yet effective framework with LLM for long-range video question-answering.
 </div>
 </div>
-
-# 📝 Publications 
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACM MM 2024</div><img src='images/iva0.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
