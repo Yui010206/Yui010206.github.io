@@ -39,12 +39,25 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/safree.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[SAFREE: Train-free And Adaptive Guard For Safe Text-to-Image And Video Generation](https://arxiv.org/abs/2410.12761)
+
+Jaehong Yoon\*, **Shoubin Yu\***, Vaidehi Patil, Huaxiu Yao,  Mohit Bansal
+
+[**Code**](https://github.com/jaehong31/SAFREE) | [**Project Page**](https://safree-safe-t2i-t2v.github.io/)
+- We propose SAFREE, a concept guard that can zero transfer to any visual diffusion models for safe generation. 
+</div>
+</div>
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/groundmore.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Motion-Grounded Video Reasoning: Understanding and Perceiving Motion at Pixel Level]()
 
-Andong Deng, Tongjia Chen, **Shoubin Yu**, Wenshuo Chen, Taojiannan Yang, Lincoln Spencer, Erhang Zhang, Yapeng Tian, Ajmal Saeed Mian, Mohit Bansal, Chen Chen
+Andong Deng, Tongjia Chen, **Shoubin Yu**, Taojiannan Yang, Lincoln Spencer, Yapeng Tian, Ajmal Saeed Mian, Mohit Bansal, Chen Chen
 
 (To appear)[**Code**]() | [**Project Page**](https://groundmore.github.io/)
 - We present GroundMoRe, a new benchmark for novel Motion-Grounded Video Reasoning, designed to assess multimodal models' reasoning and perception capabilities for motion understanding. 
