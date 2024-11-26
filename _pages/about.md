@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, thanks for stopping by! I am now a second-year Ph.D. Student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). Previously, I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
+Hi, thanks for stopping by! I am now a third-year Ph.D. Student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). Previously, I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
 
 While at UNC, I spent my summer time at Adobe Research (2024), Amazon Alexa (2023). Prior to UNC, I did research projects at SenseTime Research (2021), and with MIT-IBM Watson AI Lab (2021).
 
@@ -72,7 +72,7 @@ Andong Deng, Tongjia Chen, **Shoubin Yu**, Taojiannan Yang, Lincoln Spencer, Yap
 Ziyang Wang\*, **Shoubin Yu\***, Elias Stengel-Eskin\*, Jaehong Yoon, Feng Cheng, Gedas Bertasius, Mohit Bansal
 
 [**Code**](https://github.com/Ziyang412/VideoTree) | [**Project Page**](https://videotree2024.github.io/)
-- We present VideoTree, an adaptive tree-based video presentation/prompting with simple visual clusturing for long video reasoning with LLM. 
+- We present VideoTree, an adaptive tree-based video presentation/prompting with simple visual clustering for long video reasoning with LLM. 
 </div>
 </div>
 
@@ -124,7 +124,7 @@ Ce Zhang, Taixi Lu, Md Mohaiminul Islam, Ziyang Wang, **Shoubin Yu**, Mohit Bans
 **Shoubin Yu**, Jacob Zhiyuan Fang, Skyler Zheng, Gunnar Sigurdsson, Vicente Ordonez, Robinson Piramuthu, Mohit Bansal
 
 [**Code**](https://github.com/Yui010206/IVA-0) | [**Homepage**](https://img2vidanim-0.github.io/)
-- We present IVA-0, a Image-to-Video animationor, enables precise control from users through in-place and out-of-place motion decomposition.
+- We present IVA-0, a Image-to-Video animator, enables precise control from users through in-place and out-of-place motion decomposition.
 </div>
 </div>
 
@@ -146,7 +146,7 @@ Ce Zhang, Taixi Lu, Md Mohaiminul Islam, Ziyang Wang, **Shoubin Yu**, Mohit Bans
 
 [Regularity Learning via Explicit Distribution Modeling for Skeletal Video Anomaly Detection](https://ieeexplore.ieee.org/document/10185076)
 
-**Shoubin Yu**, Zhongyin Zhao, Haoshu Fang, Andong Deng,Haisheng Su, Dongliang Wang, Weihao Gan, Cewu Lu, Wei Wu
+**Shoubin Yu**, Zhongyin Zhao, Haoshu Fang, Andong Deng, Haisheng Su, Dongliang Wang, Weihao Gan, Cewu Lu, Wei Wu
 
 [**Code**](https://github.com/Yui010206/MoPRL)
 - We propose MoPRL, a transformer-based model incorporated with skeletal motion prior for efficient video anomaly detection.
@@ -167,6 +167,7 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 </div>
 
 # 🎖 Honors and Awards
+- Piepie‘s (1-year old Black Shiba-Inu 🐶) Dad, 2024 
 - CN Patent CN114724062A, 2022
 - The Hui-Chun Chin and Tsung Dao Lee Scholar, 2020
 - CN Patent CN110969107A, 2019
@@ -196,6 +197,7 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 
 
 # 💻 Internships
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/amazon.png' alt="sym" width="55%"></div></div>
 <div class='paper-box-text' markdown="1">
 - *2023.05 - 2023.11*, Research Scientist Intern
