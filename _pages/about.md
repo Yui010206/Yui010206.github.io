@@ -199,7 +199,7 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 # 💻 Internships
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/adobe.png' alt="sym" width="55%"></div></div>
 <div class='paper-box-text' markdown="1">
-- *2023.05 - 2023.11*, Research Scientist Intern
+- *2024.05 - 2024.11*, Research Scientist Intern
 - work with [Difan Liu](https://scholar.google.com/citations?user=FHtM5MUAAAAJ&hl=en&oi=ao), [Yicong Hong](https://yiconghong.me/), [Yang Zhou](https://scholar.google.com/citations?hl=en&user=UuwugFEAAAAJ), [Hao Tan](https://scholar.google.com/citations?user=OV1Y3FUAAAAJ&hl=en)
 </div>
 </div>
