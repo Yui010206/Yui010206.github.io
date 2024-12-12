@@ -39,6 +39,18 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/scalevln2.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Bootstrapping Language-guided Navigation Learning with Self-refining Data Flywheel](https://arxiv.org/abs/2410.12761)
+
+Zun Wang, Jialu Li, Yicong Hong, Songze Li, Kunchang Li, **Shoubin Yu**, Yi Wang, Yu Qiao, Yali Wang, Mohit Bansal, Limin Wang
+
+[**Code**](https://github.com/wz0919/VLN-SRDF)
+- We present a Self-Refining Data Flywheel strategy for VLN, surpassing/approaching human performance on several benchmarks.  
+</div>
+</div>
+
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/safree.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -55,11 +67,11 @@ Jaehong Yoon\*, **Shoubin Yu\***, Vaidehi Patil, Huaxiu Yao,  Mohit Bansal
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/groundmore.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Motion-Grounded Video Reasoning: Understanding and Perceiving Motion at Pixel Level]()
+[Motion-Grounded Video Reasoning: Understanding and Perceiving Motion at Pixel Level](https://arxiv.org/abs/2411.09921)
 
 Andong Deng, Tongjia Chen, **Shoubin Yu**, Taojiannan Yang, Lincoln Spencer, Yapeng Tian, Ajmal Saeed Mian, Mohit Bansal, Chen Chen
 
-(To appear)[**Code**]() | [**Project Page**](https://groundmore.github.io/)
+[**Code**](https://github.com/dengandong/GroundMoRe) | [**Project Page**](https://groundmore.github.io/)
 - We present GroundMoRe, a new benchmark for novel Motion-Grounded Video Reasoning, designed to assess multimodal models' reasoning and perception capabilities for motion understanding. 
 </div>
 </div>
@@ -104,14 +116,14 @@ Jaehong Yoon\*, **Shoubin Yu\***, Mohit Bansal
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP main</div><img src='images/llovi.jpg' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP 2024</div><img src='images/llovi.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [A Simple LLM Framework for Long-Range Video Question-Answering](https://arxiv.org/pdf/2312.17235.pdf)
 
 Ce Zhang, Taixi Lu, Md Mohaiminul Islam, Ziyang Wang, **Shoubin Yu**, Mohit Bansal, Gedas Bertasius
 
-[**Code**](https://github.com/CeeZh/LLoVi)
+[**Code**](https://github.com/CeeZh/LLoVi) 
 - We present LLoVi, a simple yet effective framework with LLM for long-range video question-answering.
 </div>
 </div>
@@ -167,7 +179,7 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 </div>
 
 # 🎖 Honors and Awards
-- Piepie‘s (1-year old Black Shiba-Inu 🐶) Dad, 2024 
+- Piepie‘s (1-year-old black Shiba-Inu 🐶) Dad, 2024 
 - CN Patent CN114724062A, 2022
 - The Hui-Chun Chin and Tsung Dao Lee Scholar, 2020
 - CN Patent CN110969107A, 2019
