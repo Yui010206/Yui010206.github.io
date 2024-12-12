@@ -187,8 +187,8 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 - Second Prize in Shanghai, China Undergraduate Mathematical Contest in Modeling, 2019
 
 # 🧐 Service
-- Conference reviewer: CVPR, ECCV, NeurIPS, ACL, EACL, CoNLL, AAAI 
-- Journal reviewer: IEEE Transactions on Circuits and Systems for Video Technology
+- Conference reviewer: CVPR, ECCV, NeurIPS, ICLR, ICML, AISTATS, ARR (ACL, EMNLP, CoNLL, NACCAL, EACL), AAAI 
+- Journal reviewer: IEEE Transactions on Circuits and Systems for Video Technology (TCSVT), IEEE Transactions on Neural Networks and Learning Systems (TNNLS)
 
 # 📖 Educations
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/unc_logo.png' alt="sym" width="35%"></div></div>
