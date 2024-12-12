@@ -42,7 +42,7 @@ Find me here: shoubin -atsign- cs . unc . edu
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/scalevln2.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Bootstrapping Language-guided Navigation Learning with Self-refining Data Flywheel](https://arxiv.org/abs/2410.12761)
+[Bootstrapping Language-guided Navigation Learning with Self-refining Data Flywheel](https://arxiv.org/abs/2412.08467)
 
 Zun Wang, Jialu Li, Yicong Hong, Songze Li, Kunchang Li, **Shoubin Yu**, Yi Wang, Yu Qiao, Yali Wang, Mohit Bansal, Limin Wang
 
