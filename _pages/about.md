@@ -224,12 +224,6 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/sensetime.png' alt="sym" width="70%"></div></div>
-<div class='paper-box-text' markdown="1">
-- *2021.01 - 2022.04*, Research Intern
-- work with [Haisheng Su](https://scholar.google.com/citations?user=OFrMZh8AAAAJ&hl=en&oi=ao), [Wei Wu](https://scholar.google.com/citations?user=9RBxtd8AAAAJ&hl=en)
-</div>
-</div>
 
 
 <div style="display: none;">
