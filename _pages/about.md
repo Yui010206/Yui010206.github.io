@@ -19,7 +19,7 @@ redirect_from:
 
 Hi, thanks for stopping by! I am now a third-year Ph.D. Student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). Previously, I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
 
-While at UNC, I spent my summer time at Adobe Research (2024), Amazon Alexa (2023). Prior to UNC, I did research projects at SenseTime Research (2021), and with MIT-IBM Watson AI Lab (2021).
+While at UNC, I spent my summer time at Adobe Research (2024), Amazon Alexa (2023). Prior to UNC, I did research projects with MIT-IBM Watson AI Lab (2021).
 
 I am interested in wide topics in computer vision, especially in video, including video+X (language, audio, robotics) understanding & generation, trustworthy video reasoning, and robust video representation learning.
 
@@ -180,9 +180,7 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 
 # 🎖 Honors and Awards
 - Piepie‘s (1-year-old black Shiba-Inu 🐶) Dad, 2024 
-- CN Patent CN114724062A, 2022
 - The Hui-Chun Chin and Tsung Dao Lee Scholar, 2020
-- CN Patent CN110969107A, 2019
 - Meritorious Award in Mathematical Contest in Modeling, 2019
 - Second Prize in Shanghai, China Undergraduate Mathematical Contest in Modeling, 2019
 
