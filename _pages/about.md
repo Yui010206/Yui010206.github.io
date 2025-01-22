@@ -26,7 +26,7 @@ I am interested in wide topics in computer vision, especially in video, includin
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
-- *2024.09*: ☕️ Three paper accepted to **ICLR 2025**. Check CREMA for Video+Any Modal Reasoning, SAFREE for training-free safe visual generation and SRDF for human-level VL-Navigation.
+- *2025.01*: ☕️ Three paper accepted to **ICLR 2025**. Check CREMA for Video+Any Modal Reasoning, SAFREE for training-free safe visual generation and SRDF for human-level VL-Navigation.
 - *2024.09*: 📓 One paper accepted to **EMNLP main 2024**. Check LLoVi for long VideoQA with LLM.
 - *2024.07*: 📹 One paper accepted to **ACM MM 2024**. Check IVA-0 for controllable image animation.
 - *2024.06*: 💬 Gave an invited talk at Google.
