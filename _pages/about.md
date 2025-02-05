@@ -35,8 +35,8 @@ Find me here: shoubin -atsign- cs . unc . edu
 - *2023.09*: ⛓️ 1 paper accepted to **NeurIPS 2023**. Check SeViLA for Video Loc+QA.
 - *2023.07*: 🦴 1 paper accepted to **IEEE TCSVT**. Check MoPRL for skeletal anomaly detection.
 - *2023.05*: 🌞 Summer intern at **Amazon** as Research Scientist.
-- *2022.09*: ⛪️ Join <a href="https://murgelab.cs.unc.edu/index.html"> UNC-CH MURGe-Lab </a>.
-- *2022.06*: 🎓 Graduate from Shanghai Jiao Tong University (excellent graduates).
+- *2022.09*: ⛪️ Join <a href="https://murgelab.cs.unc.edu/index.html"> **UNC-CH** MURGe-Lab </a>.
+- *2022.06*: 🎓 Graduate from **Shanghai Jiao Tong University** (outstanding graduates).
 - *2021.10*: 🌟 1 paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
 
 # 📝 Pre-print (*: equal contribution/co-first author)
