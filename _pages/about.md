@@ -26,17 +26,18 @@ I am interested in wide topics in computer vision, especially in video, includin
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
-- *2025.01*: 🇸🇬 Three papers accepted to **ICLR 2025**. Check ☕️CREMA for Video+any modality reasoning, 🛡️SAFREE for training-free safe visual generation and ⛓️SRDF for human-level VL-Navigation.
-- *2024.09*: 📓 One paper accepted to **EMNLP main 2024**. Check LLoVi for long VideoQA with LLM.
-- *2024.07*: 📹 One paper accepted to **ACM MM 2024**. Check IVA-0 for controllable image animation.
-- *2024.06*: 💬 Gave an invited talk at Google.
-- *2024.05*: 🎬 Start summer intern at Adobe as Research Scientist.
-- *2023.09*: ⛓️ One paper accepted to **NeurIPS 2023**. Check SeViLA for Video Loc+QA.
-- *2023.07*: 🦴 One paper accepted to **IEEE TCSVT**. Check MoPRL for skeletal anomaly detection.
-- *2023.05*: 🌞 Start summer intern at Amazon as Research Scientist.
+- *2025.02*: 🌞 Will summer intern at **Google Deepmind** as Student Researcher.
+- *2025.01*: 🇸🇬 3 papers accepted to **ICLR 2025**. Check ☕️CREMA for Video+any modality reasoning, 🛡️SAFREE for training-free safe visual generation and ⛓️SRDF for human-level VL-Navigation.
+- *2024.09*: 📓 1 paper accepted to **EMNLP main 2024**. Check LLoVi for long VideoQA with LLM.
+- *2024.07*: 📹 1 paper accepted to **ACM MM 2024**. Check IVA-0 for controllable image animation.
+- *2024.06*: 💬 Gave an invited talk at **Google**.
+- *2024.05*: 🎬 Summer intern at **Adobe** as Research Scientist.
+- *2023.09*: ⛓️ 1 paper accepted to **NeurIPS 2023**. Check SeViLA for Video Loc+QA.
+- *2023.07*: 🦴 1 paper accepted to **IEEE TCSVT**. Check MoPRL for skeletal anomaly detection.
+- *2023.05*: 🌞 Summer intern at **Amazon** as Research Scientist.
 - *2022.09*: ⛪️ Join <a href="https://murgelab.cs.unc.edu/index.html"> UNC-CH MURGe-Lab </a>.
 - *2022.06*: 🎓 Graduate from Shanghai Jiao Tong University (excellent graduates).
-- *2021.10*: 🌟 One paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
+- *2021.10*: 🌟 1 paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
