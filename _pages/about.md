@@ -26,6 +26,8 @@ I am interested in wide topics in computer vision, especially in video, includin
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
+- *2025.02*: 💬 Gave an invited talk at **Twelve Labs**.
+- *2025.02*: 👀 2 papers accepted to **CVPR 2025**. Check 🌲VideoTree for dynamic/adaptive keyframe selection with LLM, 🔍Groundmore for a new motion-grounded video reasoning task.
 - *2025.02*: 🧠 Will summer intern at **Google Deepmind**.
 - *2025.01*: 🇸🇬 3 papers accepted to **ICLR 2025**. Check ☕️CREMA for video+any modality reasoning, 🛡️SAFREE for training-free safe visual generation, and ⛓️SRDF for human-level VL-Navigation.
 - *2024.09*: 📓 1 paper accepted to **EMNLP 2024**. Check LLoVi for long VideoQA with LLM.
@@ -42,30 +44,6 @@ Find me here: shoubin -atsign- cs . unc . edu
 # 📝 Pre-print (*: equal contribution/co-first author)
 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/groundmore.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-
-[Motion-Grounded Video Reasoning: Understanding and Perceiving Motion at Pixel Level](https://arxiv.org/abs/2411.09921)
-
-Andong Deng, Tongjia Chen, **Shoubin Yu**, Taojiannan Yang, Lincoln Spencer, Yapeng Tian, Ajmal Saeed Mian, Mohit Bansal, Chen Chen
-
-[**Code**](https://github.com/dengandong/GroundMoRe) | [**Project Page**](https://groundmore.github.io/)
-- We present GroundMoRe, a new benchmark for novel Motion-Grounded Video Reasoning, designed to assess multimodal models' reasoning and perception capabilities for motion understanding. 
-</div>
-</div>
-
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/videotree.jpg' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-
-[VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos](https://arxiv.org/pdf/2405.19209)
-
-Ziyang Wang\*, **Shoubin Yu\***, Elias Stengel-Eskin\*, Jaehong Yoon, Feng Cheng, Gedas Bertasius, Mohit Bansal
-
-[**Code**](https://github.com/Ziyang412/VideoTree) | [**Project Page**](https://videotree2024.github.io/)
-- We present VideoTree, an adaptive tree-based video presentation/prompting with simple visual clustering for long video reasoning with LLM. 
-</div>
-</div>
-
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/raccoon.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
@@ -80,9 +58,31 @@ Jaehong Yoon\*, **Shoubin Yu\***, Mohit Bansal
 
 
 
-
-
 # 📝 Publications 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2025</div><img src='images/groundmore.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Motion-Grounded Video Reasoning: Understanding and Perceiving Motion at Pixel Level](https://arxiv.org/abs/2411.09921)
+
+Andong Deng, Tongjia Chen, **Shoubin Yu**, Taojiannan Yang, Lincoln Spencer, Yapeng Tian, Ajmal Saeed Mian, Mohit Bansal, Chen Chen
+
+[**Code**](https://github.com/dengandong/GroundMoRe) | [**Project Page**](https://groundmore.github.io/)
+- We present GroundMoRe, a new benchmark for novel Motion-Grounded Video Reasoning, designed to assess multimodal models' reasoning and perception capabilities for motion understanding. 
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2025</div><img src='images/videotree.jpg' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos](https://arxiv.org/pdf/2405.19209)
+
+Ziyang Wang\*, **Shoubin Yu\***, Elias Stengel-Eskin\*, Jaehong Yoon, Feng Cheng, Gedas Bertasius, Mohit Bansal
+
+[**Code**](https://github.com/Ziyang412/VideoTree) | [**Project Page**](https://videotree2024.github.io/)
+- We present VideoTree, an adaptive tree-based video presentation/prompting with simple visual clustering for long video reasoning with LLM. 
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICLR 2025</div><img src='images/safree.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
