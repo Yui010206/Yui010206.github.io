@@ -26,10 +26,11 @@ I am interested in wide topics in computer vision, especially in video, includin
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
+- *2025.03*: 🥦 VEGGIE is on arXiv.
 - *2025.02*: 💬 Gave an invited talk at **Twelve Labs**.
-- *2025.02*: 👀 2 papers accepted to **CVPR 2025**. Check 🌲VideoTree for dynamic/adaptive keyframe selection with LLM, 🔍Groundmore for a new motion-grounded video reasoning task.
+- *2025.02*: 👀 2 papers accepted to **CVPR 2025**. Check VideoTree for dynamic/adaptive keyframe selection with LLM, Groundmore for a new motion-grounded video reasoning task.
 - *2025.02*: 🧠 Will summer intern at **Google Deepmind**.
-- *2025.01*: 🇸🇬 3 papers accepted to **ICLR 2025**. Check ☕️CREMA for video+any modality reasoning, 🛡️SAFREE for training-free safe visual generation, and ⛓️SRDF for human-level VL-Navigation.
+- *2025.01*: 🇸🇬 3 papers accepted to **ICLR 2025**. Check ☕CREMA for video+any modality reasoning, SAFREE for training-free safe visual generation, and ⛓️SRDF for human-level VL-Navigation.
 - *2024.09*: 📓 1 paper accepted to **EMNLP 2024**. Check LLoVi for long VideoQA with LLM.
 - *2024.07*: 📹 1 paper accepted to **ACMMM 2024**. Check IVA-0 for controllable image animation.
 - *2024.06*: 💬 Gave an invited talk at **Google**.
@@ -42,6 +43,18 @@ Find me here: shoubin -atsign- cs . unc . edu
 - *2021.10*: 🌟 1 paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
 
 # 📝 Pre-print (*: equal contribution/co-first author)
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/veggie.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[VEGGIE: Instructional Editing and Reasoning Video Concepts with Grounded Generation](https://arxiv.org/pdf/)
+
+**Shoubin Yu\***, Difan Liu\*, Ziqiao Ma\*, Yicong Hong, Yang Zhou, Hao Tan, Joyce Chai, Mohit Bansal
+
+[**Code**](https://github.com/Yui010206/VEGGIE-VidEdit) | [**Project Page**](https://veggie-gen.github.io/)
+- We propose VEGGIE, a unified and versatile video generative model that handles various tasks for both video concept grounding and editing according to user instructions.
+</div>
+</div>
 
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/raccoon.jpg' alt="sym" width="100%"></div></div>
