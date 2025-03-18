@@ -19,16 +19,24 @@ redirect_from:
 
 Hi, thanks for stopping by! I am now a third-year Ph.D. Student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). Previously, I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
 
-While at UNC, I spent my summer time at Adobe Research (2024), Amazon Alexa (2023). Prior to UNC, I did research projects with MIT-IBM Watson AI Lab (2021).
+I also work at Amazon (2023) / Adobe Research (2024) / Google Deepmind (2025). 
 
-I am interested in wide topics in computer vision, especially in video, including video+X (language, audio, robotics) understanding & generation, trustworthy video reasoning, and robust video representation learning.
+My research focuses on multimodal AI, with a particular emphasis on video-centric AI modeling. 
+
+I develop and enhance models/systems capable of effectively and efficiently perceiving and inferring from the dynamic and diverse visual world.  My work aims to enable AI to assist humans in understanding complex video content for advanced reasoning and manipulation, contributing to a broad spectrum of downstream applications (sports, security, medical, and educational domains), and fostering the development of more adaptable and intelligent video-based AI systems. They are: 
+
+- **Video Reasoning Benchmarks/Methods**: SeViLA (NeurIPS23), CREMA (ICLR25), GroundMoRe (CVPR25), STAR (NeurIPS21)
+
+- **Faithful Video Editing/Generative Methods**: VEGGIE (ArXiv25), SAFREE (ICLR25), RACCooN (Arxiv24)
+
+- **Efficient Video Representation / Feature Engineering**: LLoVi(EMNLP24), VideoTree (CVPR25), MoPRL (TCSVT23)
 
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
 - *2025.03*: 🥦 VEGGIE is on arXiv.
 - *2025.02*: 💬 Gave an invited talk at **Twelve Labs**.
-- *2025.02*: 👀 2 papers accepted to **CVPR 2025**. Check VideoTree for dynamic/adaptive keyframe selection with LLM, Groundmore for a new motion-grounded video reasoning task.
+- *2025.02*: 👀 2 papers accepted to **CVPR 2025**. Check VideoTree for dynamic/adaptive keyframe selection with LLM, GroundMoRe for a new motion-grounded video reasoning task.
 - *2025.02*: 🧠 Will summer intern at **Google Deepmind**.
 - *2025.01*: 🇸🇬 3 papers accepted to **ICLR 2025**. Check ☕CREMA for video+any modality reasoning, SAFREE for training-free safe visual generation, and ⛓️SRDF for human-level VL-Navigation.
 - *2024.09*: 📓 1 paper accepted to **EMNLP 2024**. Check LLoVi for long VideoQA with LLM.
