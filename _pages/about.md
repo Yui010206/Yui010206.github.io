@@ -25,11 +25,11 @@ My research focuses on multimodal AI, with a particular emphasis on video-centri
 
 I develop and enhance models/systems capable of effectively and efficiently perceiving and inferring from the dynamic and diverse visual world.  My work aims to enable AI to assist humans in understanding complex video content for advanced reasoning and manipulation, contributing to a broad spectrum of downstream applications (sports, security, medical, and educational domains), and fostering the development of more adaptable and intelligent video-based AI systems. They are: 
 
-- **Video Reasoning Benchmarks/Methods**: SeViLA (NeurIPS23), CREMA (ICLR25), GroundMoRe (CVPR25), STAR (NeurIPS21)
+- **Video Reasoning Benchmarks/Methods**: [SeViLA](https://arxiv.org/abs/2305.06988) (NeurIPS23), [CREMA](https://arxiv.org/abs/2402.05889) (ICLR25), [GroundMoRe](https://arxiv.org/abs/2411.09921) (CVPR25), [STAR](https://arxiv.org/abs/2405.09711) (NeurIPS21)
 
-- **Faithful Video Editing/Generative Methods**: VEGGIE (ArXiv25), SAFREE (ICLR25), RACCooN (Arxiv24)
+- **Faithful Video Editing/Generative Methods**: [VEGGIE](https://arxiv.org/abs/2503.14350) (ArXiv25), [SAFREE](https://arxiv.org/abs/2410.12761) (ICLR25), [RACCooN](https://arxiv.org/abs/2405.18406) (ArXiv24)
 
-- **Efficient Video Representation / Feature Engineering**: LLoVi(EMNLP24), VideoTree (CVPR25), MoPRL (TCSVT23)
+- **Efficient Video Representation / Feature Engineering**: [LLoVi](https://arxiv.org/abs/2312.17235)(EMNLP24), [VideoTree](https://arxiv.org/abs/2405.19209) (CVPR25), [MoPRL](https://arxiv.org/abs/2112.03649) (TCSVT23)
 
 Find me here: shoubin -atsign- cs . unc . edu
 
