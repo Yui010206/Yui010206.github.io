@@ -55,7 +55,7 @@ Find me here: shoubin -atsign- cs . unc . edu
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/veggie.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[VEGGIE: Instructional Editing and Reasoning Video Concepts with Grounded Generation](https://arxiv.org/abs/2503.14350)
+[VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation](https://arxiv.org/abs/2503.14350)
 
 **Shoubin Yu\***, Difan Liu\*, Ziqiao Ma\*, Yicong Hong, Yang Zhou, Hao Tan, Joyce Chai, Mohit Bansal
 
