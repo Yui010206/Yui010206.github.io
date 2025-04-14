@@ -52,6 +52,19 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/video-msg.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Training-free Guidance in Text-to-Video Generation via Multimodal Planning and Structured Noise Initialization](https://arxiv.org/abs/2504.08641)
+
+Jialu Li\*, **Shoubin Yu\***,  Han Lin\*, Jaemin Cho, Jaehong Yoon, Mohit Bansal
+
+[**Code**](https://github.com/jialuli-luka/Video-MSG) | [**Project Page**](https://video-msg.github.io/)
+- We propose Video-MSG, a training-free guidance method for T2V generation with multimodal planning and structured noise.
+</div>
+</div>
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/veggie.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
