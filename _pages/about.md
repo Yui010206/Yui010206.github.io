@@ -68,7 +68,7 @@ Find me here: shoubin -atsign- cs . unc . edu
 </div>
 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/mf2.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/MF2.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [ Movie Facts and Fibs (MF2): A Benchmark for Long Movie Understanding](https://arxiv.org/pdf/2506.06275)
