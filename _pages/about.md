@@ -17,27 +17,29 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, thanks for stopping by! I am now a third-year Ph.D. Student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). Previously, I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
+Hi, thanks for stopping by! I am now a third-year Ph.D. Student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). 
+I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
 
 I also work at Amazon (2023) / Adobe Research (2024) / Google Deepmind (2025). 
 
-My research focuses on multimodal AI, with a particular emphasis on video-centric AI modeling. 
+My research focuses on multimodal AI, exploring how we can enable AI models to perceive and understand the world in a way similar to humans.
 
-I develop and enhance models/systems capable of effectively and efficiently perceiving and inferring from the dynamic and diverse visual world.  My work aims to enable AI to assist humans in understanding complex video content for advanced reasoning and manipulation, contributing to a broad spectrum of downstream applications (sports, security, medical, and educational domains), and fostering the development of more adaptable and intelligent video-based AI systems. They are: 
+I develop and enhance models/systems capable of effectively and efficiently perceiving and inferring from the dynamic and diverse multimodal world. 
+My work aims to enable AI to assist humans in understanding complex multimodal content for advanced reasoning and manipulation, contributing to a broad spectrum of downstream applications (sports, security, medical, and educational domains), and fostering the development of more adaptable and intelligent video-based AI systems. They are: 
 
-- **Video Reasoning Benchmarks/Methods**: [SeViLA](https://arxiv.org/abs/2305.06988) (NeurIPS23), [CREMA](https://arxiv.org/abs/2402.05889) (ICLR25), [GroundMoRe](https://arxiv.org/abs/2411.09921) (CVPR25), [STAR](https://arxiv.org/abs/2405.09711) (NeurIPS21)
+- **Multimodal Reasoning Benchmarks/Methods**: [MEXA](https://arxiv.org/pdf/2506.17113) (ArXiv25), [SeViLA](https://arxiv.org/abs/2305.06988) (NeurIPS23), [CREMA](https://arxiv.org/abs/2402.05889) (ICLR25), [GroundMoRe](https://arxiv.org/abs/2411.09921) (CVPR25), [STAR](https://arxiv.org/abs/2405.09711) (NeurIPS21)
 
-- **Faithful Video Editing/Generative Methods**: [VEGGIE](https://arxiv.org/abs/2503.14350) (ArXiv25), [SAFREE](https://arxiv.org/abs/2410.12761) (ICLR25), [RACCooN](https://arxiv.org/abs/2405.18406) (ArXiv24)
+- **Visual Editing/Generative Methods**: [VEGGIE](https://arxiv.org/abs/2503.14350) (ArXiv25), [SAFREE](https://arxiv.org/abs/2410.12761) (ICLR25), [RACCooN](https://arxiv.org/abs/2405.18406) (ArXiv24)
 
-- **Efficient Video Representation / Feature Engineering**: [LLoVi](https://arxiv.org/abs/2312.17235)(EMNLP24), [VideoTree](https://arxiv.org/abs/2405.19209) (CVPR25), [MoPRL](https://arxiv.org/abs/2112.03649) (TCSVT23)
+- **Multimodal Representation / Feature Engineering**: [LLoVi](https://arxiv.org/abs/2312.17235)(EMNLP24), [VideoTree](https://arxiv.org/abs/2405.19209) (CVPR25), [MoPRL](https://arxiv.org/abs/2112.03649) (TCSVT23)
 
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
+- *2025.05*: 🧠 Summer intern at **Google Deepmind**.
 - *2025.03*: 🥦 VEGGIE is on arXiv.
 - *2025.02*: 💬 Gave an invited talk at **Twelve Labs**.
 - *2025.02*: 👀 2 papers accepted to **CVPR 2025**. Check VideoTree for dynamic/adaptive keyframe selection with LLM, GroundMoRe for a new motion-grounded video reasoning task.
-- *2025.02*: 🧠 Will summer intern at **Google Deepmind**.
 - *2025.01*: 🇸🇬 3 papers accepted to **ICLR 2025**. Check ☕CREMA for video+any modality reasoning, SAFREE for training-free safe visual generation, and ⛓️SRDF for human-level VL-Navigation.
 - *2024.09*: 📓 1 paper accepted to **EMNLP 2024**. Check LLoVi for long VideoQA with LLM.
 - *2024.07*: 📹 1 paper accepted to **ACMMM 2024**. Check IVA-0 for controllable image animation.
@@ -51,6 +53,32 @@ Find me here: shoubin -atsign- cs . unc . edu
 - *2021.10*: 🌟 1 paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
 
 # 📝 Pre-print (*: equal contribution/co-first author)
+
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/mexa.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[MEXA: Towards General Multimodal Reasoning with Dynamic Multi-Expert Aggregation](https://arxiv.org/pdf/2506.17113)
+
+**Shoubin Yu\***,  Yue Zhang\*, Ziyang Wang, Jaehong Yoon, Mohit Bansal
+
+[**Code**](https://github.com/Yui010206/MEXA)
+- We introduce MEXA, a general and training-free multimodal reasoning framework via dynamic multi-expert skill selection, aggregation and deep reasoning.
+</div>
+</div>
+
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/mf2.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[ Movie Facts and Fibs (MF2): A Benchmark for Long Movie Understanding](https://arxiv.org/pdf/2506.06275)
+
+Emmanouil Zaranis, António Farinhas, Saul Santos, Beatriz Canaverde,...**Shoubin Yu\***, et al.
+
+[**Code**](https://huggingface.co/datasets/sardinelab/MF2)
+- We propose MF2, a new benchmark for evaluating whether models can comprehend, consolidate, and recall key narrative information from full-length movies
+</div>
+</div>
 
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/video-msg.png' alt="sym" width="100%"></div></div>
@@ -216,15 +244,17 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 </div>
 </div>
 
-# 🎖 Honors and Awards
+<!-- # 🎖 Honors and Awards
+- The summer is end, I lost you forever, I will be stronger to beat the past, Lyle. 2025
 - Piepie‘s (1-year-old black Shiba-Inu 🐶) Dad, 2024 
 - The Hui-Chun Chin and Tsung Dao Lee Scholar, 2020
 - Meritorious Award in Mathematical Contest in Modeling, 2019
-- Second Prize in Shanghai, China Undergraduate Mathematical Contest in Modeling, 2019
+- Second Prize in Shanghai, China Undergraduate Mathematical Contest in Modeling, 2019 -->
 
 # 🧐 Service
-- Conference reviewer: CVPR, ECCV, NeurIPS, ICLR, ICML, AISTATS, ARR (ACL, EMNLP, CoNLL, NACCAL, EACL), AAAI 
+- Conference reviewer: CVPR, ICCV, ECCV, NeurIPS, ICLR, ICML, AISTATS, ARR (ACL, EMNLP, CoNLL, NACCAL, EACL), AAAI 
 - Journal reviewer: IEEE Transactions on Circuits and Systems for Video Technology (TCSVT), IEEE Transactions on Neural Networks and Learning Systems (TNNLS), IEEE Transactions on Multimedia (TMM)
+
 
 # 📖 Educations
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/unc_logo.png' alt="sym" width="35%"></div></div>
@@ -245,6 +275,12 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 
 
 # 💻 Internships
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/deepmind.png' alt="sym" width="55%"></div></div>
+<div class='paper-box-text' markdown="1">
+- *2024.05 - 2025.03*, Student Researcher
+</div>
+</div>
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/adobe.png' alt="sym" width="55%"></div></div>
 <div class='paper-box-text' markdown="1">
 - *2024.05 - 2025.03*, Research Scientist Intern
