@@ -73,7 +73,7 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 [ Movie Facts and Fibs (MF2): A Benchmark for Long Movie Understanding](https://arxiv.org/pdf/2506.06275)
 
-Emmanouil Zaranis, António Farinhas, Saul Santos, Beatriz Canaverde,...**Shoubin Yu\***, et al.
+Emmanouil Zaranis, António Farinhas, Saul Santos, Beatriz Canaverde,...**Shoubin Yu\**, et al.
 
 [**Code**](https://huggingface.co/datasets/sardinelab/MF2)
 - We propose MF2, a new benchmark for evaluating whether models can comprehend, consolidate, and recall key narrative information from full-length movies
