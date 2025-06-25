@@ -123,7 +123,7 @@ Jaehong Yoon\*, **Shoubin Yu\***, Mohit Bansal
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV</div><img src='images/veggie.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2025</div><img src='images/veggie.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation](https://arxiv.org/abs/2503.14350)
