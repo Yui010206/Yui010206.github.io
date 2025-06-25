@@ -29,13 +29,14 @@ My work aims to enable AI to assist humans in understanding complex multimodal c
 
 - **Multimodal Reasoning Benchmarks/Methods**: [MEXA](https://arxiv.org/pdf/2506.17113) (ArXiv25), [SeViLA](https://arxiv.org/abs/2305.06988) (NeurIPS23), [CREMA](https://arxiv.org/abs/2402.05889) (ICLR25), [GroundMoRe](https://arxiv.org/abs/2411.09921) (CVPR25), [STAR](https://arxiv.org/abs/2405.09711) (NeurIPS21)
 
-- **Visual Editing/Generative Methods**: [VEGGIE](https://arxiv.org/abs/2503.14350) (ArXiv25), [SAFREE](https://arxiv.org/abs/2410.12761) (ICLR25), [RACCooN](https://arxiv.org/abs/2405.18406) (ArXiv24)
+- **Visual Editing/Generative Methods**: [VEGGIE](https://arxiv.org/abs/2503.14350) (ICCV25), [SAFREE](https://arxiv.org/abs/2410.12761) (ICLR25), [RACCooN](https://arxiv.org/abs/2405.18406) (ArXiv24)
 
 - **Multimodal Representation / Feature Engineering**: [LLoVi](https://arxiv.org/abs/2312.17235)(EMNLP24), [VideoTree](https://arxiv.org/abs/2405.19209) (CVPR25), [MoPRL](https://arxiv.org/abs/2112.03649) (TCSVT23)
 
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
+- *2025.06*: 🌊 1 papers accepted to **ICCV 2025**. Check VEGGIE for MLLM+Diffusion for multi-skill instructional video editing.
 - *2025.05*: 🧠 Summer intern at **Google Deepmind**.
 - *2025.03*: 🥦 VEGGIE is on arXiv.
 - *2025.02*: 💬 Gave an invited talk at **Twelve Labs**.
@@ -53,6 +54,18 @@ Find me here: shoubin -atsign- cs . unc . edu
 - *2021.10*: 🌟 1 paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
 
 # 📝 Pre-print (*: equal contribution/co-first author)
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/4dlrm.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[4D-LRM: Large Space-Time Reconstruction Model From and To Any View at Any Time](https://arxiv.org/abs/2506.18890)
+
+Ziqiao Ma, Xuweiyi Chen, **Shoubin Yu**, , Sai Bi, Kai Zhang, Chen Ziwen, Sihan Xu, Jianing Yang, Zexiang Xu, Kalyan Sunkavalli, Mohit Bansal, Joyce Chai, Hao Tan
+
+[**Code**](https://github.com/Mars-tin/4D-LRM) | [**Project Page**](https://4dlrm.github.io/)
+- We introduce 4D-LRM, a data-driven 4D reconstruction model that takes sparse input views at any time and renders arbitrary novel view-time combinations.
+</div>
+</div>
 
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/mexa.png' alt="sym" width="100%"></div></div>
@@ -93,18 +106,6 @@ Jialu Li\*, **Shoubin Yu\***,  Han Lin\*, Jaemin Cho, Jaehong Yoon, Mohit Bansal
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/veggie.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-
-[VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation](https://arxiv.org/abs/2503.14350)
-
-**Shoubin Yu\***, Difan Liu\*, Ziqiao Ma\*, Yicong Hong, Yang Zhou, Hao Tan, Joyce Chai, Mohit Bansal
-
-[**Code**](https://github.com/Yui010206/VEGGIE-VidEdit) | [**Project Page**](https://veggie-gen.github.io/)
-- We propose VEGGIE, a unified and versatile video generative model that handles various tasks for both video concept grounding and editing according to user instructions.
-</div>
-</div>
-
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/raccoon.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -121,6 +122,18 @@ Jaehong Yoon\*, **Shoubin Yu\***, Mohit Bansal
 
 
 # 📝 Publications 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV</div><img src='images/veggie.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation](https://arxiv.org/abs/2503.14350)
+
+**Shoubin Yu\***, Difan Liu\*, Ziqiao Ma\*, Yicong Hong, Yang Zhou, Hao Tan, Joyce Chai, Mohit Bansal
+
+[**Code**](https://github.com/Yui010206/VEGGIE-VidEdit) | [**Project Page**](https://veggie-gen.github.io/)
+- We propose VEGGIE, a unified and versatile video generative model that handles various tasks for both video concept grounding and editing according to user instructions.
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2025</div><img src='images/groundmore.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
