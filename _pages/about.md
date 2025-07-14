@@ -61,7 +61,7 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 [VIDEO-RTS: Rethinking Reinforcement Learning and Test-Time Scaling for Efficient and Enhanced Video Reasoning](https://arxiv.org/pdf/2507.06485)
 
-Ziyang Wang*, Jaehong Yoon*, **Shoubin Yu**, Md Mohaiminul Islam, Gedas Bertasius, Mohit Bansal
+Ziyang Wang\*, Jaehong Yoon\*, **Shoubin Yu**, Md Mohaiminul Islam, Gedas Bertasius, Mohit Bansal
 
 [**Code**](https://github.com/Ziyang412/Video-RTS) | [**Project Page**](https://sites.google.com/cs.unc.edu/videorts2025/home)
 - We present VIDEO-RTS, a new approach to improve video reasoning capability with drastically improved data efficiency by combining data-efficient RL with a video-adaptive test-time scaling (TTS) strategy. 
