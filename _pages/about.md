@@ -55,12 +55,26 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/videorts.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[VIDEO-RTS: Rethinking Reinforcement Learning and Test-Time Scaling for Efficient and Enhanced Video Reasoning](https://arxiv.org/pdf/2507.06485)
+
+Ziyang Wang*, Jaehong Yoon*, **Shoubin Yu**, Md Mohaiminul Islam, Gedas Bertasius, Mohit Bansal
+
+[**Code**](https://github.com/Ziyang412/Video-RTS) | [**Project Page**](https://sites.google.com/cs.unc.edu/videorts2025/home)
+- We present VIDEO-RTS, a new approach to improve video reasoning capability with drastically improved data efficiency by combining data-efficient RL with a video-adaptive test-time scaling (TTS) strategy. 
+</div>
+</div>
+
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/4dlrm.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [4D-LRM: Large Space-Time Reconstruction Model From and To Any View at Any Time](https://arxiv.org/abs/2506.18890)
 
-Ziqiao Ma, Xuweiyi Chen, **Shoubin Yu**, , Sai Bi, Kai Zhang, Chen Ziwen, Sihan Xu, Jianing Yang, Zexiang Xu, Kalyan Sunkavalli, Mohit Bansal, Joyce Chai, Hao Tan
+Ziqiao Ma, Xuweiyi Chen, **Shoubin Yu**, Sai Bi, Kai Zhang, Chen Ziwen, Sihan Xu, Jianing Yang, Zexiang Xu, Kalyan Sunkavalli, Mohit Bansal, Joyce Chai, Hao Tan
 
 [**Code**](https://github.com/Mars-tin/4D-LRM) | [**Project Page**](https://4dlrm.github.io/)
 - We introduce 4D-LRM, a data-driven 4D reconstruction model that takes sparse input views at any time and renders arbitrary novel view-time combinations.
@@ -86,7 +100,7 @@ Ziqiao Ma, Xuweiyi Chen, **Shoubin Yu**, , Sai Bi, Kai Zhang, Chen Ziwen, Sihan 
 
 [ Movie Facts and Fibs (MF2): A Benchmark for Long Movie Understanding](https://arxiv.org/pdf/2506.06275)
 
-Emmanouil Zaranis, António Farinhas, Saul Santos, Beatriz Canaverde,...**Shoubin Yu\**, et al.
+Emmanouil Zaranis, António Farinhas, Saul Santos, Beatriz Canaverde,...**Shoubin Yu**, et al.
 
 [**Code**](https://huggingface.co/datasets/sardinelab/MF2)
 - We propose MF2, a new benchmark for evaluating whether models can comprehend, consolidate, and recall key narrative information from full-length movies
