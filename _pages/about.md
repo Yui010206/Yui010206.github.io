@@ -27,9 +27,9 @@ My research focuses on multimodal AI, exploring how we can enable AI models to p
 I develop and enhance models/systems capable of effectively and efficiently perceiving and inferring from the dynamic and diverse multimodal world. 
 My work aims to enable AI to assist humans in understanding complex multimodal content for advanced reasoning and manipulation, contributing to a broad spectrum of downstream applications (sports, security, medical, and educational domains), and fostering the development of more adaptable and intelligent video-based AI systems. They are: 
 
-- **Multimodal Reasoning Benchmarks/Methods**: [MEXA](https://arxiv.org/pdf/2506.17113) (ArXiv25), [SeViLA](https://arxiv.org/abs/2305.06988) (NeurIPS23), [CREMA](https://arxiv.org/abs/2402.05889) (ICLR25), [GroundMoRe](https://arxiv.org/abs/2411.09921) (CVPR25), [STAR](https://arxiv.org/abs/2405.09711) (NeurIPS21)
+- **Multimodal Reasoning Benchmarks/Methods**: [MEXA](https://arxiv.org/pdf/2506.17113) (EMNLP25), [SeViLA](https://arxiv.org/abs/2305.06988) (NeurIPS23), [CREMA](https://arxiv.org/abs/2402.05889) (ICLR25), [GroundMoRe](https://arxiv.org/abs/2411.09921) (CVPR25), [STAR](https://arxiv.org/abs/2405.09711) (NeurIPS21)
 
-- **Visual Editing/Generative Methods**: [VEGGIE](https://arxiv.org/abs/2503.14350) (ICCV25), [SAFREE](https://arxiv.org/abs/2410.12761) (ICLR25), [RACCooN](https://arxiv.org/abs/2405.18406) (ArXiv24)
+- **Visual Editing/Generative Methods**: [VEGGIE](https://arxiv.org/abs/2503.14350) (ICCV25), [SAFREE](https://arxiv.org/abs/2410.12761) (ICLR25), [RACCooN](https://arxiv.org/abs/2405.18406) (EMNLP25)
 
 - **Multimodal Representation / Feature Engineering**: [LLoVi](https://arxiv.org/abs/2312.17235)(EMNLP24), [VideoTree](https://arxiv.org/abs/2405.19209) (CVPR25), [MoPRL](https://arxiv.org/abs/2112.03649) (TCSVT23)
 
