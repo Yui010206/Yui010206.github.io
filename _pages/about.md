@@ -36,6 +36,7 @@ My work aims to enable AI to assist humans in understanding complex multimodal c
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
+- *2025.08*: 🇨🇳 3 papers accepted to **EMNLP 2025** (2 main 1 findings). Check MEXA for general multimodal reasoning via expert selection + Large Reasoning Model, RACCooN for versatile video editing via MLLM+Diffusion, Video-RTS for video reasoning via RL+TTS.
 - *2025.06*: 🌊 1 papers accepted to **ICCV 2025**. Check VEGGIE for MLLM+Diffusion for multi-skill instructional video editing.
 - *2025.05*: 🧠 Summer intern at **Google Deepmind**.
 - *2025.03*: 🥦 VEGGIE is on arXiv.
@@ -56,17 +57,7 @@ Find me here: shoubin -atsign- cs . unc . edu
 # 📝 Pre-print (*: equal contribution/co-first author)
 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/videorts.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
 
-[VIDEO-RTS: Rethinking Reinforcement Learning and Test-Time Scaling for Efficient and Enhanced Video Reasoning](https://arxiv.org/pdf/2507.06485)
-
-Ziyang Wang\*, Jaehong Yoon\*, **Shoubin Yu**, Md Mohaiminul Islam, Gedas Bertasius, Mohit Bansal
-
-[**Code**](https://github.com/Ziyang412/Video-RTS) | [**Project Page**](https://sites.google.com/cs.unc.edu/videorts2025/home)
-- We present VIDEO-RTS, a new approach to improve video reasoning capability with drastically improved data efficiency by combining data-efficient RL with a video-adaptive test-time scaling (TTS) strategy. 
-</div>
-</div>
 
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/4dlrm.png' alt="sym" width="100%"></div></div>
@@ -78,19 +69,6 @@ Ziqiao Ma, Xuweiyi Chen, **Shoubin Yu**, Sai Bi, Kai Zhang, Chen Ziwen, Sihan Xu
 
 [**Code**](https://github.com/Mars-tin/4D-LRM) | [**Project Page**](https://4dlrm.github.io/)
 - We introduce 4D-LRM, a data-driven 4D reconstruction model that takes sparse input views at any time and renders arbitrary novel view-time combinations.
-</div>
-</div>
-
-
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/mexa.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-
-[MEXA: Towards General Multimodal Reasoning with Dynamic Multi-Expert Aggregation](https://arxiv.org/pdf/2506.17113)
-
-**Shoubin Yu\***,  Yue Zhang\*, Ziyang Wang, Jaehong Yoon, Mohit Bansal
-
-[**Code**](https://github.com/Yui010206/MEXA)
-- We introduce MEXA, a general and training-free multimodal reasoning framework via dynamic multi-expert skill selection, aggregation and deep reasoning.
 </div>
 </div>
 
@@ -121,7 +99,9 @@ Jialu Li\*, **Shoubin Yu\***,  Han Lin\*, Jaemin Cho, Jaehong Yoon, Mohit Bansal
 </div>
 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/raccoon.jpg' alt="sym" width="100%"></div></div>
+# 📝 Publications 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP 2025</div><img src='images/raccoon.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [RACCooN: Remove, Add, and Change Video Content with Auto-Generated Narratives](https://arxiv.org/pdf/2405.18406)
@@ -133,9 +113,29 @@ Jaehong Yoon\*, **Shoubin Yu\***, Mohit Bansal
 </div>
 </div>
 
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP 2025</div><img src='images/videorts.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
 
+[VIDEO-RTS: Rethinking Reinforcement Learning and Test-Time Scaling for Efficient and Enhanced Video Reasoning](https://arxiv.org/pdf/2507.06485)
 
-# 📝 Publications 
+Ziyang Wang\*, Jaehong Yoon\*, **Shoubin Yu**, Md Mohaiminul Islam, Gedas Bertasius, Mohit Bansal
+
+[**Code**](https://github.com/Ziyang412/Video-RTS) | [**Project Page**](https://sites.google.com/cs.unc.edu/videorts2025/home)
+- We present VIDEO-RTS, a new approach to improve video reasoning capability with drastically improved data efficiency by combining data-efficient RL with a video-adaptive test-time scaling (TTS) strategy. 
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP 2025 findings</div><img src='images/mexa.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[MEXA: Towards General Multimodal Reasoning with Dynamic Multi-Expert Aggregation](https://arxiv.org/pdf/2506.17113)
+
+**Shoubin Yu\***,  Yue Zhang\*, Ziyang Wang, Jaehong Yoon, Mohit Bansal
+
+[**Code**](https://github.com/Yui010206/MEXA)
+- We introduce MEXA, a general and training-free multimodal reasoning framework via dynamic multi-expert skill selection, aggregation and deep reasoning.
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2025</div><img src='images/veggie.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
