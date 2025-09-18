@@ -36,6 +36,7 @@ My work aims to enable AI to assist humans in understanding complex multimodal c
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
+- *2025.09*: 🇺🇸 1 paper accepted to **NeurIPS 2025**. Check 4D-LRM for a large space-time reconstruction model.
 - *2025.08*: 🇨🇳 3 papers accepted to **EMNLP 2025** (2 main 1 findings). Check MEXA for general multimodal reasoning via expert selection + Large Reasoning Model, RACCooN for versatile video editing via MLLM+Diffusion, Video-RTS for video reasoning via RL+TTS.
 - *2025.06*: 🌊 1 papers accepted to **ICCV 2025**. Check VEGGIE for MLLM+Diffusion for multi-skill instructional video editing.
 - *2025.05*: 🧠 Summer intern at **Google Deepmind**.
@@ -56,21 +57,6 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
-
-
-
-
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/4dlrm.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-
-[4D-LRM: Large Space-Time Reconstruction Model From and To Any View at Any Time](https://arxiv.org/abs/2506.18890)
-
-Ziqiao Ma, Xuweiyi Chen, **Shoubin Yu**, Sai Bi, Kai Zhang, Chen Ziwen, Sihan Xu, Jianing Yang, Zexiang Xu, Kalyan Sunkavalli, Mohit Bansal, Joyce Chai, Hao Tan
-
-[**Code**](https://github.com/Mars-tin/4D-LRM) | [**Project Page**](https://4dlrm.github.io/)
-- We introduce 4D-LRM, a data-driven 4D reconstruction model that takes sparse input views at any time and renders arbitrary novel view-time combinations.
-</div>
-</div>
 
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/MF2.png' alt="sym" width="100%"></div></div>
@@ -100,6 +86,19 @@ Jialu Li\*, **Shoubin Yu\***,  Han Lin\*, Jaemin Cho, Jaehong Yoon, Mohit Bansal
 
 
 # 📝 Publications 
+
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">NeurIPS 2025</div><img src='images/4dlrm.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[4D-LRM: Large Space-Time Reconstruction Model From and To Any View at Any Time](https://arxiv.org/abs/2506.18890)
+
+Ziqiao Ma, Xuweiyi Chen, **Shoubin Yu**, Sai Bi, Kai Zhang, Chen Ziwen, Sihan Xu, Jianing Yang, Zexiang Xu, Kalyan Sunkavalli, Mohit Bansal, Joyce Chai, Hao Tan
+
+[**Code**](https://github.com/Mars-tin/4D-LRM) | [**Project Page**](https://4dlrm.github.io/)
+- We introduce 4D-LRM, a data-driven 4D reconstruction model that takes sparse input views at any time and renders arbitrary novel view-time combinations.
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP 2025</div><img src='images/raccoon.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -272,7 +271,6 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 </div>
 
 <!-- # 🎖 Honors and Awards
-- The summer is end, I lost you forever, I will be stronger to beat the past, Lyle. 2025
 - Piepie‘s (1-year-old black Shiba-Inu 🐶) Dad, 2024 
 - The Hui-Chun Chin and Tsung Dao Lee Scholar, 2020
 - Meritorious Award in Mathematical Contest in Modeling, 2019
@@ -304,7 +302,7 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 # 💻 Internships
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/deepmind.png' alt="sym" width="55%"></div></div>
 <div class='paper-box-text' markdown="1">
-- *2024.05 - 2025.03*, Student Researcher
+- *2025.05 - 2025.08*, Student Researcher
 </div>
 </div>
 
