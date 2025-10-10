@@ -17,17 +17,19 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, thanks for stopping by! I am now a third-year Ph.D. Student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). 
+Hi, thanks for stopping by! I am now a fourth-year PhD student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). 
 I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
 
-I also work at Amazon (2023) / Adobe Research (2024) / Google Deepmind (2025). 
+I also work at/with MIT-IBM Watson AI Lab (2021) / Amazon (2023) / Adobe Research (2024) / Google DeepMind (2025). 
 
-My research focuses on multimodal AI, exploring how we can enable AI models to perceive and understand the world in a way similar to humans.
+My research focuses on multimodal AI, exploring how we can enable AI models to perceive and understand the world in a way similar to/beyond humans.
 
 I develop and enhance models/systems capable of effectively and efficiently perceiving and inferring from the dynamic and diverse multimodal world. 
 My work aims to enable AI to assist humans in understanding complex multimodal content for advanced reasoning and manipulation, contributing to a broad spectrum of downstream applications (sports, security, medical, and educational domains), and fostering the development of more adaptable and intelligent video-based AI systems. They are: 
 
-- **Multimodal Reasoning Benchmarks/Methods**: [MEXA](https://arxiv.org/pdf/2506.17113) (EMNLP25), [SeViLA](https://arxiv.org/abs/2305.06988) (NeurIPS23), [CREMA](https://arxiv.org/abs/2402.05889) (ICLR25), [GroundMoRe](https://arxiv.org/abs/2411.09921) (CVPR25), [STAR](https://arxiv.org/abs/2405.09711) (NeurIPS21)
+- **Multimodal Reasoning Methods**: [MEXA](https://arxiv.org/pdf/2506.17113) (EMNLP25), [SeViLA](https://arxiv.org/abs/2305.06988) (NeurIPS23), [CREMA](https://arxiv.org/abs/2402.05889) (ICLR25), 
+
+- **Multimodal Reasoning Benchmarks**: [SciVideoBench](https://arxiv.org/abs/2510.08559)(ArXiv25), [GroundMoRe](https://arxiv.org/abs/2411.09921) (CVPR25), [STAR](https://arxiv.org/abs/2405.09711) (NeurIPS21)
 
 - **Visual Editing/Generative Methods**: [VEGGIE](https://arxiv.org/abs/2503.14350) (ICCV25), [SAFREE](https://arxiv.org/abs/2410.12761) (ICLR25), [RACCooN](https://arxiv.org/abs/2405.18406) (EMNLP25)
 
@@ -57,6 +59,18 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/scivideobench.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[SciVideoBench: Benchmarking Scientific Video Reasoning in Large Multimodal Models](https://arxiv.org/abs/2510.08559)
+
+Andong Deng, Taojiannan Yang, **Shoubin Yu**, Lincoln Spencer, Mohit Bansal, Chen Chen, Serena Yeung-Levy, Xiaohan Wang
+
+[**Code**](https://github.com/dengandong/SciVideoBench) | [**Project Page**](https://scivideobench.github.io/)
+- we introduce SciVideoBench, a rigorous benchmark specifically designed to assess advanced video reasoning in scientific contexts.
+</div>
+</div>
 
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/MF2.png' alt="sym" width="100%"></div></div>
