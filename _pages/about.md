@@ -38,7 +38,7 @@ My work aims to enable AI to assist humans in understanding complex multimodal c
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
-- *2025.10*: 🎖️ SciVideoBench won the $\color{red} {best benchmark paper}$ at [ICCV 25 KnowledgeMR workshop](https://knowledgemr-workshop.github.io/)
+- *2025.10*: 🎖️ SciVideoBench won the $\color{red} {best}$ $\color{red} {benchmark}$ $\color{red} {paper}$ at [ICCV 25 KnowledgeMR workshop](https://knowledgemr-workshop.github.io/)
 - *2025.09*: 🇺🇸 1 paper accepted to **NeurIPS 2025**. Check 4D-LRM for a large space-time reconstruction model.
 - *2025.08*: 🇨🇳 3 papers accepted to **EMNLP 2025** (2 main 1 findings). Check MEXA for general multimodal reasoning via expert selection + Large Reasoning Model, RACCooN for versatile video editing via MLLM+Diffusion, Video-RTS for video reasoning via RL+TTS.
 - *2025.06*: 🌊 1 papers accepted to **ICCV 2025**. Check VEGGIE for MLLM+Diffusion for multi-skill instructional video editing.
