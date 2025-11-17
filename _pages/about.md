@@ -17,23 +17,54 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, thanks for stopping by! I am now a fourth-year PhD student at [The University of North Carolina at Chapel Hill](https://www.unc.edu/), advised by [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/). 
-I did my undergraduate study at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). 
+### Intro
 
-I also work at/with MIT-IBM Watson AI Lab (2021) / Amazon (2023) / Adobe Research (2024) / Google DeepMind (2025). 
+Hi, thanks for stopping by!  
+I am now a fourth-year PhD student at  
+[MURGe-Lab](https://murgelab.cs.unc.edu/) ([UNC-NLP Group](https://nlp.cs.unc.edu/))  
+at the [University of North Carolina, Chapel Hill](https://cs.unc.edu/), working with  
+[Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/).
 
-My research focuses on multimodal AI, exploring how we can enable AI models to perceive and understand the world in a way similar to/beyond humans.
+Prior to joining UNC, I completed my undergraduate studies at  
+[Shanghai Jiao Tong University (SJTU)](https://en.sjtu.edu.cn/) in 2022.
 
-I develop and enhance models/systems capable of effectively and efficiently perceiving and inferring from the dynamic and diverse multimodal world. 
-My work aims to enable AI to assist humans in understanding complex multimodal content for advanced reasoning and manipulation, contributing to a broad spectrum of downstream applications (sports, security, medical, and educational domains), and fostering the development of more adaptable and intelligent video-based AI systems. They are: 
+I also work at/with MIT-IBM Watson AI Lab (2021), Amazon (2023), Adobe Research (2024), and Google DeepMind (2025).
 
-- **Multimodal Reasoning Methods**: [MEXA](https://arxiv.org/pdf/2506.17113) (EMNLP25), [SeViLA](https://arxiv.org/abs/2305.06988) (NeurIPS23), [CREMA](https://arxiv.org/abs/2402.05889) (ICLR25), 
+---
 
-- **Multimodal Reasoning Benchmarks**: [SciVideoBench](https://arxiv.org/abs/2510.08559)(ArXiv25), [GroundMoRe](https://arxiv.org/abs/2411.09921) (CVPR25), [STAR](https://arxiv.org/abs/2405.09711) (NeurIPS21)
+My research focuses on **generative multimodal AI** and **robust, privacy-preserving AI systems**.  
+I build models and frameworks that can efficiently perceive, reason, and generate across the dynamic, diverse multimodal world.
 
-- **Visual Editing/Generative Methods**: [VEGGIE](https://arxiv.org/abs/2503.14350) (ICCV25), [SAFREE](https://arxiv.org/abs/2410.12761) (ICLR25), [RACCooN](https://arxiv.org/abs/2405.18406) (EMNLP25)
+My work spans **multimodal representation learning, video-language understanding and generation, AI safety, and efficient training and scaling inference for large models**, with applications across sports, security, medical, and educational domains.
 
-- **Multimodal Representation / Feature Engineering**: [LLoVi](https://arxiv.org/abs/2312.17235)(EMNLP24), [VideoTree](https://arxiv.org/abs/2405.19209) (CVPR25), [MoPRL](https://arxiv.org/abs/2112.03649) (TCSVT23)
+---
+
+### Recent Research Interests
+
+#### **Multimodal (Video/Audio/3D/Medical/…) Reasoning Methods**
+- [**SeViLA:** Self-chained Image-Language Model for Video QA+Localization (NeurIPS 2023)](https://arxiv.org/pdf/2305.06988)
+- [**CREMA:** Generalizable & Efficient Video-Language Reasoning via Any-Modal Modular Fusion (ICLR 2025)](https://crema-videollm.github.io/)
+- [**VideoTree:** Query-Adaptive Tree-based Long-Video Understanding (CVPR 2025)](https://videotree2024.github.io/)
+- [**MEXA:** General Multimodal Reasoning via Dynamic Multi-Expert Aggregation (EMNLP 2025 Findings)](https://arxiv.org/abs/2506.17113)
+- [**Video-RTS:** Reinforcement Learning and Test-Time Scaling for Video Reasoning (EMNLP 2025)](https://sites.google.com/cs.unc.edu/videorts2025/)
+
+#### **Multimodal (Video/4D) Generation and Editing**
+- [**IV0:** Zero-shot Controllable Image-to-Video Animation via Motion Decomposition (ACMMM 2024)](https://img2vidanim-0.github.io/)
+- [**SAFREE:** Training-free & Adaptive Safe Text-to-Image/Video Generation (ICLR 2025)](https://safree-safe-t2i-t2v.github.io/)
+- [**VEGGIE:** Unified Instructional Video Editing (ICCV 2025)](https://veggie-gen.github.io/)
+- [**RACCooN:** Diverse Video Editing via MLLM Auto-generated Paragraphs (EMNLP 2025)](https://raccoon-mllm-gen.github.io/)
+- [**4D-LRM:** Large Reconstruction Model for 4D Object Reconstruction (NeurIPS 2025)](https://4dlrm.github.io/)
+- [**Video-MSG:** Multimodal Planning & Noise Initialization for Controllable Video Generation (ArXiv 2025)](https://video-msg.github.io/)
+
+#### **Multimodal Reasoning Benchmarks**
+- [**STAR:** Neuro-Symbolic Real-world Video Reasoning Benchmark (NeurIPS 2021)](https://bobbywu.com/STAR/)
+- [**GroundMoRe:** Video Reasoning Segmentation Benchmark (CVPR 2025)](https://groundmore.github.io/)
+- [**SciVideoBench:** Scientific Video Reasoning Benchmark (ArXiv 2025)](https://scivideobench.github.io/)
+- [**Ego2Web:** Egocentric Video + Web Agent Benchmark (ArXiv 2025)](https://ego2web.github.io/)
+
+---
+
+---
 
 Find me here: shoubin -atsign- cs . unc . edu
 
