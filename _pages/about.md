@@ -59,28 +59,30 @@ My work spans **multimodal representation learning, video-language understanding
 
 ---
 
+I'm always happy to share ideas / discussion / collaborate with diverse backgrounds people, feel free to reach out.
+
 Find me here: shoubin -atsign- cs . unc . edu
 
 # 🔥 News
 - *2025.10*: 🎖️ SciVideoBench won the $\color{red} {best}$ $\color{red} {benchmark}$ $\color{red} {paper}$ at [ICCV 25 KnowledgeMR workshop](https://knowledgemr-workshop.github.io/)
-- *2025.09*: 🇺🇸 1 paper accepted to **NeurIPS 2025**. Check 4D-LRM for a large space-time reconstruction model.
-- *2025.08*: 🇨🇳 3 papers accepted to **EMNLP 2025** (2 main 1 findings). Check MEXA for general multimodal reasoning via expert selection + Large Reasoning Model, RACCooN for versatile video editing via MLLM+Diffusion, Video-RTS for video reasoning via RL+TTS.
-- *2025.06*: 🌊 1 papers accepted to **ICCV 2025**. Check VEGGIE for MLLM+Diffusion for multi-skill instructional video editing.
+- *2025.09*: 🇺🇸 1 paper accepted to **ICMI 2025**. 
+- *2025.09*: 🇺🇸 1 paper accepted to **NeurIPS 2025**. 
+- *2025.08*: 🇨🇳 3 papers accepted to **EMNLP 2025** 
+- *2025.06*: 🌊 1 papers accepted to **ICCV 2025**.
 - *2025.05*: 🧠 Summer intern at **Google Deepmind**.
-- *2025.03*: 🥦 VEGGIE is on arXiv.
 - *2025.02*: 💬 Gave an invited talk at **Twelve Labs**.
-- *2025.02*: 👀 2 papers accepted to **CVPR 2025**. Check VideoTree for dynamic/adaptive keyframe selection with LLM, GroundMoRe for a new motion-grounded video reasoning task.
-- *2025.01*: 🇸🇬 3 papers accepted to **ICLR 2025**. Check ☕CREMA for video+any modality reasoning, SAFREE for training-free safe visual generation, and ⛓️SRDF for human-level VL-Navigation.
-- *2024.09*: 📓 1 paper accepted to **EMNLP 2024**. Check LLoVi for long VideoQA with LLM.
-- *2024.07*: 📹 1 paper accepted to **ACMMM 2024**. Check IVA-0 for controllable image animation.
+- *2025.02*: 👀 2 papers accepted to **CVPR 2025**. 
+- *2025.01*: 🇸🇬 3 papers accepted to **ICLR 2025**. 
+- *2024.09*: 📓 1 paper accepted to **EMNLP 2024**. 
+- *2024.07*: 📹 1 paper accepted to **ACMMM 2024**. 
 - *2024.06*: 💬 Gave an invited talk at **Google**.
 - *2024.05*: 🎬 Summer intern at **Adobe**.
-- *2023.09*: ⛓️ 1 paper accepted to **NeurIPS 2023**. Check SeViLA for Video Loc+QA.
-- *2023.07*: 🦴 1 paper accepted to **IEEE TCSVT**. Check MoPRL for skeletal anomaly detection.
+- *2023.09*: ⛓️ 1 paper accepted to **NeurIPS 2023**. 
+- *2023.07*: 🦴 1 paper accepted to **IEEE TCSVT**. 
 - *2023.05*: 🌞 Summer intern at **Amazon**.
 - *2022.09*: ⛪️ Join <a href="https://murgelab.cs.unc.edu/index.html"> **UNC-CH** MURGe-Lab </a>.
 - *2022.06*: 🎓 Graduate from **Shanghai Jiao Tong University** (outstanding graduates).
-- *2021.10*: 🌟 1 paper accepted to **NeurIPS 2021**. Check STAR for real-world situated reasoning.
+- *2021.10*: 🌟 1 paper accepted to **NeurIPS 2021**. 
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
@@ -315,9 +317,15 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 - Meritorious Award in Mathematical Contest in Modeling, 2019
 - Second Prize in Shanghai, China Undergraduate Mathematical Contest in Modeling, 2019 -->
 
-# 🧐 Service
-- Conference reviewer: CVPR, ICCV, ECCV, NeurIPS, ICLR, ICML, AISTATS, ARR (ACL, EMNLP, CoNLL, NACCAL, EACL), AAAI 
-- Journal reviewer: IEEE Transactions on Circuits and Systems for Video Technology (TCSVT), IEEE Transactions on Neural Networks and Learning Systems (TNNLS), IEEE Transactions on Multimedia (TMM)
+# 🧐 Service & Talk
+
+- *2025.02*: Invited talk at **Twelve Labs**.
+- *2024.06*: Invited talk at **Google**.
+
+----
+
+- Conference reviewer: CVPR, ICCV, ECCV, NeurIPS, ICLR, ICML, AISTATS, ARR (ACL, EMNLP, CoNLL, NACCAL, EACL), AAAI, IJCAI 
+- Journal reviewer: IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), IEEE Transactions on Circuits and Systems for Video Technology (TCSVT), IEEE Transactions on Neural Networks and Learning Systems (TNNLS), IEEE Transactions on Multimedia (TMM)
 
 
 # 📖 Educations
@@ -341,7 +349,7 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 # 💻 Internships
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/deepmind.png' alt="sym" width="55%"></div></div>
 <div class='paper-box-text' markdown="1">
-- *2025.05 - 2025.08*, Student Researcher
+- *2025.05 - 2025.11*, Student Researcher
 </div>
 </div>
 
