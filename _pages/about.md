@@ -19,14 +19,9 @@ redirect_from:
 
 ### Intro
 
-Hi, thanks for stopping by!  
-I am now a fourth-year PhD student at  
-[MURGe-Lab](https://murgelab.cs.unc.edu/) ([UNC-NLP Group](https://nlp.cs.unc.edu/))  
-at the [University of North Carolina, Chapel Hill](https://cs.unc.edu/), working with  
-[Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/).
+Hi, thanks for stopping by!  I am now a fourth-year PhD student at [MURGe-Lab](https://murgelab.cs.unc.edu/) ([UNC-NLP Group](https://nlp.cs.unc.edu/)) at the [University of North Carolina, Chapel Hill](https://cs.unc.edu/), working with [Prof. Mohit Bansal](https://www.cs.unc.edu/~mbansal/).
 
-Prior to joining UNC, I completed my undergraduate studies at  
-[Shanghai Jiao Tong University (SJTU)](https://en.sjtu.edu.cn/) in 2022.
+Prior to joining UNC, I completed my undergraduate studies at [Shanghai Jiao Tong University (SJTU)](https://en.sjtu.edu.cn/) in 2022.
 
 I also work at/with MIT-IBM Watson AI Lab (2021), Amazon (2023), Adobe Research (2024), and Google DeepMind (2025).
 
@@ -61,8 +56,6 @@ My work spans **multimodal representation learning, video-language understanding
 - [**GroundMoRe:** Video Reasoning Segmentation Benchmark (CVPR 2025)](https://groundmore.github.io/)
 - [**SciVideoBench:** Scientific Video Reasoning Benchmark (ArXiv 2025)](https://scivideobench.github.io/)
 - [**Ego2Web:** Egocentric Video + Web Agent Benchmark (ArXiv 2025)](https://ego2web.github.io/)
-
----
 
 ---
 
