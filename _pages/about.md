@@ -62,7 +62,8 @@ My work spans **multimodal representation learning, video-language understanding
 I'm always happy to share ideas / discussion / collaborate with diverse backgrounds people, feel free to reach out.
 
 Find me here: shoubin -atsign- cs . unc . edu 
-[resume/cv](https://drive.google.com/file/d/1PmaeZfLzzoqp-3PCBwAkp29_JAWuJaVE/view?usp=sharing)
+
+[Resume/CV](https://drive.google.com/file/d/1PmaeZfLzzoqp-3PCBwAkp29_JAWuJaVE/view?usp=sharing)
 
 # 🔥 News
 - *2025.10*: 🎖️ SciVideoBench won the $\color{red} {best}$ $\color{red} {benchmark}$ $\color{red} {paper}$ at [ICCV 25 KnowledgeMR workshop](https://knowledgemr-workshop.github.io/)
