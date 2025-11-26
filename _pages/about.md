@@ -88,6 +88,17 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/prune.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Prune-Then-Plan: Step-Level Calibration for Stable Frontier Exploration in Embodied Question Answering](https://arxiv.org/pdf/2511.19768)
+
+Noah Frahm, Prakrut Patel, Yue Zhang, **Shoubin Yu**, Mohit Bansal, Roni Sengupta
+
+[**Project Page**](https://noahfrahm.github.io/Prune-Then-Plan-project-page/)
+- we present Prune-Then-Plan, a method that enables AI agents to better explore 3D scenes for embodied QA.
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/scivideobench.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
