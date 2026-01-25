@@ -23,7 +23,7 @@ Hi, thanks for stopping by!  I am now a fourth-year PhD student at [MURGe-Lab](h
 
 Prior to joining UNC, I completed my undergraduate studies at [Shanghai Jiao Tong University (SJTU)](https://en.sjtu.edu.cn/) in 2022.
 
-I also work at/with MIT-IBM Watson AI Lab (2021), Amazon (2023), Adobe Research (2024), and Google DeepMind (2025).
+I also work at/with MIT-IBM Watson AI Lab (2021), Amazon (2023), Adobe Research (2024), and Google DeepMind (2025, 2026).
 
 ---
 
