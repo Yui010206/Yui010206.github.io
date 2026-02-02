@@ -362,6 +362,12 @@ Bo Wu, **Shoubin Yu**, Zhenfang Chen, Joshua B. Tenenbaum, Chuang Gan
 # 💻 Internships
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/deepmind.png' alt="sym" width="55%"></div></div>
 <div class='paper-box-text' markdown="1">
+- *2026.05 - 2026.08*, Student Researcher
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge"></div><img src='images/deepmind.png' alt="sym" width="55%"></div></div>
+<div class='paper-box-text' markdown="1">
 - *2025.05 - 2025.11*, Student Researcher
 </div>
 </div>
