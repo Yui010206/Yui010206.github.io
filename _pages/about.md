@@ -88,6 +88,19 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/avic.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning](https://arxiv.org/abs/2602.08236)
+
+**Shoubin Yu\***, Yue Zhang\*, Zun Wang, Jaehong Yoon, Huaxiu Yao, Mingyu Ding, Mohit Bansal
+
+[**Project Page**](https://adaptive-visual-tts.github.io) | [**Code**](https://github.com/Yui010206/Adaptive-Visual-Imagination-Control/)
+- We present an analysis-driven framework (AVIC) for adaptive test-time scaling via world model imagination in visual spatial reasoning.
+</div>
+</div>
+
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/prune.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
