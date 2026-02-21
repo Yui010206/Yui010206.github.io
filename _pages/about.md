@@ -163,7 +163,7 @@ Jialu Li\*, **Shoubin Yu\***,  Han Lin\*, Jaemin Cho, Jaehong Yoon, Mohit Bansal
 **Shoubin Yu**, Lei Shu, Antoine Yang, Yao Fu, Srinivas Sunkara, Maria Wang, Jindong Chen, Mohit Bansal, Boqing Gong
 
 [**Code (coming soon)**]() | [**Project Page (coming soon)**]()
-- We introduce 4D-LRM, a data-driven 4D reconstruction model that takes sparse input views at any time and renders arbitrary novel view-time combinations.
+- We introduce Ego2Web, the first benchmark designed to bridge egocentric video perception and multimodal web agent execution. 
 </div>
 </div>
 
