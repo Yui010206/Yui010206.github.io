@@ -55,7 +55,7 @@ My work spans **multimodal representation learning, video-language understanding
 - [**STAR:** Neuro-Symbolic Real-world Video Reasoning Benchmark (NeurIPS 2021)](https://bobbywu.com/STAR/)
 - [**GroundMoRe:** Video Reasoning Segmentation Benchmark (CVPR 2025)](https://groundmore.github.io/)
 - [**SciVideoBench:** Scientific Video Reasoning Benchmark (ArXiv 2025)](https://scivideobench.github.io/)
-- [**Ego2Web:** Egocentric Video + Web Agent Benchmark (ArXiv 2025)](https://ego2web.github.io/)
+- [**Ego2Web:** Egocentric Video + Web Agent Benchmark (CVPR 2026)](https://ego2web.github.io/)
 
 ---
 
@@ -66,6 +66,7 @@ Find me here: shoubin -atsign- cs . unc . edu
 [Resume/CV](https://drive.google.com/file/d/1PmaeZfLzzoqp-3PCBwAkp29_JAWuJaVE/view?usp=sharing)
 
 # 🔥 News
+- *2026.02*: 🇺🇸 1 paper accepted to **CVPR 2026**. 
 - *2025.10*: 🎖️ SciVideoBench won the $\color{red} {best}$ $\color{red} {benchmark}$ $\color{red} {paper}$ at [ICCV 25 KnowledgeMR workshop](https://knowledgemr-workshop.github.io/)
 - *2025.09*: 🇺🇸 1 paper accepted to **ICMI 2025**. 
 - *2025.09*: 🇺🇸 1 paper accepted to **NeurIPS 2025**. 
