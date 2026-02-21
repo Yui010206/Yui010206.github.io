@@ -155,6 +155,18 @@ Jialu Li\*, **Shoubin Yu\***,  Han Lin\*, Jaemin Cho, Jaehong Yoon, Mohit Bansal
 
 # 📝 Publications 
 
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2026</div><img src='images/ego2web.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Ego2Web: A Web Agent Benchmark Grounded on Egocentric Videos]()
+
+**Shoubin Yu**, Lei Shu, Antoine Yang, Yao Fu, Srinivas Sunkara, Maria Wang, Jindong Chen, Mohit Bansal, Boqing Gong
+
+[**Code (coming soon)**]() | [**Project Page (coming soon)**]()
+- We introduce 4D-LRM, a data-driven 4D reconstruction model that takes sparse input views at any time and renders arbitrary novel view-time combinations.
+</div>
+</div>
+
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">NeurIPS 2025</div><img src='images/4dlrm.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
