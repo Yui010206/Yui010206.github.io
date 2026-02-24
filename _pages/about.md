@@ -66,7 +66,7 @@ Find me here: shoubin -atsign- cs . unc . edu
 [Resume/CV](https://drive.google.com/file/d/1PmaeZfLzzoqp-3PCBwAkp29_JAWuJaVE/view?usp=sharing)
 
 # 🔥 News
-- *2026.02*: 🇺🇸 1 paper accepted to **CVPR 2026**. 
+- *2026.02*: 🇺🇸 2 paper accepted to **CVPR 2026**. 
 - *2025.10*: 🎖️ SciVideoBench won the $\color{red} {best}$ $\color{red} {benchmark}$ $\color{red} {paper}$ at [ICCV 25 KnowledgeMR workshop](https://knowledgemr-workshop.github.io/)
 - *2025.09*: 🇺🇸 1 paper accepted to **ICMI 2025**. 
 - *2025.09*: 🇺🇸 1 paper accepted to **NeurIPS 2025**. 
@@ -101,18 +101,6 @@ Find me here: shoubin -atsign- cs . unc . edu
 </div>
 </div>
 
-
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/prune.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-
-[Prune-Then-Plan: Step-Level Calibration for Stable Frontier Exploration in Embodied Question Answering](https://arxiv.org/pdf/2511.19768)
-
-Noah Frahm, Prakrut Patel, Yue Zhang, **Shoubin Yu**, Mohit Bansal, Roni Sengupta
-
-[**Project Page**](https://noahfrahm.github.io/Prune-Then-Plan-project-page/)
-- we present Prune-Then-Plan, a method that enables AI agents to better explore 3D scenes for embodied QA.
-</div>
-</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/scivideobench.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -164,6 +152,18 @@ Jialu Li\*, **Shoubin Yu\***,  Han Lin\*, Jaemin Cho, Jaehong Yoon, Mohit Bansal
 
 [**Code (coming soon)**]() | [**Project Page (coming soon)**]()
 - We introduce Ego2Web, the first benchmark designed to bridge egocentric video perception and multimodal web agent execution. 
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2026 findings</div><img src='images/prune.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Prune-Then-Plan: Step-Level Calibration for Stable Frontier Exploration in Embodied Question Answering](https://arxiv.org/pdf/2511.19768)
+
+Noah Frahm, Prakrut Patel, Yue Zhang, **Shoubin Yu**, Mohit Bansal, Roni Sengupta
+
+[**Project Page**](https://noahfrahm.github.io/Prune-Then-Plan-project-page/)
+- we present Prune-Then-Plan, a method that enables AI agents to better explore 3D scenes for embodied QA.
 </div>
 </div>
 
