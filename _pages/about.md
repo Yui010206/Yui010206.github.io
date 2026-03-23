@@ -66,7 +66,7 @@ Find me here: shoubin -atsign- cs . unc . edu
 [Resume/CV](https://drive.google.com/file/d/1PmaeZfLzzoqp-3PCBwAkp29_JAWuJaVE/view?usp=sharing)
 
 # 🔥 News
-- *2026.02*: 🇺🇸 2 paper accepted to **CVPR 2026**. 
+- *2026.02*: 🇺🇸 2 papers accepted to **CVPR 2026**. 
 - *2025.10*: 🎖️ SciVideoBench won the $\color{red} {best}$ $\color{red} {benchmark}$ $\color{red} {paper}$ at [ICCV 25 KnowledgeMR workshop](https://knowledgemr-workshop.github.io/)
 - *2025.09*: 🇺🇸 1 paper accepted to **ICMI 2025**. 
 - *2025.09*: 🇺🇸 1 paper accepted to **NeurIPS 2025**. 
@@ -150,7 +150,7 @@ Jialu Li\*, **Shoubin Yu\***,  Han Lin\*, Jaemin Cho, Jaehong Yoon, Mohit Bansal
 
 **Shoubin Yu**, Lei Shu, Antoine Yang, Yao Fu, Srinivas Sunkara, Maria Wang, Jindong Chen, Mohit Bansal, Boqing Gong
 
-[**Code (coming soon)**]() | [**Project Page (coming soon)**]()
+[**Code**]() | [**Project Page**](https://ego2web.github.io/)
 - We introduce Ego2Web, the first benchmark designed to bridge egocentric video perception and multimodal web agent execution. 
 </div>
 </div>
