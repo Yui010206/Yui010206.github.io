@@ -89,6 +89,19 @@ Find me here: shoubin -atsign- cs . unc . edu
 
 # 📝 Pre-print (*: equal contribution/co-first author)
 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/visioncoach.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[VisionCoach: Reinforcing Grounded Video Reasoning via Visual-Perception Prompting](https://arxiv.org/abs/2603.14659)
+
+Daeun Lee, **Shoubin Yu**, Yue Zhang, Mohit Bansal
+
+[**Project Page**](https://visioncoach.github.io/) | [**Code**](https://github.com/daeunni/VisionCoach)
+- We present VisionCoach, a RL+Self-Distillation stragegy that adaptively selects visual prompting for augmenting perception in hard examples. 
+</div>
+</div>
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/avic.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
