@@ -24,6 +24,11 @@ export type Publication = {
   award?: string
 }
 
+/** True when the venue is the generic arXiv-style preprint label (used for sort / grouping order). */
+export function isPreprintVenue(venue: string): boolean {
+  return /^preprint$/i.test(venue.trim())
+}
+
 export type EducationItem = {
   period: string
   school: string
@@ -97,7 +102,7 @@ export const heroFocus = {
     `At the model level, I develop multimodal architectures that integrate perception, reasoning, and generation. Across [[VEGGIE]], [[4D-LRM]], [[CREMA]], [[MoPRL]], and [[MEXA]], I explore how to build models that can ingest and operate over arbitrary modalities within a **unified representation space**, while preserving compositional structure.`,
     `For training, I design learning strategies that support structured reasoning beyond standard supervision. My work in [[VEGGIE]], [[4D-LRM]], [[CREMA]], [[SeViLA]], and [[VisionCoach]] emphasizes **modular learning** and multi-stage optimization aligned with complex multimodal tasks.`,
     `At test time, I study test-time scaling under real-world constraints. Through [[VideoTree]], [[AVIC]], [[SAFREE]], and [[Video-RTS]], I develop methods for **adaptive computation** and efficient inference to support structured reasoning over complex inputs.`,
-    `In evaluation, I design benchmarks and metrics that measure performance under concrete settings such as real-world agents and AI for science. My work, including [[VEGGIE]], [[SciVideoBench]], [[Ego2Web]], and [[STAR]], focuses on testing whether models can handle multi-step reasoning, grounding, and decision-making in realistic scenarios, and using these signals to guide improvements across the system.`,
+    `In evaluation, I design benchmarks and metrics that measure performance under concrete settings such as real-world agents and AI for science. My work, including [[VEGGIE]], [[SciVideoBench]], [[Ego2Web]], [[EgoMemReason]], and [[STAR]], focuses on testing whether models can handle multi-step reasoning, grounding, and decision-making in realistic scenarios, and using these signals to guide improvements across the system.`,
     `Overall, my research aims to develop multimodal AI systems through a **unified, system-level approach**, where data, training, model, and test-time computation are co-designed to support robust reasoning and generalization in dynamic environments.`,
   ],
 }
@@ -213,6 +218,22 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
       { label: 'Code', href: 'https://github.com/jialuli-luka/Video-MSG' },
     ],
     image: '/projects/video-msg.png',
+  },
+  {
+    title: 'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding',
+    authors:
+      'Ziyang Wang*, Yue Zhang*, Shoubin Yu, Ce Zhang, Zengqi Zhao, Jaehong Yoon, Hyunji Lee, Gedas Bertasius, Mohit Bansal',
+    venue: 'Preprint',
+    year: 2026,
+    summary:
+      'Week-long egocentric benchmark for memory-driven reasoning—entity, event, and behavior memory across sparse, long-horizon evidence.',
+    tags: ['Benchmark', 'Egocentric video', 'Memory'],
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/abs/2605.09874' },
+      { label: 'Project', href: 'https://egomemreason.github.io/' },
+    ],
+    image: '/projects/egomemreason.png',
+    imageAlt: 'EgoMemReason benchmark teaser',
   },
   {
     title: 'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos',
@@ -499,6 +520,7 @@ const publicationSubtopicsByTitle: Record<string, PublicationSubtopicId[]> = {
   'Training-free Guidance in Text-to-Video Generation via Multimodal Planning and Structured Noise Initialization': [
     'generation-world-model',
   ],
+  'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding': ['benchmark'],
   'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos': ['benchmark'],
   'Prune-Then-Plan: Step-Level Calibration for Stable Frontier Exploration in Embodied Question Answering': [
     'multimodal-understanding',
@@ -543,6 +565,9 @@ const publicationSource: Publication[] = publicationSourceRaw.map((p) => {
 
 export const allPublications: Publication[] = [...publicationSource].sort((a, b) => {
   if (b.year !== a.year) return b.year - a.year
+  const ap = isPreprintVenue(a.venue) ? 1 : 0
+  const bp = isPreprintVenue(b.venue) ? 1 : 0
+  if (bp !== ap) return bp - ap
   return a.title.localeCompare(b.title)
 })
 

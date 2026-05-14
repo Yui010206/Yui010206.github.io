@@ -6,6 +6,7 @@ import {
   education,
   heroFocus,
   internships,
+  isPreprintVenue,
   news,
   PUBLICATION_SUBTOPICS,
   profile,
@@ -14,6 +15,9 @@ import {
 } from './data'
 
 const years = ['All', ...Array.from(new Set(allPublications.map((p) => String(p.year)))).sort((a, b) => Number(b) - Number(a))]
+
+/** Default number of rows shown in All publications before "Show all". */
+const ARCHIVE_PREVIEW_COUNT = 6
 
 type ArchivePublicationGroup = {
   key: string
@@ -52,6 +56,9 @@ function groupPublicationsByYearAndVenue(publications: Publication[]): ArchivePu
   }
   groups.sort((a, b) => {
     if (b.year !== a.year) return b.year - a.year
+    const ap = isPreprintVenue(a.venue) ? 1 : 0
+    const bp = isPreprintVenue(b.venue) ? 1 : 0
+    if (bp !== ap) return bp - ap
     return a.venue.localeCompare(b.venue, undefined, { sensitivity: 'base' })
   })
   return groups
@@ -209,6 +216,7 @@ export default function App() {
   const [archiveView, setArchiveView] = useState<ArchiveView>('year')
   const [activeYear, setActiveYear] = useState('All')
   const [activeSubtopic, setActiveSubtopic] = useState<PublicationSubtopicId | 'All'>('All')
+  const [archiveExpanded, setArchiveExpanded] = useState(false)
   const [photoEasterEgg, setPhotoEasterEgg] = useState<{ x: number; y: number } | null>(null)
   const [researchIndex, setResearchIndex] = useState(0)
 
@@ -233,6 +241,22 @@ export default function App() {
     () => groupPublicationsByYearAndVenue(filteredPublications),
     [filteredPublications],
   )
+
+  useEffect(() => {
+    setArchiveExpanded(false)
+  }, [archiveView, activeYear, activeSubtopic])
+
+  const flatArchivePublications = useMemo(
+    () => archiveGroups.flatMap((group) => group.publications),
+    [archiveGroups],
+  )
+
+  const visibleArchivePublications = useMemo(() => {
+    if (archiveExpanded) return flatArchivePublications
+    return flatArchivePublications.slice(0, ARCHIVE_PREVIEW_COUNT)
+  }, [archiveExpanded, flatArchivePublications])
+
+  const archiveHasMore = flatArchivePublications.length > ARCHIVE_PREVIEW_COUNT
 
   return (
     <div className="app-shell" id="top">
@@ -482,37 +506,49 @@ export default function App() {
             {filteredPublications.length === 0 ? (
               <p className="archive-empty">No publications match this filter.</p>
             ) : null}
-            {archiveGroups.flatMap((group) =>
-              group.publications.map((publication) => (
-                <article key={`${publication.title}-${publication.year}`} className="archive-item">
-                  <ProjectCover
-                    title={publication.title}
-                    image={publication.image}
-                    imageAlt={publication.imageAlt}
-                    variant="archive"
-                  />
-                  <div className="archive-main">
-                    <div className="archive-meta">
-                      <span className="venue-name">{publication.venue}</span>
-                      <span className="venue-year">{publication.year}</span>
-                    </div>
-                    {publication.award ? <p className="paper-award paper-award--compact">{publication.award}</p> : null}
-                    <div className="archive-body">
-                      <PublicationTitle title={publication.title} links={publication.links} />
-                      <AuthorsLine text={publication.authors} />
-                      <p>{publication.summary}</p>
-                    </div>
+            {visibleArchivePublications.map((publication) => (
+              <article key={`${publication.title}-${publication.year}`} className="archive-item">
+                <ProjectCover
+                  title={publication.title}
+                  image={publication.image}
+                  imageAlt={publication.imageAlt}
+                  variant="archive"
+                />
+                <div className="archive-main">
+                  <div className="archive-meta">
+                    <span className="venue-name">{publication.venue}</span>
+                    <span className="venue-year">{publication.year}</span>
                   </div>
-                  <div className="archive-links">
-                    {publication.links.map((link) => (
-                      <a key={link.label} href={link.href}>
-                        {link.label}
-                      </a>
-                    ))}
+                  {publication.award ? <p className="paper-award paper-award--compact">{publication.award}</p> : null}
+                  <div className="archive-body">
+                    <PublicationTitle title={publication.title} links={publication.links} />
+                    <AuthorsLine text={publication.authors} />
+                    <p>{publication.summary}</p>
                   </div>
-                </article>
-              )),
-            )}
+                </div>
+                <div className="archive-links">
+                  {publication.links.map((link) => (
+                    <a key={link.label} href={link.href}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </article>
+            ))}
+            {archiveHasMore ? (
+              <div className="archive-expand-wrap">
+                <button
+                  type="button"
+                  className="archive-expand-btn"
+                  onClick={() => setArchiveExpanded((v) => !v)}
+                  aria-expanded={archiveExpanded}
+                >
+                  {archiveExpanded
+                    ? 'Show less'
+                    : `Show all (${flatArchivePublications.length})`}
+                </button>
+              </div>
+            ) : null}
           </div>
         </section>
 
