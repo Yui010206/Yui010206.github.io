@@ -13,11 +13,15 @@ import {
   selectedPublications,
   serviceAndTalk,
 } from './data'
+import { BackgroundGlow, CursorEffect } from './chrome'
+import { SiteHeader } from './SiteHeader'
 
 const years = ['All', ...Array.from(new Set(allPublications.map((p) => String(p.year)))).sort((a, b) => Number(b) - Number(a))]
 
 /** Default number of rows shown in All publications before "Show all". */
-const ARCHIVE_PREVIEW_COUNT = 6
+const ARCHIVE_PREVIEW_COUNT = 5
+const NEWS_PREVIEW_COUNT = 6
+const RESEARCH_COLLAPSED_PARAS = 2
 
 type ArchivePublicationGroup = {
   key: string
@@ -218,15 +222,15 @@ export default function App() {
   const [activeSubtopic, setActiveSubtopic] = useState<PublicationSubtopicId | 'All'>('All')
   const [archiveExpanded, setArchiveExpanded] = useState(false)
   const [photoEasterEgg, setPhotoEasterEgg] = useState<{ x: number; y: number } | null>(null)
-  const [researchIndex, setResearchIndex] = useState(0)
+  const [researchExpanded, setResearchExpanded] = useState(false)
+  const [newsExpanded, setNewsExpanded] = useState(false)
 
-  const researchStatements = useMemo(() => [heroFocus], [])
-
-  const activeResearch = researchStatements[researchIndex % researchStatements.length]
-
-  const stepResearch = (delta: number) => {
-    setResearchIndex((current) => (current + delta + researchStatements.length) % researchStatements.length)
-  }
+  const activeResearch = heroFocus
+  const visibleNews = newsExpanded ? news : news.slice(0, NEWS_PREVIEW_COUNT)
+  const researchParagraphs = researchExpanded
+    ? activeResearch.paragraphs
+    : activeResearch.paragraphs.slice(0, RESEARCH_COLLAPSED_PARAS)
+  const researchHasMore = activeResearch.paragraphs.length > RESEARCH_COLLAPSED_PARAS
 
   const filteredPublications = useMemo(() => {
     if (archiveView === 'year') {
@@ -273,33 +277,18 @@ export default function App() {
         </div>
       ) : null}
 
-      <header className="site-header">
-        <a className="brand" href="#top">
-          Shoubin Yu
-        </a>
-        <nav>
-          <a href="#research">Current Research statement</a>
-          <a href="#about">About</a>
-          <a href="#selected">Selected work</a>
-          <a href="#all">Publications</a>
-          <a href="#news">News</a>
-          <a href="#education">Education</a>
-          <a href="#blog">Blog</a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <main>
         <section className="hero section">
-          <div className="hero-main">
-            <div className="hero-copy">
-              <h1>{profile.name}</h1>
-              <h2 className="hero-role">{profile.role}</h2>
-              <p className="tagline">{profile.tagline}</p>
-              <p className="bio">{profile.bio}</p>
-            </div>
+          <div className="hero-headline">
+            <h1>{profile.name}</h1>
+            <h2 className="hero-role">{profile.role}</h2>
+          </div>
 
+          <div id="about" className="hero-about-row">
             <div
-              className="hero-panel"
+              className="hero-panel hero-panel--about"
               onMouseMove={(e) => setPhotoEasterEgg({ x: e.clientX, y: e.clientY })}
               onMouseLeave={() => setPhotoEasterEgg(null)}
             >
@@ -316,25 +305,51 @@ export default function App() {
               </div>
             </div>
 
-            <div className="cta-row hero-cta-row">
-              {profile.links.map((link) => (
-                <ProfileLinkButton key={link.label} link={link} />
-              ))}
+            <div className="hero-about-prose">
+              <h2 className="subsection-title">About Me</h2>
+              <div className="about-prose-body about-prose-body--open">
+                {aboutParagraphs.map((paragraph, i) => (
+                  <p key={i}>
+                    <MarkedText text={paragraph} />
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="glass-card hero-focus-card" id="research">
-            <div className="carousel-head">
-              <span className="card-label">{activeResearch.title}</span>
-              <div className="carousel-controls" aria-label="Research statement controls">
-                <button type="button" className="carousel-btn" onClick={() => stepResearch(-1)} aria-label="Previous research statement">
-                  <span aria-hidden>‹</span>
-                </button>
-                <button type="button" className="carousel-btn" onClick={() => stepResearch(1)} aria-label="Next research statement">
-                  <span aria-hidden>›</span>
-                </button>
-              </div>
-            </div>
+          <div className="cta-row hero-cta-row">
+            {profile.links.map((link) => (
+              <ProfileLinkButton key={link.label} link={link} />
+            ))}
+          </div>
+        </section>
+
+        <section id="news" className="page-section">
+          <h2 className="page-section-title">News</h2>
+          <div className="surface-card news-card-compact">
+            <ul className="news-list news-list--compact">
+              {visibleNews.map((item) => (
+                <li key={`${item.date}-${item.venue ?? ''}-${item.text}`} className="news-item news-item--compact">
+                  <span className="news-line">
+                    <span className="news-date">{item.date}</span>
+                    {item.venue ? <span className="news-venue-inline">{item.venue}</span> : null}
+                    <span className="news-text">{item.text}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            {news.length > NEWS_PREVIEW_COUNT ? (
+              <button type="button" className="text-btn" onClick={() => setNewsExpanded((v) => !v)}>
+                {newsExpanded ? 'Show fewer updates' : `Show all news (${news.length})`}
+              </button>
+            ) : null}
+          </div>
+        </section>
+
+        <section id="research" className="page-section">
+          <h2 className="page-section-title">Research statement</h2>
+          <div className="surface-card research-card">
+            <p className="research-card-label">{activeResearch.title}</p>
             <strong className="hero-focus-headline">{activeResearch.headline}</strong>
             <div className="hero-focus-intro">
               <p className="hero-focus-preamble">
@@ -347,61 +362,26 @@ export default function App() {
                 <MarkedText papersSyntax text={activeResearch.intro.afterPipeline} />
               </p>
             </div>
-            {activeResearch.paragraphs.map((para, i) => (
+            {researchParagraphs.map((para, i) => (
               <p key={i} className="hero-focus-para">
                 <MarkedText papersSyntax text={para} />
               </p>
             ))}
+            {researchHasMore ? (
+              <button type="button" className="text-btn" onClick={() => setResearchExpanded((v) => !v)}>
+                {researchExpanded ? 'Show shorter version' : 'Read full research statement'}
+              </button>
+            ) : null}
           </div>
         </section>
 
-        <section className="section about-news-section">
-          <div className="about-news-layout">
-            <div id="news" className="glass-card news-card news-card--split">
-              <div className="section-heading section-heading--inline">
-                <p className="section-kicker">Updates</p>
-                <h2 className="section-title">News</h2>
-              </div>
-              <div className="news-scroll">
-                <ul className="news-list">
-                  {news.map((item) => (
-                    <li key={`${item.date}-${item.venue ?? ''}-${item.text}`} className="news-item">
-                      <span className="news-date">{item.date}</span>
-                      <div className="news-item__main">
-                        {item.venue ? <span className="news-venue">{item.venue}</span> : null}
-                        <p className="news-text">{item.text}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+        <section id="publications" className="page-section">
+          <h2 className="page-section-title">Publications</h2>
 
-            <div id="about" className="glass-card prose-card about-prose-card">
-              <div className="section-heading section-heading--inline">
-                <p className="section-kicker">About</p>
-                <h2 className="section-title">About Me</h2>
-              </div>
-              <div className="about-prose-body">
-                {aboutParagraphs.map((paragraph, i) => (
-                  <p key={i}>
-                    <MarkedText text={paragraph} />
-                  </p>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="selected" className="section">
-          <div className="section-heading section-heading--row">
-            <p className="section-kicker">Portfolio</p>
-            <h2 className="section-title">Selected work</h2>
-          </div>
-
-          <div className="publication-grid">
+          <h3 className="subsection-title">Selected</h3>
+          <div className="publication-grid publication-grid--compact">
             {selectedPublications.map((publication) => (
-              <article key={publication.title} className="glass-card publication-card">
+              <article key={publication.title} className="surface-card publication-card publication-card--compact">
                 <ProjectCover
                   title={publication.title}
                   image={publication.image}
@@ -409,24 +389,17 @@ export default function App() {
                   variant="card"
                 />
                 <div className="publication-card-body">
-                  <div className="card-topline">
-                    <span className="venue-name">{publication.venue}</span>
-                    <span className="venue-year">{publication.year}</span>
+                  <div className="card-topline card-topline--compact">
+                    <span className="venue-meta">
+                      {publication.venue} · {publication.year}
+                    </span>
                   </div>
-                  {publication.award ? <p className="paper-award">{publication.award}</p> : null}
+                  {publication.award ? <p className="paper-award paper-award--compact">{publication.award}</p> : null}
                   <PublicationTitle title={publication.title} links={publication.links} />
                   <AuthorsLine text={publication.authors} />
-                  <p>{publication.summary}</p>
-                  <div className="tag-row">
-                    {publication.tags.map((tag) => (
-                      <span key={tag} className="tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="link-row">
+                  <div className="link-row link-row--compact">
                     {publication.links.map((link) => (
-                      <a key={link.label} href={link.href}>
+                      <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
                         {link.label}
                       </a>
                     ))}
@@ -435,15 +408,10 @@ export default function App() {
               </article>
             ))}
           </div>
-        </section>
 
-        <section id="all" className="section">
-          <div className="section-header archive-header">
-            <div className="section-heading">
-              <p className="section-kicker">Archive</p>
-              <h2 className="section-title">All publications</h2>
-            </div>
-            <div className="archive-view-switch" role="tablist" aria-label="Browse publications">
+          <h3 className="subsection-title subsection-title--spaced">All publications</h3>
+          <div className="archive-toolbar">
+            <div className="archive-view-switch archive-view-switch--compact" role="tablist" aria-label="Browse publications">
               <button
                 type="button"
                 role="tab"
@@ -463,51 +431,46 @@ export default function App() {
                 By topic
               </button>
             </div>
-          </div>
-
-          <div className="archive-filters">
             {archiveView === 'year' ? (
-              <div className="filter-row" role="group" aria-label="Filter by year">
-                {years.map((year) => (
-                  <button
-                    key={year}
-                    type="button"
-                    className={year === activeYear ? 'filter active' : 'filter'}
-                    onClick={() => setActiveYear(year)}
-                  >
-                    {year}
-                  </button>
-                ))}
-              </div>
-            ) : (
-              <div className="filter-row" role="group" aria-label="Filter by sub-topic">
-                <button
-                  type="button"
-                  className={activeSubtopic === 'All' ? 'filter active' : 'filter'}
-                  onClick={() => setActiveSubtopic('All')}
+              <label className="archive-select-wrap">
+                <span className="sr-only">Filter by year</span>
+                <select
+                  className="archive-select"
+                  value={activeYear}
+                  onChange={(e) => setActiveYear(e.target.value)}
                 >
-                  All topics
-                </button>
-                {PUBLICATION_SUBTOPICS.map((st) => (
-                  <button
-                    key={st.id}
-                    type="button"
-                    className={activeSubtopic === st.id ? 'filter active' : 'filter'}
-                    onClick={() => setActiveSubtopic(st.id)}
-                  >
-                    {st.label}
-                  </button>
-                ))}
-              </div>
+                  {years.map((year) => (
+                    <option key={year} value={year}>
+                      {year === 'All' ? 'All years' : year}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ) : (
+              <label className="archive-select-wrap">
+                <span className="sr-only">Filter by topic</span>
+                <select
+                  className="archive-select"
+                  value={activeSubtopic}
+                  onChange={(e) => setActiveSubtopic(e.target.value as PublicationSubtopicId | 'All')}
+                >
+                  <option value="All">All topics</option>
+                  {PUBLICATION_SUBTOPICS.map((st) => (
+                    <option key={st.id} value={st.id}>
+                      {st.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
             )}
           </div>
 
-          <div className="glass-card archive-card">
+          <div className="surface-card archive-card">
             {filteredPublications.length === 0 ? (
               <p className="archive-empty">No publications match this filter.</p>
             ) : null}
             {visibleArchivePublications.map((publication) => (
-              <article key={`${publication.title}-${publication.year}`} className="archive-item">
+              <article key={`${publication.title}-${publication.year}`} className="archive-item archive-item--compact">
                 <ProjectCover
                   title={publication.title}
                   image={publication.image}
@@ -515,20 +478,19 @@ export default function App() {
                   variant="archive"
                 />
                 <div className="archive-main">
-                  <div className="archive-meta">
-                    <span className="venue-name">{publication.venue}</span>
-                    <span className="venue-year">{publication.year}</span>
+                  <div className="archive-meta archive-meta--compact">
+                    <span className="venue-meta">
+                      {publication.venue} · {publication.year}
+                    </span>
                   </div>
-                  {publication.award ? <p className="paper-award paper-award--compact">{publication.award}</p> : null}
                   <div className="archive-body">
                     <PublicationTitle title={publication.title} links={publication.links} />
                     <AuthorsLine text={publication.authors} />
-                    <p>{publication.summary}</p>
                   </div>
                 </div>
-                <div className="archive-links">
+                <div className="archive-links archive-links--compact">
                   {publication.links.map((link) => (
-                    <a key={link.label} href={link.href}>
+                    <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
                       {link.label}
                     </a>
                   ))}
@@ -539,94 +501,79 @@ export default function App() {
               <div className="archive-expand-wrap">
                 <button
                   type="button"
-                  className="archive-expand-btn"
+                  className="text-btn"
                   onClick={() => setArchiveExpanded((v) => !v)}
                   aria-expanded={archiveExpanded}
                 >
-                  {archiveExpanded
-                    ? 'Show less'
-                    : `Show all (${flatArchivePublications.length})`}
+                  {archiveExpanded ? 'Show fewer' : `Show all (${flatArchivePublications.length})`}
                 </button>
               </div>
             ) : null}
           </div>
         </section>
 
-        <section id="education" className="section edu-exp-section">
-          <div className="glass-card news-card edu-exp-card">
-            <div className="section-heading section-heading--inline">
-              <p className="section-kicker">Background</p>
-              <h2 className="section-title">Education &amp; internships</h2>
-            </div>
-            <div className="edu-exp-grid">
-              <div className="edu-exp-col">
-                <h3 className="edu-exp-subtitle">Education</h3>
-                <ul className="org-list">
-                  {education.map((row) => (
-                    <li key={row.school} className="org-row">
-                      {row.logo ? (
-                        <img className="org-logo" src={row.logo} alt="" loading="lazy" />
-                      ) : (
-                        <div className="org-logo org-logo--empty" aria-hidden />
-                      )}
-                      <div className="org-row-body">
-                        <span className="edu-period">{row.period}</span>
-                        <strong>{row.school}</strong>
-                        <span>{row.degree}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+        <section id="background" className="page-section">
+          <h2 className="page-section-title">Background</h2>
+          <div className="background-grid">
+            <div className="surface-card background-card">
+              <h3 className="subsection-title">Education &amp; internships</h3>
+              <div className="edu-exp-grid edu-exp-grid--compact">
+                <div className="edu-exp-col">
+                  <h4 className="edu-exp-subtitle">Education</h4>
+                  <ul className="org-list">
+                    {education.map((row) => (
+                      <li key={row.school} className="org-row org-row--compact">
+                        {row.logo ? (
+                          <img className="org-logo" src={row.logo} alt="" loading="lazy" />
+                        ) : (
+                          <div className="org-logo org-logo--empty" aria-hidden />
+                        )}
+                        <div className="org-row-body">
+                          <span className="edu-period">{row.period}</span>
+                          <strong>{row.school}</strong>
+                          <span>{row.degree}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="edu-exp-col">
+                  <h4 className="edu-exp-subtitle">Internships</h4>
+                  <ul className="org-list">
+                    {internships.map((row) => (
+                      <li key={`${row.org}-${row.period}`} className="org-row org-row--compact">
+                        {row.logo ? (
+                          <img className="org-logo" src={row.logo} alt="" loading="lazy" />
+                        ) : (
+                          <div className="org-logo org-logo--empty" aria-hidden />
+                        )}
+                        <div className="org-row-body">
+                          <span className="edu-period">{row.period}</span>
+                          <strong>{row.org}</strong>
+                          <span>{row.role}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="edu-exp-col">
-                <h3 className="edu-exp-subtitle">Internships</h3>
-                <ul className="org-list">
-                  {internships.map((row) => (
-                    <li key={`${row.org}-${row.period}`} className="org-row">
-                      {row.logo ? (
-                        <img className="org-logo" src={row.logo} alt="" loading="lazy" />
-                      ) : (
-                        <div className="org-logo org-logo--empty" aria-hidden />
-                      )}
-                      <div className="org-row-body">
-                        <span className="edu-period">{row.period}</span>
-                        <strong>{row.org}</strong>
-                        <span>{row.role}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
-          </div>
-        </section>
-
-        <section id="blog" className="section">
-          <div className="glass-card prose-card">
-            <div className="section-heading section-heading--inline">
-              <p className="section-kicker">Blog</p>
-              <h2 className="section-title">Blog</h2>
-            </div>
-            <p className="section-note blog-coming-soon-lede">TBD</p>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="glass-card prose-card service-card">
-            <div className="section-heading section-heading--inline">
-              <p className="section-kicker">Community</p>
-              <h2 className="section-title">Service &amp; talks</h2>
-            </div>
-            <ul>
-              {serviceAndTalk.talks.map((t) => (
-                <li key={t}>{t}</li>
+            <div className="surface-card background-card">
+              <h3 className="subsection-title">Service &amp; talks</h3>
+              <ul className="compact-list">
+                {serviceAndTalk.talks.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+              {serviceAndTalk.reviewing.map((line) => (
+                <p key={line} className="compact-note">
+                  {line}
+                </p>
               ))}
-            </ul>
-            {serviceAndTalk.reviewing.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
+            </div>
           </div>
         </section>
+
       </main>
     </div>
   )
@@ -681,62 +628,3 @@ function HeroPhoto({ src, alt }: { src: string; alt: string }) {
   )
 }
 
-function BackgroundGlow() {
-  // No animated gradients / bubbles — page background is plain CSS on `body`.
-  return <div className="background-layer" aria-hidden="true" />
-}
-
-function CursorEffect() {
-  useEffect(() => {
-    const root = document.documentElement
-    const target = { x: -100, y: -100 }
-    const glow = { x: -100, y: -100 }
-    let visible = false
-    let rafId = 0
-
-    const lerp = (a: number, b: number, t: number) => a + (b - a) * t
-
-    const loop = () => {
-      glow.x = lerp(glow.x, target.x, 0.09)
-      glow.y = lerp(glow.y, target.y, 0.09)
-
-      root.style.setProperty('--cursor-x', `${target.x}px`)
-      root.style.setProperty('--cursor-y', `${target.y}px`)
-      root.style.setProperty('--cursor-gx', `${glow.x}px`)
-      root.style.setProperty('--cursor-gy', `${glow.y}px`)
-      root.style.setProperty('--cursor-on', visible ? '1' : '0')
-
-      rafId = requestAnimationFrame(loop)
-    }
-
-    const isFinePointer = window.matchMedia('(pointer: fine)').matches
-    if (!isFinePointer) return
-
-    const move = (event: MouseEvent) => {
-      target.x = event.clientX
-      target.y = event.clientY
-      visible = true
-    }
-
-    const leave = () => {
-      visible = false
-    }
-
-    window.addEventListener('mousemove', move)
-    window.addEventListener('mouseleave', leave)
-    rafId = requestAnimationFrame(loop)
-
-    return () => {
-      cancelAnimationFrame(rafId)
-      window.removeEventListener('mousemove', move)
-      window.removeEventListener('mouseleave', leave)
-    }
-  }, [])
-
-  return (
-    <div className="cursor-stack" aria-hidden="true">
-      <div className="cursor-glow-blob" />
-      <div className="cursor-core" />
-    </div>
-  )
-}

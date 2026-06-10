@@ -1,3 +1,6 @@
+import fromVideoPerceptionToAgentsBlog from './content/from_video_perception_to_agents_blog.md?raw'
+import fromVideoPerceptionToAgentsBlogZh from './content/from_video_perception_to_agents_blog.zh.md?raw'
+
 export const PUBLICATION_SUBTOPICS = [
   { id: 'multimodal-understanding', label: 'Multimodal Understanding' },
   { id: 'representation-learning', label: 'Representation Learning' },
@@ -79,13 +82,12 @@ export const profile = {
   ] satisfies ProfileLink[],
 }
 
-/** Intro blocks (from https://yui010206.github.io/). Wrap phrases in **double asterisks** for About Me highlights. */
 export const aboutParagraphs = [
-  `Hi, thanks for stopping by! I am now a fourth-year PhD student at MURGe-Lab (UNC-NLP Group) at the **University of North Carolina, Chapel Hill**, working with Prof. Mohit Bansal.`,
-  `Prior to joining UNC, I completed my undergraduate studies at **Shanghai Jiao Tong University (SJTU)** in 2022.`,
-  `I also work at/with **MIT-IBM Watson AI Lab** (2021), **Amazon** (2023), **Adobe Research** (2024), and **Google DeepMind** (2025, 2026).`,
-  `My research focuses on **generative multimodal AI** and **robust, privacy-preserving AI systems**. I build models and frameworks that can efficiently perceive, reason, and generate across the dynamic, diverse multimodal world.`,
-  `My work spans **multimodal representation learning**, **video-language understanding and generation**, **AI safety**, and **efficient training and scaling inference** for large models, with applications across sports, security, medical, and educational domains.`,
+  `Hi, thanks for stopping by! I am now a fourth-year PhD student at MURGe-Lab (UNC-NLP Group) at the University of North Carolina, Chapel Hill, working with Prof. Mohit Bansal.`,
+  `Prior to joining UNC, I completed my undergraduate studies at Shanghai Jiao Tong University (SJTU) in 2022.`,
+  `I also work at/with MIT-IBM Watson AI Lab (2021), Amazon (2023), Adobe Research (2024), and Google DeepMind (2025, 2026).`,
+  `My research focuses on generative multimodal AI and robust, privacy-preserving AI systems. I build models and frameworks that can efficiently perceive, reason, and generate across the dynamic, diverse multimodal world.`,
+  `My work spans multimodal representation learning, video-language understanding and generation, AI safety, and efficient training and scaling inference for large models, with applications across sports, security, medical, and educational domains.`,
 ]
 
 /** Statement: sparse `**idea**` + `[[Paper]]` for abbreviations. */
@@ -229,11 +231,27 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
       'Week-long egocentric benchmark for memory-driven reasoning—entity, event, and behavior memory across sparse, long-horizon evidence.',
     tags: ['Benchmark', 'Egocentric video', 'Memory'],
     links: [
-      { label: 'Paper', href: 'https://arxiv.org/abs/2605.09874' },
+      { label: 'Paper', href: 'https://arxiv.org/pdf/2605.09874' },
       { label: 'Project', href: 'https://egomemreason.github.io/' },
     ],
-    image: '/projects/egomemreason.png',
+    image: '/images/egomemreason.png',
     imageAlt: 'EgoMemReason benchmark teaser',
+  },
+  {
+    title: 'STORM: Internalized Modeling for Spatial-Temporal Reasoning in Video-Language Models',
+    authors:
+      'Yiming Liang, Yixiao Chen*, Yiyang Zhou, Yixuan Wang, Shoubin Yu, Andong Deng, Fuxiao Liu, Qin Zhang, Chen Chen, Mohit Bansal, Huaxiu Yao',
+    venue: 'Preprint',
+    year: 2026,
+    summary:
+      'Two-stage framework that internalizes spatial-temporal video reasoning in bounded latent trajectories, using thought-video supervision at training time without external tools at inference.',
+    tags: ['Video reasoning', 'Latent reasoning'],
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/pdf/2605.26014' },
+      { label: 'Code', href: 'https://github.com/aiming-lab/storm' },
+    ],
+    image: '/images/storm.png',
+    imageAlt: 'STORM spatial-temporal reasoning framework',
   },
   {
     title: 'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos',
@@ -521,6 +539,7 @@ const publicationSubtopicsByTitle: Record<string, PublicationSubtopicId[]> = {
     'generation-world-model',
   ],
   'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding': ['benchmark'],
+  'STORM: Internalized Modeling for Spatial-Temporal Reasoning in Video-Language Models': ['multimodal-understanding'],
   'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos': ['benchmark'],
   'Prune-Then-Plan: Step-Level Calibration for Stable Frontier Exploration in Embodied Question Answering': [
     'multimodal-understanding',
@@ -635,3 +654,24 @@ export const news: NewsItem[] = [
   },
   { date: '2021.10', venue: 'NeurIPS 2021', text: '1 paper accepted.' },
 ]
+
+export type BlogLang = 'en' | 'zh'
+
+export type BlogPost = {
+  slug: string
+  date: string
+  body: string
+}
+
+const blogPostBase = {
+  slug: 'from-video-perception-to-agents',
+  date: '2026.05',
+} as const
+
+export const blogPostsByLang: Record<BlogLang, BlogPost[]> = {
+  en: [{ ...blogPostBase, body: fromVideoPerceptionToAgentsBlog }],
+  zh: [{ ...blogPostBase, body: fromVideoPerceptionToAgentsBlogZh }],
+}
+
+/** @deprecated Use blogPostsByLang */
+export const blogPosts = blogPostsByLang.en
