@@ -397,6 +397,15 @@ export default function App() {
                   {publication.award ? <p className="paper-award paper-award--compact">{publication.award}</p> : null}
                   <PublicationTitle title={publication.title} links={publication.links} />
                   <AuthorsLine text={publication.authors} />
+                  {publication.selectedKeywords?.length ? (
+                    <div className="paper-keyword-row">
+                      {publication.selectedKeywords.map((keyword) => (
+                        <span key={keyword} className="paper-keyword">
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
                   <div className="link-row link-row--compact">
                     {publication.links.map((link) => (
                       <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">

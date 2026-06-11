@@ -25,6 +25,8 @@ export type Publication = {
   imageAlt?: string
   /** Optional award line (e.g. best paper at a workshop). */
   award?: string
+  /** Keyword chips shown on selected-publication cards only. */
+  selectedKeywords?: string[]
 }
 
 /** True when the venue is the generic arXiv-style preprint label (used for sort / grouping order). */
@@ -590,19 +592,40 @@ export const allPublications: Publication[] = [...publicationSource].sort((a, b)
   return a.title.localeCompare(b.title)
 })
 
-/** Selected Work section: SeViLA → CREMA → VEGGIE → Ego2Web → VisionCoach */
+/** Selected Work section: SeViLA → CREMA → VEGGIE → Ego2Web → AVIC */
 const SELECTED_WORK_TITLES = [
   'Self-Chained Image-Language Model for Video Localization and Question Answering',
   'CREMA: Generalizable and Efficient Video-Language Reasoning via Multimodal Modular Fusion',
   'VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation',
   'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos',
-  'VisionCoach: Reinforcing Grounded Video Reasoning via Visual-Perception Prompting',
+  'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning',
 ] as const
+
+const SELECTED_KEYWORDS: Record<(typeof SELECTED_WORK_TITLES)[number], string[]> = {
+  'Self-Chained Image-Language Model for Video Localization and Question Answering': ['Agent', 'Post-Train'],
+  'CREMA: Generalizable and Efficient Video-Language Reasoning via Multimodal Modular Fusion': [
+    'Post-Train',
+    'Many Modalities',
+    'PEFT',
+  ],
+  'VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation': [
+    'Data',
+    'Model',
+    'Post-Train',
+    'Metrics',
+  ],
+  'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos': ['Agent', 'Data', 'Benchmark', 'Metrics'],
+  'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning': [
+    'World Models',
+    'Test Time Scaling',
+    'RL',
+  ],
+}
 
 export const selectedPublications: Publication[] = SELECTED_WORK_TITLES.map((title) => {
   const found = publicationSource.find((p) => p.title === title)
   if (!found) throw new Error(`Missing publication for selected work: ${title}`)
-  return found
+  return { ...found, selectedKeywords: SELECTED_KEYWORDS[title] }
 })
 
 export type NewsItem = {

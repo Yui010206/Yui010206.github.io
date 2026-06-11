@@ -596,6 +596,24 @@ code {
   margin-bottom: 0.35rem;
 }
 
+.paper-keyword-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.45rem;
+  margin: 0.4rem 0 0.55rem;
+}
+
+.paper-keyword {
+  padding: 0.22rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #2d6a9a;
+  background: rgba(220, 241, 255, 0.55);
+  border: 1px solid rgba(163, 210, 255, 0.45);
+  border-radius: 999px;
+}
+
 .link-row--compact {
   margin-top: 0.65rem;
 }

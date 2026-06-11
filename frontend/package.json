@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "sync-root": "npm run build && cp dist/index.html ../index.html && rm -rf ../assets ../blog && cp -R dist/assets dist/blog ../ && touch ../.nojekyll",
     "preview": "vite preview"
   },
   "dependencies": {

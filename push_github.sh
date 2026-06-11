@@ -17,8 +17,11 @@ BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 MESSAGE="${1:-chore: update homepage content and frontend}"
 
 echo "Current branch: $BRANCH"
+echo "Building frontend and syncing dist to repo root..."
+npm run sync-root --prefix frontend
 echo "Staging changes..."
-git add -A
+git add frontend/ index.html assets/ blog/ .nojekyll images/
+git add -u assets/ blog/ index.html 2>/dev/null || true
 
 if git diff --cached --quiet; then
   echo "No staged changes to commit."
