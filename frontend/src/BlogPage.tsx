@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { BackgroundGlow, CursorEffect } from './chrome'
-import { blogPostsByLang, profile, type BlogLang } from './data'
+import { blogPostsByLang, type BlogLang } from './data'
 import { SiteHeader } from './SiteHeader'
 
 const blogCopy = {
@@ -57,21 +57,7 @@ export default function BlogPage({ lang = 'en' }: BlogPageProps) {
 
             <article className="surface-card blog-article blog-article--page">
               <div className={`blog-article-body blog-article-body--page${lang === 'zh' ? ' blog-article-body--zh' : ''}`}>
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    h1: ({ children }) => (
-                      <>
-                        <h1>{children}</h1>
-                        <p className="blog-byline">
-                          {copy.by} {profile.name}
-                        </p>
-                      </>
-                    ),
-                  }}
-                >
-                  {post.body}
-                </ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
               </div>
             </article>
           </div>
