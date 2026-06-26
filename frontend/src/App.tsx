@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import type { ProfileLink, ProfileLinkVariant, Publication, PublicationSubtopicId } from './data'
 import {
   aboutParagraphs,
+  researchInterestGroups,
   allPublications,
   education,
   heroFocus,
@@ -22,6 +23,12 @@ const years = ['All', ...Array.from(new Set(allPublications.map((p) => String(p.
 const ARCHIVE_PREVIEW_COUNT = 5
 const NEWS_PREVIEW_COUNT = 6
 const RESEARCH_COLLAPSED_PARAS = 2
+
+function parseTalkLine(line: string): { period: string; detail: string } {
+  const splitAt = line.indexOf(': ')
+  if (splitAt === -1) return { period: '', detail: line }
+  return { period: line.slice(0, splitAt), detail: line.slice(splitAt + 2) }
+}
 
 type ArchivePublicationGroup = {
   key: string
@@ -317,6 +324,42 @@ export default function App() {
             </div>
           </div>
 
+          <div className="research-interests" aria-labelledby="research-interests-heading">
+            <h3 id="research-interests-heading" className="subsection-title">
+              Research Interests
+            </h3>
+            <div className="research-interests-panel">
+              {researchInterestGroups.map((group) => (
+                <div key={`${group.title}-${group.subtitle ?? ''}`} className="research-interest-row">
+                  <div className="research-interest-label">
+                    <span className="research-interest-label-main">{group.title}</span>
+                    {group.subtitle ? (
+                      <span className="research-interest-label-sub">({group.subtitle})</span>
+                    ) : null}
+                  </div>
+                  <div className="research-interest-tags">
+                    {group.papers.map((paper) => (
+                      <a
+                        key={`${group.title}-${paper.label}`}
+                        className={`research-interest-tag${paper.highlight ? ' research-interest-tag--highlight' : ''}`}
+                        href={paper.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={paper.detail ? `${paper.label}: ${paper.detail}` : paper.label}
+                        aria-label={paper.detail ? `${paper.label}: ${paper.detail}` : paper.label}
+                      >
+                        {paper.label}
+                        {paper.detail ? (
+                          <span className="research-interest-tag-tip">{paper.detail}</span>
+                        ) : null}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="cta-row hero-cta-row">
             {profile.links.map((link) => (
               <ProfileLinkButton key={link.label} link={link} />
@@ -523,62 +566,67 @@ export default function App() {
 
         <section id="background" className="page-section">
           <h2 className="page-section-title">Background</h2>
-          <div className="background-grid">
-            <div className="surface-card background-card">
-              <h3 className="subsection-title">Education &amp; internships</h3>
-              <div className="edu-exp-grid edu-exp-grid--compact">
-                <div className="edu-exp-col">
-                  <h4 className="edu-exp-subtitle">Education</h4>
-                  <ul className="org-list">
-                    {education.map((row) => (
-                      <li key={row.school} className="org-row org-row--compact">
-                        {row.logo ? (
-                          <img className="org-logo" src={row.logo} alt="" loading="lazy" />
-                        ) : (
-                          <div className="org-logo org-logo--empty" aria-hidden />
-                        )}
-                        <div className="org-row-body">
-                          <span className="edu-period">{row.period}</span>
-                          <strong>{row.school}</strong>
-                          <span>{row.degree}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="edu-exp-col">
-                  <h4 className="edu-exp-subtitle">Internships</h4>
-                  <ul className="org-list">
-                    {internships.map((row) => (
-                      <li key={`${row.org}-${row.period}`} className="org-row org-row--compact">
-                        {row.logo ? (
-                          <img className="org-logo" src={row.logo} alt="" loading="lazy" />
-                        ) : (
-                          <div className="org-logo org-logo--empty" aria-hidden />
-                        )}
-                        <div className="org-row-body">
-                          <span className="edu-period">{row.period}</span>
-                          <strong>{row.org}</strong>
-                          <span>{row.role}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="surface-card background-card">
-              <h3 className="subsection-title">Service &amp; talks</h3>
-              <ul className="compact-list">
-                {serviceAndTalk.talks.map((t) => (
-                  <li key={t}>{t}</li>
+          <div className="background-panel">
+            <div className="background-row">
+              <div className="background-label">Education</div>
+              <ul className="background-entries">
+                {education.map((row) => (
+                  <li key={row.school} className="background-entry">
+                    {row.logo ? (
+                      <img className="background-entry-logo" src={row.logo} alt="" loading="lazy" />
+                    ) : (
+                      <div className="background-entry-logo background-entry-logo--empty" aria-hidden />
+                    )}
+                    <span className="background-entry-period">{row.period}</span>
+                    <strong className="background-entry-title">{row.school}</strong>
+                    <span className="background-entry-detail">{row.degree}</span>
+                  </li>
                 ))}
               </ul>
-              {serviceAndTalk.reviewing.map((line) => (
-                <p key={line} className="compact-note">
-                  {line}
-                </p>
-              ))}
+            </div>
+
+            <div className="background-row">
+              <div className="background-label">Internships</div>
+              <ul className="background-entries">
+                {internships.map((row) => (
+                  <li key={`${row.org}-${row.period}`} className="background-entry">
+                    {row.logo ? (
+                      <img className="background-entry-logo" src={row.logo} alt="" loading="lazy" />
+                    ) : (
+                      <div className="background-entry-logo background-entry-logo--empty" aria-hidden />
+                    )}
+                    <span className="background-entry-period">{row.period}</span>
+                    <strong className="background-entry-title">{row.org}</strong>
+                    <span className="background-entry-detail">{row.role}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="background-row">
+              <div className="background-label">Talks</div>
+              <ul className="background-entries">
+                {serviceAndTalk.talks.map((talk) => {
+                  const { period, detail } = parseTalkLine(talk)
+                  return (
+                    <li key={talk} className="background-entry background-entry--plain">
+                      <span className="background-entry-period">{period}</span>
+                      <span className="background-entry-detail">{detail}</span>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+
+            <div className="background-row">
+              <div className="background-label">Reviewing</div>
+              <div className="background-notes">
+                {serviceAndTalk.reviewing.map((line) => (
+                  <p key={line} className="background-note">
+                    {line}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         </section>

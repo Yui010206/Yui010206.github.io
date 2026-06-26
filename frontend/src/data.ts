@@ -84,6 +84,104 @@ export const profile = {
   ] satisfies ProfileLink[],
 }
 
+export type ResearchInterestPaper = {
+  label: string
+  href: string
+  /** Short keywords shown on hover, e.g. "RL, Video Reasoning". */
+  detail?: string
+  highlight?: boolean
+}
+
+export type ResearchInterestGroup = {
+  title: string
+  subtitle?: string
+  papers: ResearchInterestPaper[]
+}
+
+export const researchInterestGroups: ResearchInterestGroup[] = [
+  {
+    title: 'Video Understanding',
+    subtitle: 'Representation',
+    papers: [
+      {
+        label: 'SeViLA',
+        href: 'https://arxiv.org/pdf/2305.06988.pdf',
+        detail: 'Agentic Video Understanding, PEFT',
+        highlight: true,
+      },
+      {
+        label: 'CREMA',
+        href: 'https://crema-videollm.github.io/',
+        detail: 'Any Modality + Video, PEFT',
+        highlight: true,
+      },
+      { label: 'VideoTree', href: 'https://videotree2024.github.io/', detail: 'Long Video Loc + Understanding' },
+      { label: 'VisionCoach', href: 'https://visioncoach.github.io/', detail: 'Grounded Video Reasoning, RL' },
+      { label: 'LLoVi', href: 'https://arxiv.org/pdf/2312.17235.pdf', detail: 'Long Video Understanding' },
+      { label: 'STORM', href: 'https://arxiv.org/pdf/2605.26014', detail: 'Latent Reasoning' },
+      { label: 'Video-RTS', href: 'https://sites.google.com/cs.unc.edu/videorts2025/home', detail: 'RL, TTS, PEFT' },
+    ],
+  },
+  {
+    title: 'Video Understanding',
+    subtitle: 'Data / Benchmark / Eval',
+    papers: [
+      {
+        label: 'Ego2Web',
+        href: 'https://ego2web.github.io/',
+        detail: 'Video + Web Agent',
+        highlight: true,
+      },
+      { label: 'SciVideoBench', href: 'https://scivideobench.github.io/', detail: 'AI4Science' },
+      { label: 'STAR', href: 'http://star.csail.mit.edu/', detail: 'Neuro-symbolic Reasoning' },
+      { label: 'GroundMoRe', href: 'https://groundmore.github.io/', detail: 'Pixel Reasoning' },
+      { label: 'MF2', href: 'https://arxiv.org/pdf/2506.06275', detail: 'Long Video Reasoning' },
+      { label: 'EgoMemReason', href: 'https://egomemreason.github.io/', detail: 'Long Video Memory' },
+    ],
+  },
+  {
+    title: 'Video/4D Generation',
+    papers: [
+      {
+        label: 'VEGGIE',
+        href: 'https://veggie-gen.github.io/',
+        detail: 'Instructional Video Editing',
+        highlight: true,
+      },
+      { label: 'Video-MSG', href: 'https://video-msg.github.io/', detail: 'Controllable Video Generation' },
+      { label: 'SAFREE', href: 'https://safree-safe-t2i-t2v.github.io/', detail: 'Generation Safety' },
+      { label: 'RACCooN', href: 'https://raccoon-mllm-gen.github.io/', detail: 'Instructional Video Editing' },
+      { label: '4D-LRM', href: 'https://4dlrm.github.io/', detail: '4D Reconstruction' },
+      { label: 'IVA-0', href: 'https://img2vidanim-0.github.io/', detail: 'Controllable Video Generation' },
+    ],
+  },
+  {
+    title: 'World Model & Embodied AI',
+    papers: [
+      {
+        label: 'AVIC',
+        href: 'https://adaptive-visual-tts.github.io/',
+        detail: 'Spatial Reasoning, RL',
+        highlight: true,
+      },
+      { label: 'PTP', href: 'https://noahfrahm.github.io/Prune-Then-Plan-project-page/', detail: 'Embodied QA' },
+      { label: 'SRDF', href: 'https://arxiv.org/abs/2412.08467', detail: 'VL Navigation' },
+    ],
+  },
+  {
+    title: 'Agent',
+    papers: [
+      {
+        label: 'Ego2Web',
+        href: 'https://ego2web.github.io/',
+        detail: 'Video + Web Agent',
+        highlight: true,
+      },
+      { label: 'MEXA', href: 'https://arxiv.org/pdf/2506.17113', detail: 'Multi-agent, Any Modality' },
+    ],
+  },
+]
+
 export const aboutParagraphs = [
   `Hi, thanks for stopping by! I am now a fourth-year PhD student at MURGe-Lab (UNC-NLP Group) at the University of North Carolina, Chapel Hill, working with Prof. Mohit Bansal.`,
   `Prior to joining UNC, I completed my undergraduate studies at Shanghai Jiao Tong University (SJTU) in 2022.`,
@@ -154,7 +252,7 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
   {
     title: 'VisionCoach: Reinforcing Grounded Video Reasoning via Visual-Perception Prompting',
     authors: 'Daeun Lee, Shoubin Yu, Yue Zhang, Mohit Bansal',
-    venue: 'Preprint',
+    venue: 'ECCV 2026',
     year: 2026,
     summary:
       'RL + self-distillation that adaptively selects visual prompting to augment perception on hard examples.',
@@ -479,7 +577,7 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
     summary: 'MoPRL: transformer with skeletal motion prior for video anomaly detection.',
     tags: ['Video', 'Anomaly'],
     links: [
-      { label: 'Paper', href: 'https://ieeexplore.ieee.org/document/10185076' },
+      { label: 'Paper', href: 'https://ieeexplore.ieee.org/abstract/document/10185076' },
       { label: 'Code', href: 'https://github.com/Yui010206/MoPRL' },
     ],
     image: '/projects/moprl.jpg',
@@ -638,6 +736,8 @@ export type NewsItem = {
 }
 
 export const news: NewsItem[] = [
+  { date: '2026.06', venue: 'ECCV 2026', text: '1 paper accepted.' },
+  { date: '2026.05', venue: 'Google DeepMind', text: 'Summer intern.' },
   {
     date: '2026.04',
     venue: 'ICML 2026',
