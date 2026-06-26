@@ -101,7 +101,7 @@ export type ResearchInterestGroup = {
 export const researchInterestGroups: ResearchInterestGroup[] = [
   {
     title: 'Video Understanding',
-    subtitle: 'Representation',
+    subtitle: 'Post-train / Representation',
     papers: [
       {
         label: 'SeViLA',

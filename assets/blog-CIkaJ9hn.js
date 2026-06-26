@@ -1,1 +1,0 @@
-import{g as t,j as e,R as o}from"./styles-D-7IFi5h.js";import{B as r}from"./BlogPage-DLqa-W9d.js";t.createRoot(document.getElementById("root")).render(e.jsx(o.StrictMode,{children:e.jsx(r,{})}));
