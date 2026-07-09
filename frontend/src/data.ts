@@ -661,13 +661,13 @@ export const allPublications: Publication[] = [...publicationSource].sort((a, b)
   return a.title.localeCompare(b.title)
 })
 
-/** Selected Work section: SeViLA → CREMA → VEGGIE → Ego2Web → EgoMemReason → AVIC */
+/** Selected Work section: SeViLA → CREMA → VEGGIE → Ego2Web → VisionCoach → AVIC */
 const SELECTED_WORK_TITLES = [
   'Self-Chained Image-Language Model for Video Localization and Question Answering',
   'CREMA: Generalizable and Efficient Video-Language Reasoning via Multimodal Modular Fusion',
   'VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation',
   'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos',
-  'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding',
+  'VisionCoach: Reinforcing Grounded Video Reasoning via Visual-Perception Prompting',
   'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning',
 ] as const
 
@@ -685,10 +685,9 @@ const SELECTED_KEYWORDS: Record<(typeof SELECTED_WORK_TITLES)[number], string[]>
     'Metrics',
   ],
   'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos': ['Agent', 'Data', 'Benchmark', 'Metrics'],
-  'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding': [
-    'Benchmark',
-    'Long Video',
-    'Memory',
+  'VisionCoach: Reinforcing Grounded Video Reasoning via Visual-Perception Prompting': [
+    'Grounded Video Reasoning',
+    'RL',
   ],
   'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning': [
     'World Models',
