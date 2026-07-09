@@ -100,38 +100,23 @@ export type ResearchInterestGroup = {
 
 export const researchInterestGroups: ResearchInterestGroup[] = [
   {
-    title: 'Video Understanding',
-    subtitle: 'Post-train / Representation',
+    title: 'Long-Context Multimodal (Language/Image/Video/Audio/3D) Reasoning',
+    subtitle: 'Post-training / Alignment / Representation Learning',
     papers: [
-      {
-        label: 'SeViLA',
-        href: 'https://arxiv.org/pdf/2305.06988.pdf',
-        detail: 'Agentic Video Understanding, PEFT',
-        highlight: true,
-      },
-      {
-        label: 'CREMA',
-        href: 'https://crema-videollm.github.io/',
-        detail: 'Any Modality + Video, PEFT',
-        highlight: true,
-      },
+      { label: 'SeViLA', href: 'https://arxiv.org/pdf/2305.06988.pdf', detail: 'Agentic Video Understanding, PEFT' },
+      { label: 'CREMA', href: 'https://crema-videollm.github.io/', detail: 'Any Modality + Video, PEFT' },
       { label: 'VideoTree', href: 'https://videotree2024.github.io/', detail: 'Long Video Loc + Understanding' },
       { label: 'VisionCoach', href: 'https://visioncoach.github.io/', detail: 'Grounded Video Reasoning, RL' },
-      { label: 'LLoVi', href: 'https://arxiv.org/pdf/2312.17235.pdf', detail: 'Long Video Understanding' },
       { label: 'STORM', href: 'https://arxiv.org/pdf/2605.26014', detail: 'Latent Reasoning' },
       { label: 'Video-RTS', href: 'https://sites.google.com/cs.unc.edu/videorts2025/home', detail: 'RL, TTS, PEFT' },
+      { label: 'LLoVi', href: 'https://arxiv.org/pdf/2312.17235.pdf', detail: 'Long Video Understanding' },
+      { label: 'REMUL', href: 'https://arxiv.org/abs/2602.16154', detail: 'Faithful Language Reasoning' },
     ],
   },
   {
-    title: 'Video Understanding',
-    subtitle: 'Data / Benchmark / Eval',
+    title: 'Multimodal Benchmark, Data Curation, and Evaluation',
     papers: [
-      {
-        label: 'Ego2Web',
-        href: 'https://ego2web.github.io/',
-        detail: 'Video + Web Agent',
-        highlight: true,
-      },
+      { label: 'Ego2Web', href: 'https://ego2web.github.io/', detail: 'Video + Web Agent' },
       { label: 'SciVideoBench', href: 'https://scivideobench.github.io/', detail: 'AI4Science' },
       { label: 'STAR', href: 'http://star.csail.mit.edu/', detail: 'Neuro-symbolic Reasoning' },
       { label: 'GroundMoRe', href: 'https://groundmore.github.io/', detail: 'Pixel Reasoning' },
@@ -140,14 +125,9 @@ export const researchInterestGroups: ResearchInterestGroup[] = [
     ],
   },
   {
-    title: 'Video/4D Generation',
+    title: 'Video/4D Generation and World Models',
     papers: [
-      {
-        label: 'VEGGIE',
-        href: 'https://veggie-gen.github.io/',
-        detail: 'Instructional Video Editing',
-        highlight: true,
-      },
+      { label: 'VEGGIE', href: 'https://veggie-gen.github.io/', detail: 'Instructional Video Editing' },
       { label: 'Video-MSG', href: 'https://video-msg.github.io/', detail: 'Controllable Video Generation' },
       { label: 'SAFREE', href: 'https://safree-safe-t2i-t2v.github.io/', detail: 'Generation Safety' },
       { label: 'RACCooN', href: 'https://raccoon-mllm-gen.github.io/', detail: 'Instructional Video Editing' },
@@ -156,28 +136,19 @@ export const researchInterestGroups: ResearchInterestGroup[] = [
     ],
   },
   {
-    title: 'World Model & Embodied AI',
+    title: 'Agentic Reasoning System',
     papers: [
-      {
-        label: 'AVIC',
-        href: 'https://adaptive-visual-tts.github.io/',
-        detail: 'Spatial Reasoning, RL',
-        highlight: true,
-      },
-      { label: 'PTP', href: 'https://noahfrahm.github.io/Prune-Then-Plan-project-page/', detail: 'Embodied QA' },
-      { label: 'SRDF', href: 'https://arxiv.org/abs/2412.08467', detail: 'VL Navigation' },
+      { label: 'SeViLA', href: 'https://arxiv.org/pdf/2305.06988.pdf', detail: 'Agentic Video Understanding, PEFT' },
+      { label: 'Ego2Web', href: 'https://ego2web.github.io/', detail: 'Video + Web Agent' },
+      { label: 'MEXA', href: 'https://arxiv.org/pdf/2506.17113', detail: 'Multi-agent, Any Modality' },
     ],
   },
   {
-    title: 'Agent',
+    title: 'Embodied Spatial AI',
     papers: [
-      {
-        label: 'Ego2Web',
-        href: 'https://ego2web.github.io/',
-        detail: 'Video + Web Agent',
-        highlight: true,
-      },
-      { label: 'MEXA', href: 'https://arxiv.org/pdf/2506.17113', detail: 'Multi-agent, Any Modality' },
+      { label: 'AVIC', href: 'https://adaptive-visual-tts.github.io/', detail: 'Spatial Reasoning, RL' },
+      { label: 'PTP', href: 'https://noahfrahm.github.io/Prune-Then-Plan-project-page/', detail: 'Embodied QA' },
+      { label: 'SRDF', href: 'https://arxiv.org/abs/2412.08467', detail: 'VL Navigation' },
     ],
   },
 ]
@@ -325,7 +296,7 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
     title: 'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding',
     authors:
       'Ziyang Wang*, Yue Zhang*, Shoubin Yu, Ce Zhang, Zengqi Zhao, Jaehong Yoon, Hyunji Lee, Gedas Bertasius, Mohit Bansal',
-    venue: 'Preprint',
+    venue: 'COLM 2026',
     year: 2026,
     summary:
       'Week-long egocentric benchmark for memory-driven reasoning—entity, event, and behavior memory across sparse, long-horizon evidence.',
@@ -690,12 +661,13 @@ export const allPublications: Publication[] = [...publicationSource].sort((a, b)
   return a.title.localeCompare(b.title)
 })
 
-/** Selected Work section: SeViLA → CREMA → VEGGIE → Ego2Web → AVIC */
+/** Selected Work section: SeViLA → CREMA → VEGGIE → Ego2Web → EgoMemReason → AVIC */
 const SELECTED_WORK_TITLES = [
   'Self-Chained Image-Language Model for Video Localization and Question Answering',
   'CREMA: Generalizable and Efficient Video-Language Reasoning via Multimodal Modular Fusion',
   'VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation',
   'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos',
+  'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding',
   'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning',
 ] as const
 
@@ -713,6 +685,11 @@ const SELECTED_KEYWORDS: Record<(typeof SELECTED_WORK_TITLES)[number], string[]>
     'Metrics',
   ],
   'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos': ['Agent', 'Data', 'Benchmark', 'Metrics'],
+  'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding': [
+    'Benchmark',
+    'Long Video',
+    'Memory',
+  ],
   'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning': [
     'World Models',
     'Test Time Scaling',
@@ -736,6 +713,7 @@ export type NewsItem = {
 }
 
 export const news: NewsItem[] = [
+  { date: '2026.07', venue: 'COLM 2026', text: '1 paper accepted.' },
   { date: '2026.06', venue: 'ECCV 2026', text: '1 paper accepted.' },
   { date: '2026.05', venue: 'Google DeepMind', text: 'Summer intern.' },
   {

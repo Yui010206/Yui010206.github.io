@@ -1076,7 +1076,7 @@ code {
 
 .research-interest-row {
   display: grid;
-  grid-template-columns: minmax(13rem, 18rem) minmax(0, 1fr);
+  grid-template-columns: minmax(14rem, 20rem) minmax(0, 1fr);
   gap: 1rem 1.5rem;
   align-items: start;
   padding: 1rem 0;
