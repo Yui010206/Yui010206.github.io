@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import type { ProfileLink, ProfileLinkVariant, Publication, PublicationSubtopicId } from './data'
 import {
+  aboutLogos,
   aboutParagraphs,
   researchInterestGroups,
   allPublications,
@@ -177,9 +178,21 @@ function ProfileLinkButton({ link }: { link: ProfileLink }) {
  * `**phrase**` → conceptual highlight (`about-emphasis`).
  * With `papersSyntax`, `[[PaperName]]` → paper tag (`statement-paper`).
  */
-function MarkedText({ text, papersSyntax = false }: { text: string; papersSyntax?: boolean }) {
+function MarkedText({
+  text,
+  papersSyntax = false,
+  logos = false,
+}: {
+  text: string
+  papersSyntax?: boolean
+  logos?: boolean
+}) {
   const nodes: ReactNode[] = []
-  const re = papersSyntax ? /\*\*([^*]+)\*\*|\[\[([^\]]+)\]\]/g : /\*\*([^*]+)\*\*/g
+  const re = papersSyntax
+    ? /\*\*([^*]+)\*\*|\[\[([^\]]+)\]\]/g
+    : logos
+      ? /\*\*([^*]+)\*\*|\{\{(\w+)\}\}/g
+      : /\*\*([^*]+)\*\*/g
   let last = 0
   let m: RegExpExecArray | null
   let k = 0
@@ -191,6 +204,15 @@ function MarkedText({ text, papersSyntax = false }: { text: string; papersSyntax
           {m[2]}
         </span>,
       )
+    } else if (logos && m[2] != null) {
+      const logo = aboutLogos[m[2]]
+      if (logo) {
+        nodes.push(
+          <img key={k++} className="about-inline-logo" src={logo.src} alt={logo.alt} title={logo.alt} />,
+        )
+      } else {
+        nodes.push(<span key={k++}>{m[0]}</span>)
+      }
     } else if (m[1] != null) {
       nodes.push(
         <span key={k++} className="about-emphasis">
@@ -228,7 +250,6 @@ export default function App() {
   const [activeYear, setActiveYear] = useState('All')
   const [activeSubtopic, setActiveSubtopic] = useState<PublicationSubtopicId | 'All'>('All')
   const [archiveExpanded, setArchiveExpanded] = useState(false)
-  const [photoEasterEgg, setPhotoEasterEgg] = useState<{ x: number; y: number } | null>(null)
   const [researchExpanded, setResearchExpanded] = useState(false)
   const [newsExpanded, setNewsExpanded] = useState(false)
 
@@ -274,16 +295,6 @@ export default function App() {
       <BackgroundGlow />
       <CursorEffect />
 
-      {photoEasterEgg !== null ? (
-        <div
-          className="hero-photo-easter-egg"
-          style={{ left: photoEasterEgg.x, top: photoEasterEgg.y }}
-          aria-hidden
-        >
-          {'Yui & Piepie'}
-        </div>
-      ) : null}
-
       <SiteHeader />
 
       <main>
@@ -294,11 +305,7 @@ export default function App() {
           </div>
 
           <div id="about" className="hero-about-row">
-            <div
-              className="hero-panel hero-panel--about"
-              onMouseMove={(e) => setPhotoEasterEgg({ x: e.clientX, y: e.clientY })}
-              onMouseLeave={() => setPhotoEasterEgg(null)}
-            >
+            <div className="hero-panel hero-panel--about">
               <div className="hero-photo-frame float-slow">
                 <div className="hero-photo-glow" />
                 {profile.photo ? (
@@ -317,7 +324,7 @@ export default function App() {
               <div className="about-prose-body about-prose-body--open">
                 {aboutParagraphs.map((paragraph, i) => (
                   <p key={i}>
-                    <MarkedText text={paragraph} />
+                    <MarkedText logos text={paragraph} />
                   </p>
                 ))}
               </div>

@@ -437,7 +437,7 @@ code {
 
 .section,
 .page-section {
-  padding: 3rem 0 0;
+  padding: 2.25rem 0 0;
 }
 
 .page-section-title {
@@ -949,7 +949,7 @@ code {
 
 .about-prose-body {
   flex: 1 1 0;
-  margin-top: 0.35rem;
+  margin-top: 0.15rem;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
@@ -959,7 +959,7 @@ code {
 }
 
 .about-prose-body p + p {
-  margin-top: 0.85rem;
+  margin-top: 0.55rem;
 }
 
 .about-emphasis {
@@ -1028,7 +1028,7 @@ code {
 .hero {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.1rem;
   min-height: auto;
 }
 
@@ -1038,8 +1038,8 @@ code {
 
 .hero-about-row {
   display: grid;
-  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
-  gap: 1.5rem 2rem;
+  grid-template-columns: minmax(12rem, 16.5rem) minmax(0, 1fr);
+  gap: 1.1rem 1.5rem;
   align-items: start;
 }
 
@@ -1049,24 +1049,24 @@ code {
 
 .hero-about-prose .subsection-title {
   margin-top: 0;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.55rem;
 }
 
 .research-interests {
   width: 100%;
-  margin-top: 0.25rem;
+  margin-top: 0.1rem;
 }
 
 .research-interests .subsection-title {
   margin-top: 0;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.55rem;
 }
 
 .research-interests-panel {
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: 0.35rem 1.4rem;
+  padding: 0.15rem 1.15rem;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(163, 210, 255, 0.42);
   border-radius: 1rem;
@@ -1076,10 +1076,10 @@ code {
 
 .research-interest-row {
   display: grid;
-  grid-template-columns: minmax(14rem, 20rem) minmax(0, 1fr);
-  gap: 1rem 1.5rem;
+  grid-template-columns: minmax(13rem, 18.5rem) minmax(0, 1fr);
+  gap: 0.65rem 1.15rem;
   align-items: start;
-  padding: 1rem 0;
+  padding: 0.62rem 0;
   border-bottom: 1px solid rgba(163, 210, 255, 0.28);
 }
 
@@ -1114,10 +1114,10 @@ code {
 .research-interest-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.52rem 0.58rem;
+  gap: 0.38rem 0.42rem;
   align-items: center;
   overflow: visible;
-  padding: 0.15rem 0;
+  padding: 0;
 }
 
 .research-interest-tag {
@@ -1222,6 +1222,20 @@ code {
 
 .hero-about-prose .about-prose-body p:first-child {
   margin-top: 0;
+}
+
+.about-inline-logo {
+  display: inline-block;
+  width: 1.35em;
+  height: 1.35em;
+  margin: 0 0.2em;
+  vertical-align: -0.28em;
+  object-fit: contain;
+  border-radius: 0.28rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(163, 210, 255, 0.4);
+  padding: 0.08em;
+  box-sizing: content-box;
 }
 
 .hero-cta-row {
@@ -1724,7 +1738,10 @@ li {
   top: auto;
   left: auto;
   width: 100%;
-  max-width: min(27rem, 100%);
+  max-width: 16.5rem;
+  padding: 0.65rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 16px 40px rgba(113, 172, 214, 0.15);
 }
 
 .hero-photo-easter-egg {
@@ -2598,7 +2615,7 @@ li {
   }
 
   .hero-about-row .hero-photo-frame {
-    max-width: min(19rem, 100%);
+    max-width: min(14rem, 52vw);
     margin-inline: auto;
   }
 
@@ -2893,10 +2910,10 @@ li {
 
   .hero-photo-frame {
     width: 100%;
-    max-width: min(19rem, 100%);
+    max-width: min(14rem, 52vw);
     margin-left: auto;
     margin-right: auto;
-    padding: 0.72rem;
+    padding: 0.6rem;
   }
 
   .hero-focus-card {

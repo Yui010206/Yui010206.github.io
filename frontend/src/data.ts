@@ -159,12 +159,20 @@ export const researchInterestGroups: ResearchInterestGroup[] = [
 ]
 
 export const aboutParagraphs = [
-  `Hi, thanks for stopping by! I am now a fourth-year PhD student at MURGe-Lab (UNC-NLP Group) at the University of North Carolina, Chapel Hill, working with Prof. Mohit Bansal.`,
-  `Prior to joining UNC, I completed my undergraduate studies at Shanghai Jiao Tong University (SJTU) in 2022.`,
-  `I also work at/with MIT-IBM Watson AI Lab (2021), Amazon (2023), Adobe Research (2024), and Google DeepMind (2025, 2026).`,
-  `My research focuses on generative multimodal AI and robust, privacy-preserving AI systems. I build models and frameworks that can efficiently perceive, reason, and generate across the dynamic, diverse multimodal world.`,
-  `My work spans multimodal representation learning, video-language understanding and generation, AI safety, and efficient training and scaling inference for large models, with applications across sports, security, medical, and educational domains.`,
+  `Hi, thanks for stopping by! I am now a final-year PhD student at MURGe-Lab (UNC-NLP Group) at the {{unc}} University of North Carolina, Chapel Hill, working with Prof. Mohit Bansal.`,
+  `Prior to joining UNC, I completed my undergraduate studies at {{sjtu}} Shanghai Jiao Tong University (SJTU) in 2022. I also work at/with {{ibm}} MIT-IBM Watson AI Lab (2021), {{amazon}} Amazon (2023), {{adobe}} Adobe Research (2024), and {{deepmind}} Google DeepMind (2025, 2026) with many amazing collaborators.`,
+  `I mainly work on Multimodal + Agentic AI, including topics like video-language alignment, video/4D generation, web & code agent, long-context modeling, and robust RL.`,
 ]
+
+/** Inline org logos for About Me (`{{key}}` in aboutParagraphs). */
+export const aboutLogos: Record<string, { src: string; alt: string }> = {
+  unc: { src: '/projects/unc_logo.png', alt: 'UNC Chapel Hill' },
+  sjtu: { src: '/projects/sjtu_logo.png', alt: 'Shanghai Jiao Tong University' },
+  ibm: { src: '/projects/ibm_watson_ai_lab.jpg', alt: 'MIT-IBM Watson AI Lab' },
+  amazon: { src: '/projects/amazon.png', alt: 'Amazon' },
+  adobe: { src: '/projects/adobe.png', alt: 'Adobe Research' },
+  deepmind: { src: '/projects/deepmind.png', alt: 'Google DeepMind' },
+}
 
 /** Statement: sparse `**idea**` + `[[Paper]]` for abbreviations. */
 export const heroFocus = {
