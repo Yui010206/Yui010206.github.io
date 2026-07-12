@@ -103,18 +103,17 @@ export const researchInterestGroups: ResearchInterestGroup[] = [
     title: 'Long-Context Multimodal (Language/Image/Video/Audio/3D) Reasoning',
     subtitle: 'Post-training / Alignment / Representation Learning',
     papers: [
-      { label: 'SeViLA', href: 'https://arxiv.org/pdf/2305.06988.pdf', detail: 'Agentic Video Understanding, PEFT' },
       { label: 'CREMA', href: 'https://crema-videollm.github.io/', detail: 'Any Modality + Video, PEFT' },
       { label: 'VideoTree', href: 'https://videotree2024.github.io/', detail: 'Long Video Loc + Understanding' },
       { label: 'VisionCoach', href: 'https://visioncoach.github.io/', detail: 'Grounded Video Reasoning, RL' },
       { label: 'STORM', href: 'https://arxiv.org/pdf/2605.26014', detail: 'Latent Reasoning' },
       { label: 'Video-RTS', href: 'https://sites.google.com/cs.unc.edu/videorts2025/home', detail: 'RL, TTS, PEFT' },
       { label: 'LLoVi', href: 'https://arxiv.org/pdf/2312.17235.pdf', detail: 'Long Video Understanding' },
-      { label: 'REMUL', href: 'https://arxiv.org/abs/2602.16154', detail: 'Faithful Language Reasoning' },
     ],
   },
   {
     title: 'Multimodal Benchmark, Data Curation, and Evaluation',
+    subtitle: 'Long-Context / Neural-Symbolic / AI4Science / Web Agent / Pixel Grounding',
     papers: [
       { label: 'Ego2Web', href: 'https://ego2web.github.io/', detail: 'Video + Web Agent' },
       { label: 'SciVideoBench', href: 'https://scivideobench.github.io/', detail: 'AI4Science' },
@@ -128,19 +127,25 @@ export const researchInterestGroups: ResearchInterestGroup[] = [
     title: 'Video/4D Generation and World Models',
     papers: [
       { label: 'VEGGIE', href: 'https://veggie-gen.github.io/', detail: 'Instructional Video Editing' },
-      { label: 'Video-MSG', href: 'https://video-msg.github.io/', detail: 'Controllable Video Generation' },
-      { label: 'SAFREE', href: 'https://safree-safe-t2i-t2v.github.io/', detail: 'Generation Safety' },
       { label: 'RACCooN', href: 'https://raccoon-mllm-gen.github.io/', detail: 'Instructional Video Editing' },
       { label: '4D-LRM', href: 'https://4dlrm.github.io/', detail: '4D Reconstruction' },
       { label: 'IVA-0', href: 'https://img2vidanim-0.github.io/', detail: 'Controllable Video Generation' },
     ],
   },
   {
-    title: 'Agentic Reasoning System',
+    title: 'Agentic Reasoning & Generation System',
     papers: [
       { label: 'SeViLA', href: 'https://arxiv.org/pdf/2305.06988.pdf', detail: 'Agentic Video Understanding, PEFT' },
       { label: 'Ego2Web', href: 'https://ego2web.github.io/', detail: 'Video + Web Agent' },
       { label: 'MEXA', href: 'https://arxiv.org/pdf/2506.17113', detail: 'Multi-agent, Any Modality' },
+      { label: 'Video-MSG', href: 'https://video-msg.github.io/', detail: 'Controllable Video Generation' },
+    ],
+  },
+  {
+    title: 'AI Faithfulness & Safety',
+    papers: [
+      { label: 'SAFREE', href: 'https://safree-safe-t2i-t2v.github.io/', detail: 'Generation Safety' },
+      { label: 'REMUL', href: 'https://arxiv.org/abs/2602.16154', detail: 'Faithful Language Reasoning' },
     ],
   },
   {
