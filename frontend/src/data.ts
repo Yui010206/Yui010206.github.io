@@ -223,6 +223,7 @@ export const internships: InternshipItem[] = [
 
 export const serviceAndTalk = {
   talks: [
+    '2026.07: Invited talk at USTC.',
     '2025.02: Invited talk at Twelve Labs.',
     '2024.06: Invited talk at Google.',
   ],
@@ -725,6 +726,7 @@ export type NewsItem = {
 }
 
 export const news: NewsItem[] = [
+  { date: '2026.07', venue: 'USTC', text: 'Invited talk.' },
   { date: '2026.07', venue: 'COLM 2026', text: '1 paper accepted.' },
   { date: '2026.06', venue: 'ECCV 2026', text: '1 paper accepted.' },
   { date: '2026.05', venue: 'Google DeepMind', text: 'Summer intern.' },
