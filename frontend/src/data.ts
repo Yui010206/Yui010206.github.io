@@ -282,8 +282,8 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
   {
     title: 'Movie Facts and Fibs (MF2): A Benchmark for Long Movie Understanding',
     authors: 'Emmanouil Zaranis, António Farinhas, Saul Santos, Beatriz Canaverde, … Shoubin Yu, et al.',
-    venue: 'Preprint',
-    year: 2025,
+    venue: 'EMNLP 2026',
+    year: 2026,
     summary: 'Evaluating comprehension and recall of narrative information from full-length movies.',
     tags: ['Benchmark', 'Long video'],
     links: [
@@ -599,7 +599,7 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
   {
     title: 'Balancing Faithfulness and Performance in Reasoning via Multi-Listener Soft Execution',
     authors: 'Nithin Sivakumaran, Shoubin Yu, Hyunji Lee, Yue Zhang, Ali Payani, Mohit Bansal, Elias Stengel-Eskin',
-    venue: 'Preprint',
+    venue: 'EMNLP 2026 Findings',
     year: 2026,
     summary:
       'REMUL: multi-listener reinforcement learning to improve chain-of-thought faithfulness while maintaining accuracy on challenging reasoning tasks.',
@@ -726,6 +726,7 @@ export type NewsItem = {
 }
 
 export const news: NewsItem[] = [
+  { date: '2026.08', venue: 'EMNLP 2026', text: '2 papers accepted (1 main, 1 findings).' },
   { date: '2026.07', venue: 'USTC', text: 'Invited talk.' },
   { date: '2026.07', venue: 'COLM 2026', text: '1 paper accepted.' },
   { date: '2026.06', venue: 'ECCV 2026', text: '1 paper accepted.' },
