@@ -252,7 +252,7 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
   {
     title: 'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning',
     authors: 'Shoubin Yu*, Yue Zhang*, Zun Wang, Jaehong Yoon, Huaxiu Yao, Mingyu Ding, Mohit Bansal',
-    venue: 'Preprint',
+    venue: 'NeurIPS 2026',
     year: 2026,
     summary: 'AVIC: adaptive test-time scaling via world-model imagination for visual spatial reasoning.',
     tags: ['Test-time scaling', 'World models'],
@@ -726,6 +726,7 @@ export type NewsItem = {
 }
 
 export const news: NewsItem[] = [
+  { date: '2026.09', venue: 'NeurIPS 2026', text: '1 paper accepted.' },
   { date: '2026.08', venue: 'EMNLP 2026', text: '2 papers accepted (1 main, 1 findings).' },
   { date: '2026.07', venue: 'USTC', text: 'Invited talk.' },
   { date: '2026.07', venue: 'COLM 2026', text: '1 paper accepted.' },
