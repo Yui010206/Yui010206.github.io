@@ -1,20 +1,17 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { BackgroundGlow, CursorEffect } from './chrome'
 import { blogPostsByLang, type BlogLang } from './data'
-import { SiteHeader } from './SiteHeader'
+import { SiteFooter, SiteHeader } from './SiteHeader'
 
 const blogCopy = {
   en: {
     home: '← Home',
     published: 'Published',
-    by: 'by',
     langLabel: 'Language',
   },
   zh: {
     home: '← 首页',
     published: '发布',
-    by: '作者',
     langLabel: '语言',
   },
 } as const
@@ -28,25 +25,25 @@ export default function BlogPage({ lang = 'en' }: BlogPageProps) {
   const copy = blogCopy[lang]
 
   return (
-    <div className="app-shell blog-shell">
-      <BackgroundGlow />
-      <CursorEffect />
+    <div className="page" id="top">
       <SiteHeader variant="blog" />
 
-      <main className="blog-page">
+      <main className="container">
         {posts.map((post) => (
-          <div key={post.slug} className="blog-page-layout">
-            <aside className="blog-sidebar">
-              <a className="blog-back-link" href="/">
+          <div key={post.slug} className="blog-layout">
+            <aside className="blog-aside">
+              <a className="blog-back" href="/">
                 {copy.home}
               </a>
-              <p className="blog-sidebar-label">{copy.published}</p>
-              <p className="blog-sidebar-date">{post.date}</p>
-              <div className="blog-lang-switch">
-                <p className="blog-sidebar-label">{copy.langLabel}</p>
-                <div className="blog-lang-links">
+              <div>
+                <p className="blog-aside-label">{copy.published}</p>
+                <time>{post.date}</time>
+              </div>
+              <div>
+                <p className="blog-aside-label">{copy.langLabel}</p>
+                <div className="blog-lang">
                   <a href="/blog/" aria-current={lang === 'en' ? 'page' : undefined}>
-                    EN
+                    English
                   </a>
                   <a href="/blog/zh/" aria-current={lang === 'zh' ? 'page' : undefined}>
                     中文（by GPT）
@@ -55,14 +52,14 @@ export default function BlogPage({ lang = 'en' }: BlogPageProps) {
               </div>
             </aside>
 
-            <article className="surface-card blog-article blog-article--page">
-              <div className={`blog-article-body blog-article-body--page${lang === 'zh' ? ' blog-article-body--zh' : ''}`}>
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
-              </div>
+            <article className={`prose${lang === 'zh' ? ' prose--zh' : ''}`}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
             </article>
           </div>
         ))}
       </main>
+
+      <SiteFooter />
     </div>
   )
 }

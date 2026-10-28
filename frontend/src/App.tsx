@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useState, type MouseEvent, type ReactNode } from 'react'
 import type { ProfileLink, ProfileLinkVariant, Publication, PublicationSubtopicId } from './data'
+import { NAV_ITEMS, SiteFooter, SiteHeader } from './SiteHeader'
 import {
   aboutLogos,
   aboutParagraphs,
@@ -15,65 +16,25 @@ import {
   selectedPublications,
   serviceAndTalk,
 } from './data'
-import { BackgroundGlow, CursorEffect } from './chrome'
-import { SiteHeader } from './SiteHeader'
 
-const years = ['All', ...Array.from(new Set(allPublications.map((p) => String(p.year)))).sort((a, b) => Number(b) - Number(a))]
+const NEWS_PREVIEW_COUNT = 8
+const ARCHIVE_PREVIEW_YEARS = 2
+const RESEARCH_COLLAPSED_PARAS = 0
 
-/** Default number of rows shown in All publications before "Show all". */
-const ARCHIVE_PREVIEW_COUNT = 5
-const NEWS_PREVIEW_COUNT = 6
-const RESEARCH_COLLAPSED_PARAS = 2
+const SUBTOPIC_SHORT = Object.fromEntries(PUBLICATION_SUBTOPICS.map((t) => [t.id, t.short])) as Record<
+  PublicationSubtopicId,
+  string
+>
+
+const topicCounts = Object.fromEntries([
+  ['All', allPublications.length],
+  ...PUBLICATION_SUBTOPICS.map((t) => [t.id, allPublications.filter((p) => p.subtopics.includes(t.id)).length]),
+]) as Record<PublicationSubtopicId | 'All', number>
 
 function parseTalkLine(line: string): { period: string; detail: string } {
   const splitAt = line.indexOf(': ')
   if (splitAt === -1) return { period: '', detail: line }
   return { period: line.slice(0, splitAt), detail: line.slice(splitAt + 2) }
-}
-
-type ArchivePublicationGroup = {
-  key: string
-  year: number
-  venue: string
-  publications: Publication[]
-}
-
-/** Merge EMNLP YYYY Findings with EMNLP YYYY for grouping; each card still shows its own venue. */
-function normalizeVenueForArchiveGroup(venue: string): string {
-  const v = venue.trim()
-  if (/^EMNLP\s+\d{4}\s+Findings$/i.test(v)) return v.replace(/\s+Findings$/i, '')
-  return v
-}
-
-function groupPublicationsByYearAndVenue(publications: Publication[]): ArchivePublicationGroup[] {
-  const map = new Map<string, Publication[]>()
-  for (const p of publications) {
-    const groupVenue = normalizeVenueForArchiveGroup(p.venue)
-    const key = `${p.year}\u0000${groupVenue}`
-    const list = map.get(key)
-    if (list) list.push(p)
-    else map.set(key, [p])
-  }
-  const groups: ArchivePublicationGroup[] = []
-  for (const [key, pubs] of map) {
-    const sep = key.indexOf('\u0000')
-    const year = Number(key.slice(0, sep))
-    const venue = key.slice(sep + 1)
-    groups.push({
-      key,
-      year,
-      venue,
-      publications: [...pubs].sort((a, b) => a.title.localeCompare(b.title)),
-    })
-  }
-  groups.sort((a, b) => {
-    if (b.year !== a.year) return b.year - a.year
-    const ap = isPreprintVenue(a.venue) ? 1 : 0
-    const bp = isPreprintVenue(b.venue) ? 1 : 0
-    if (bp !== ap) return bp - ap
-    return a.venue.localeCompare(b.venue, undefined, { sensitivity: 'base' })
-  })
-  return groups
 }
 
 /** Prefer Paper URL for the title; otherwise Project; otherwise first link. */
@@ -86,21 +47,15 @@ function publicationPrimaryHref(links: Publication['links']): string | undefined
   )
 }
 
-function PublicationTitle({ title, links }: { title: string; links: Publication['links'] }) {
-  const href = publicationPrimaryHref(links)
-  if (!href) return <h4>{title}</h4>
-  return (
-    <h4 className="publication-title">
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        {title}
-      </a>
-    </h4>
-  )
+/** Short name shown before the colon in a title, e.g. "VEGGIE" from "VEGGIE: Instructional …". */
+function splitTitle(title: string): { short?: string; rest: string } {
+  const i = title.indexOf(': ')
+  if (i > 0 && (title.slice(0, i).match(/ /g) ?? []).length <= 2) return { short: title.slice(0, i), rest: title.slice(i + 2) }
+  return { rest: title }
 }
 
-/** Highlights "Shoubin Yu" / "Shoubin Yu*" in author strings (case-insensitive). */
 function LinkIcon({ variant }: { variant: ProfileLinkVariant }) {
-  const common = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', 'aria-hidden': true as const }
+  const common = { width: 15, height: 15, viewBox: '0 0 24 24', fill: 'none', 'aria-hidden': true as const }
   switch (variant) {
     case 'scholar':
       return (
@@ -126,10 +81,10 @@ function LinkIcon({ variant }: { variant: ProfileLinkVariant }) {
           <path
             d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"
             stroke="currentColor"
-            strokeWidth="1.5"
+            strokeWidth="1.6"
             strokeLinejoin="round"
           />
-          <path d="M14 2v6h6M8 13h8M8 17h8M8 9h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M14 2v6h6M8 13h8M8 17h8M8 9h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
       )
     case 'email':
@@ -138,7 +93,7 @@ function LinkIcon({ variant }: { variant: ProfileLinkVariant }) {
           <path
             d="M4 6h16v12H4V6Zm0 0 8 6 8-6"
             stroke="currentColor"
-            strokeWidth="1.5"
+            strokeWidth="1.6"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -158,25 +113,33 @@ function LinkIcon({ variant }: { variant: ProfileLinkVariant }) {
   }
 }
 
-function ProfileLinkButton({ link }: { link: ProfileLink }) {
-  return (
-    <a
-      className={`cta-link cta-link--${link.variant}`}
-      href={link.href}
-      target={link.href.startsWith('mailto:') ? undefined : '_blank'}
-      rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-    >
-      <span className="cta-link__icon" aria-hidden>
+/** Assemble the address only on click so scrapers reading the HTML never see it. */
+function openEmail(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault()
+  const { user, domain } = profile.emailParts
+  window.location.href = `mailto:${user}@${domain.join('.')}`
+}
+
+function ProfileLinkItem({ link }: { link: ProfileLink }) {
+  if (link.variant === 'email') {
+    return (
+      <a className="profile-link profile-link--internal" href={link.href} onClick={openEmail}>
         <LinkIcon variant={link.variant} />
-      </span>
-      {link.label}
+        <span>{link.label}</span>
+      </a>
+    )
+  }
+  return (
+    <a className="profile-link" href={link.href} target="_blank" rel="noopener noreferrer">
+      <LinkIcon variant={link.variant} />
+      <span>{link.label}</span>
     </a>
   )
 }
 
 /**
- * `**phrase**` → conceptual highlight (`about-emphasis`).
- * With `papersSyntax`, `[[PaperName]]` → paper tag (`statement-paper`).
+ * `**phrase**` → emphasis. With `papersSyntax`, `[[Paper]]` → small-caps paper name.
+ * With `logos`, `{{key}}` → inline org logo.
  */
 function MarkedText({
   text,
@@ -200,25 +163,17 @@ function MarkedText({
     if (m.index > last) nodes.push(<span key={k++}>{text.slice(last, m.index)}</span>)
     if (papersSyntax && m[2] != null) {
       nodes.push(
-        <span key={k++} className="statement-paper">
+        <span key={k++} className="paper-ref">
           {m[2]}
         </span>,
       )
     } else if (logos && m[2] != null) {
       const logo = aboutLogos[m[2]]
       if (logo) {
-        nodes.push(
-          <img key={k++} className="about-inline-logo" src={logo.src} alt={logo.alt} title={logo.alt} />,
-        )
-      } else {
-        nodes.push(<span key={k++}>{m[0]}</span>)
+        nodes.push(<img key={k++} className="inline-logo" src={logo.src} alt="" title={logo.alt} />)
       }
     } else if (m[1] != null) {
-      nodes.push(
-        <span key={k++} className="about-emphasis">
-          {m[1]}
-        </span>,
-      )
+      nodes.push(<em key={k++}>{m[1]}</em>)
     }
     last = m.index + m[0].length
   }
@@ -229,466 +184,411 @@ function MarkedText({
 function AuthorsLine({ text }: { text: string }) {
   const parts = text.split(/(Shoubin Yu\*?)/gi)
   return (
-    <p className="authors">
+    <p className="pub-authors">
       {parts.map((part, i) =>
         /^Shoubin Yu\*?$/i.test(part) ? (
-          <span key={i} className="author-self">
+          <strong key={i} className="author-self">
             {part}
-          </span>
+          </strong>
         ) : (
           <span key={i}>{part}</span>
-        )
+        ),
       )}
     </p>
   )
 }
 
-type ArchiveView = 'year' | 'topic'
+function PubLinks({ links }: { links: Publication['links'] }) {
+  return (
+    <span className="pub-links">
+      {links.map((link) => (
+        <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
+          {link.label}
+        </a>
+      ))}
+    </span>
+  )
+}
+
+function PubTitle({ title, links }: { title: string; links: Publication['links'] }) {
+  const href = publicationPrimaryHref(links)
+  const { short, rest } = splitTitle(title)
+  const inner = short ? (
+    <>
+      <span className="pub-title-short">{short}:</span> {rest}
+    </>
+  ) : (
+    rest
+  )
+  return (
+    <h4 className="pub-title">
+      {href ? (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {inner}
+        </a>
+      ) : (
+        inner
+      )}
+    </h4>
+  )
+}
+
+function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+  return (
+    <section id={id} className="section">
+      <h2 className="section-title">{title}</h2>
+      <div className="section-body">{children}</div>
+    </section>
+  )
+}
+
+function useActiveSection() {
+  const [active, setActive] = useState<string>('about')
+  useEffect(() => {
+    const els = NAV_ITEMS.map((n) => document.getElementById(n.id)).filter(Boolean) as HTMLElement[]
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+        if (visible[0]) setActive(visible[0].target.id)
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    )
+    els.forEach((el) => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+  return active
+}
 
 export default function App() {
-  const [archiveView, setArchiveView] = useState<ArchiveView>('year')
-  const [activeYear, setActiveYear] = useState('All')
   const [activeSubtopic, setActiveSubtopic] = useState<PublicationSubtopicId | 'All'>('All')
   const [archiveExpanded, setArchiveExpanded] = useState(false)
   const [researchExpanded, setResearchExpanded] = useState(false)
   const [newsExpanded, setNewsExpanded] = useState(false)
+  const activeSection = useActiveSection()
 
-  const activeResearch = heroFocus
   const visibleNews = newsExpanded ? news : news.slice(0, NEWS_PREVIEW_COUNT)
-  const researchParagraphs = researchExpanded
-    ? activeResearch.paragraphs
-    : activeResearch.paragraphs.slice(0, RESEARCH_COLLAPSED_PARAS)
-  const researchHasMore = activeResearch.paragraphs.length > RESEARCH_COLLAPSED_PARAS
 
-  const filteredPublications = useMemo(() => {
-    if (archiveView === 'year') {
-      if (activeYear === 'All') return allPublications
-      return allPublications.filter((p) => String(p.year) === activeYear)
+  const yearGroups = useMemo(() => {
+    const pubs =
+      activeSubtopic === 'All' ? allPublications : allPublications.filter((p) => p.subtopics.includes(activeSubtopic))
+    const map = new Map<number, Publication[]>()
+    for (const p of pubs) {
+      const list = map.get(p.year)
+      if (list) list.push(p)
+      else map.set(p.year, [p])
     }
-    if (activeSubtopic === 'All') return allPublications
-    return allPublications.filter((p) => p.subtopics.includes(activeSubtopic))
-  }, [archiveView, activeYear, activeSubtopic])
+    // Within a year: published venues first (alphabetical), preprints last.
+    for (const list of map.values()) {
+      list.sort((a, b) => {
+        const ap = isPreprintVenue(a.venue) ? 1 : 0
+        const bp = isPreprintVenue(b.venue) ? 1 : 0
+        return ap - bp || a.venue.localeCompare(b.venue) || a.title.localeCompare(b.title)
+      })
+    }
+    return [...map.entries()].sort((a, b) => b[0] - a[0])
+  }, [activeSubtopic])
 
-  const archiveGroups = useMemo(
-    () => groupPublicationsByYearAndVenue(filteredPublications),
-    [filteredPublications],
-  )
+  // Only the unfiltered list is long enough to collapse.
+  const collapsed = activeSubtopic === 'All' && !archiveExpanded
+  const visibleYearGroups = collapsed ? yearGroups.slice(0, ARCHIVE_PREVIEW_YEARS) : yearGroups
+  const hiddenCount =
+    activeSubtopic === 'All' ? yearGroups.slice(ARCHIVE_PREVIEW_YEARS).reduce((n, [, pubs]) => n + pubs.length, 0) : 0
 
-  useEffect(() => {
-    setArchiveExpanded(false)
-  }, [archiveView, activeYear, activeSubtopic])
-
-  const flatArchivePublications = useMemo(
-    () => archiveGroups.flatMap((group) => group.publications),
-    [archiveGroups],
-  )
-
-  const visibleArchivePublications = useMemo(() => {
-    if (archiveExpanded) return flatArchivePublications
-    return flatArchivePublications.slice(0, ARCHIVE_PREVIEW_COUNT)
-  }, [archiveExpanded, flatArchivePublications])
-
-  const archiveHasMore = flatArchivePublications.length > ARCHIVE_PREVIEW_COUNT
+  const researchParagraphs = researchExpanded
+    ? heroFocus.paragraphs
+    : heroFocus.paragraphs.slice(0, RESEARCH_COLLAPSED_PARAS)
+  const pipelineStages = heroFocus.intro.pipeline.split('→').map((s) => s.trim())
 
   return (
-    <div className="app-shell" id="top">
-      <BackgroundGlow />
-      <CursorEffect />
+    <div className="page" id="top">
+      <SiteHeader active={activeSection} />
 
-      <SiteHeader />
-
-      <main>
-        <section className="hero section">
-          <div className="hero-headline">
-            <h1>{profile.name}</h1>
-            <h2 className="hero-role">{profile.role}</h2>
-          </div>
-
-          <div id="about" className="hero-about-row">
-            <div className="hero-panel hero-panel--about">
-              <div className="hero-photo-frame float-slow">
-                <div className="hero-photo-glow" />
-                {profile.photo ? (
-                  <HeroPhoto src={profile.photo} alt={profile.photoAlt ?? `${profile.name} headshot`} />
-                ) : (
-                  <div className="hero-photo placeholder-photo">
-                    <span>{profile.name.slice(0, 1)}</span>
-                    <small>Put your headshot here</small>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="hero-about-prose">
-              <h2 className="subsection-title">About Me</h2>
-              <div className="about-prose-body about-prose-body--open">
-                {aboutParagraphs.map((paragraph, i) => (
-                  <p key={i}>
-                    <MarkedText logos text={paragraph} />
-                  </p>
-                ))}
-              </div>
+      <main className="container">
+        {/* ── Hero ───────────────────────────────────────── */}
+        <section id="about" className="hero">
+          <div className="hero-aside">
+            <img className="hero-photo" src={profile.photo} alt={profile.photoAlt ?? profile.name} />
+            <div className="profile-links">
+              {profile.links.map((link) => (
+                <ProfileLinkItem key={link.label} link={link} />
+              ))}
             </div>
           </div>
 
-          <div className="research-interests" aria-labelledby="research-interests-heading">
-            <h3 id="research-interests-heading" className="subsection-title">
-              Research Interests
-            </h3>
-            <div className="research-interests-panel">
-              {researchInterestGroups.map((group) => (
-                <div key={`${group.title}-${group.subtitle ?? ''}`} className="research-interest-row">
-                  <div className="research-interest-label">
-                    <span className="research-interest-label-main">{group.title}</span>
-                    {group.subtitle ? (
-                      <span className="research-interest-label-sub">({group.subtitle})</span>
-                    ) : null}
-                  </div>
-                  <div className="research-interest-tags">
+          <div className="hero-main">
+            <h1 className="hero-name">
+              {profile.name}
+            </h1>
+            <p className="hero-role">
+              Ph.D. Student in Computer Science
+              <span className="dot-sep">·</span>
+              UNC Chapel Hill
+            </p>
+            <p className="hero-meta">
+              MURGe-Lab / UNC-NLP, advised by{' '}
+              <a href="https://www.cs.unc.edu/~mbansal/" target="_blank" rel="noopener noreferrer">
+                Prof. Mohit Bansal
+              </a>
+            </p>
+
+            <div className="hero-prose">
+              {aboutParagraphs.map((paragraph, i) => (
+                <p key={i}>
+                  <MarkedText logos text={paragraph} />
+                </p>
+              ))}
+            </div>
+
+
+          </div>
+        </section>
+
+        {/* ── Research interests ─────────────────────────── */}
+        <Section id="interests" title="Research Interests">
+          <ol className="interests">
+            {researchInterestGroups.map((group, i) => (
+              <li key={group.title} className="interest">
+                <span className="interest-index">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3 className="interest-title">{group.title}</h3>
+                  {group.subtitle ? <p className="interest-sub">{group.subtitle}</p> : null}
+                  <p className="interest-papers">
                     {group.papers.map((paper) => (
                       <a
-                        key={`${group.title}-${paper.label}`}
-                        className={`research-interest-tag${paper.highlight ? ' research-interest-tag--highlight' : ''}`}
+                        key={paper.label}
                         href={paper.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title={paper.detail ? `${paper.label}: ${paper.detail}` : paper.label}
-                        aria-label={paper.detail ? `${paper.label}: ${paper.detail}` : paper.label}
+                        data-tip={paper.detail}
                       >
                         {paper.label}
-                        {paper.detail ? (
-                          <span className="research-interest-tag-tip">{paper.detail}</span>
-                        ) : null}
                       </a>
                     ))}
-                  </div>
+                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="cta-row hero-cta-row">
-            {profile.links.map((link) => (
-              <ProfileLinkButton key={link.label} link={link} />
+              </li>
             ))}
-          </div>
-        </section>
+          </ol>
+        </Section>
 
-        <section id="news" className="page-section">
-          <h2 className="page-section-title">News</h2>
-          <div className="surface-card news-card-compact">
-            <ul className="news-list news-list--compact">
-              {visibleNews.map((item) => (
-                <li key={`${item.date}-${item.venue ?? ''}-${item.text}`} className="news-item news-item--compact">
-                  <span className="news-line">
-                    <span className="news-date">{item.date}</span>
-                    {item.venue ? <span className="news-venue-inline">{item.venue}</span> : null}
-                    <span className="news-text">{item.text}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-            {news.length > NEWS_PREVIEW_COUNT ? (
-              <button type="button" className="text-btn" onClick={() => setNewsExpanded((v) => !v)}>
-                {newsExpanded ? 'Show fewer updates' : `Show all news (${news.length})`}
-              </button>
-            ) : null}
-          </div>
-        </section>
-
-        <section id="research" className="page-section">
-          <h2 className="page-section-title">Research statement</h2>
-          <div className="surface-card research-card">
-            <p className="research-card-label">{activeResearch.title}</p>
-            <strong className="hero-focus-headline">{activeResearch.headline}</strong>
-            <div className="hero-focus-intro">
-              <p className="hero-focus-preamble">
-                <MarkedText papersSyntax text={activeResearch.intro.preamble} />
-              </p>
-              <p className="hero-focus-pipeline" aria-label="Pipeline stages">
-                {activeResearch.intro.pipeline}
-              </p>
-              <p className="hero-focus-intro-body">
-                <MarkedText papersSyntax text={activeResearch.intro.afterPipeline} />
-              </p>
-            </div>
-            {researchParagraphs.map((para, i) => (
-              <p key={i} className="hero-focus-para">
-                <MarkedText papersSyntax text={para} />
-              </p>
+        {/* ── News ───────────────────────────────────────── */}
+        <Section id="news" title="News">
+          <ul className="news">
+            {visibleNews.map((item) => (
+              <li key={`${item.date}-${item.venue ?? ''}-${item.text}`} className="news-item">
+                <time className="news-date">{item.date}</time>
+                <p className="news-text">
+                  {item.venue ? <strong>{item.venue}</strong> : null} {item.text}
+                </p>
+              </li>
             ))}
-            {researchHasMore ? (
-              <button type="button" className="text-btn" onClick={() => setResearchExpanded((v) => !v)}>
-                {researchExpanded ? 'Show shorter version' : 'Read full research statement'}
-              </button>
-            ) : null}
+          </ul>
+          {news.length > NEWS_PREVIEW_COUNT ? (
+            <button type="button" className="more-btn" onClick={() => setNewsExpanded((v) => !v)}>
+              {newsExpanded ? 'Show less' : `Earlier news (${news.length - NEWS_PREVIEW_COUNT})`}
+            </button>
+          ) : null}
+        </Section>
+
+        {/* ── Research statement ─────────────────────────── */}
+        <Section id="research" title="Research Statement">
+          <h3 className="statement-headline">{heroFocus.headline}</h3>
+          <p className="statement-lede">
+            <MarkedText papersSyntax text={heroFocus.intro.preamble} />
+          </p>
+          <ol className="pipeline" aria-label="Research pipeline">
+            {pipelineStages.map((stage, i) => (
+              <li key={stage}>
+                <span className="pipeline-step">{i + 1}</span>
+                {stage}
+              </li>
+            ))}
+          </ol>
+          <p className="statement-para">
+            <MarkedText papersSyntax text={heroFocus.intro.afterPipeline} />
+          </p>
+          {researchParagraphs.map((para, i) => (
+            <p key={i} className="statement-para">
+              <MarkedText papersSyntax text={para} />
+            </p>
+          ))}
+          <button type="button" className="more-btn" onClick={() => setResearchExpanded((v) => !v)}>
+            {researchExpanded ? 'Show less' : 'Read the full statement'}
+          </button>
+        </Section>
+
+        {/* ── Publications ───────────────────────────────── */}
+        <Section id="publications" title="Publications">
+          <div className="pub-heading-row">
+            <h3 className="sub-heading">Selected work</h3>
+            <p className="pub-note">* equal contribution</p>
           </div>
-        </section>
-
-        <section id="publications" className="page-section">
-          <h2 className="page-section-title">Publications</h2>
-
-          <h3 className="subsection-title">Selected</h3>
-          <div className="publication-grid publication-grid--compact">
-            {selectedPublications.map((publication) => (
-              <article key={publication.title} className="surface-card publication-card publication-card--compact">
-                <ProjectCover
-                  title={publication.title}
-                  image={publication.image}
-                  imageAlt={publication.imageAlt}
-                  variant="card"
-                />
-                <div className="publication-card-body">
-                  <div className="card-topline card-topline--compact">
-                    <span className="venue-meta">
-                      {publication.venue} · {publication.year}
-                    </span>
-                  </div>
-                  {publication.award ? <p className="paper-award paper-award--compact">{publication.award}</p> : null}
-                  <PublicationTitle title={publication.title} links={publication.links} />
-                  <AuthorsLine text={publication.authors} />
-                  {publication.selectedKeywords?.length ? (
-                    <div className="paper-keyword-row">
-                      {publication.selectedKeywords.map((keyword) => (
-                        <span key={keyword} className="paper-keyword">
-                          {keyword}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
-                  <div className="link-row link-row--compact">
-                    {publication.links.map((link) => (
-                      <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
-                        {link.label}
-                      </a>
-                    ))}
+          <div className="selected">
+            {selectedPublications.map((p) => (
+              <article key={p.title} className="selected-item">
+                <a
+                  className="selected-thumb"
+                  href={publicationPrimaryHref(p.links)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabIndex={-1}
+                >
+                  {p.image ? <img src={p.image} alt={p.imageAlt ?? ''} loading="lazy" /> : null}
+                  <span className="venue-badge venue-badge--overlay">{p.venue}</span>
+                </a>
+                <div className="selected-body">
+                  <PubTitle title={p.title} links={p.links} />
+                  <AuthorsLine text={p.authors} />
+                  <p className="pub-summary">{p.summary}</p>
+                  <div className="pub-footer">
+                    <PubLinks links={p.links} />
+                    {p.selectedKeywords?.length ? (
+                      <span className="pub-keywords">{p.selectedKeywords.join(' · ')}</span>
+                    ) : null}
                   </div>
                 </div>
               </article>
             ))}
           </div>
 
-          <h3 className="subsection-title subsection-title--spaced">All publications</h3>
-          <div className="archive-toolbar">
-            <div className="archive-view-switch archive-view-switch--compact" role="tablist" aria-label="Browse publications">
+          <div className="pub-heading-row pub-heading-row--spaced">
+            <h3 className="sub-heading">Full list</h3>
+            <p className="pub-note">Browse by research area</p>
+          </div>
+          <div className="topic-picker" role="tablist" aria-label="Filter by research area">
+            {[{ id: 'All' as const, short: 'All papers' }, ...PUBLICATION_SUBTOPICS].map((t) => (
               <button
+                key={t.id}
                 type="button"
                 role="tab"
-                aria-selected={archiveView === 'year'}
-                className={archiveView === 'year' ? 'archive-tab active' : 'archive-tab'}
-                onClick={() => setArchiveView('year')}
+                aria-selected={activeSubtopic === t.id}
+                className={`topic-tile topic-tile--${t.id}${activeSubtopic === t.id ? ' is-active' : ''}`}
+                onClick={() => setActiveSubtopic(t.id)}
               >
-                By year
+                <span className="topic-tile-count">{topicCounts[t.id]}</span>
+                <span className="topic-tile-label">{t.short}</span>
               </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={archiveView === 'topic'}
-                className={archiveView === 'topic' ? 'archive-tab active' : 'archive-tab'}
-                onClick={() => setArchiveView('topic')}
-              >
-                By topic
-              </button>
-            </div>
-            {archiveView === 'year' ? (
-              <label className="archive-select-wrap">
-                <span className="sr-only">Filter by year</span>
-                <select
-                  className="archive-select"
-                  value={activeYear}
-                  onChange={(e) => setActiveYear(e.target.value)}
-                >
-                  {years.map((year) => (
-                    <option key={year} value={year}>
-                      {year === 'All' ? 'All years' : year}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            ) : (
-              <label className="archive-select-wrap">
-                <span className="sr-only">Filter by topic</span>
-                <select
-                  className="archive-select"
-                  value={activeSubtopic}
-                  onChange={(e) => setActiveSubtopic(e.target.value as PublicationSubtopicId | 'All')}
-                >
-                  <option value="All">All topics</option>
-                  {PUBLICATION_SUBTOPICS.map((st) => (
-                    <option key={st.id} value={st.id}>
-                      {st.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            )}
+            ))}
           </div>
 
-          <div className="surface-card archive-card">
-            {filteredPublications.length === 0 ? (
-              <p className="archive-empty">No publications match this filter.</p>
-            ) : null}
-            {visibleArchivePublications.map((publication) => (
-              <article key={`${publication.title}-${publication.year}`} className="archive-item archive-item--compact">
-                <ProjectCover
-                  title={publication.title}
-                  image={publication.image}
-                  imageAlt={publication.imageAlt}
-                  variant="archive"
-                />
-                <div className="archive-main">
-                  <div className="archive-meta archive-meta--compact">
-                    <span className="venue-meta">
-                      {publication.venue} · {publication.year}
-                    </span>
-                  </div>
-                  <div className="archive-body">
-                    <PublicationTitle title={publication.title} links={publication.links} />
-                    <AuthorsLine text={publication.authors} />
-                  </div>
-                </div>
-                <div className="archive-links archive-links--compact">
-                  {publication.links.map((link) => (
-                    <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
-                      {link.label}
-                    </a>
+          <div className="archive">
+            {visibleYearGroups.map(([year, pubs]) => (
+              <div key={year} className="archive-year">
+                <h4 className="archive-year-label">{year}</h4>
+                <ul className="archive-list">
+                  {pubs.map((p) => (
+                    <li key={p.title} className="archive-item">
+                      <a
+                        className="archive-thumb"
+                        href={publicationPrimaryHref(p.links)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        tabIndex={-1}
+                      >
+                        {p.image ? <img src={p.image} alt={p.imageAlt ?? ''} loading="lazy" /> : null}
+                      </a>
+                      <div className="archive-text">
+                        <p className="archive-topline">
+                          <span className={isPreprintVenue(p.venue) ? 'venue-badge venue-badge--muted' : 'venue-badge'}>
+                            {p.venue}
+                          </span>
+                          {p.award ? <span className="pub-award">{p.award}</span> : null}
+                        </p>
+                        <PubTitle title={p.title} links={p.links} />
+                        <AuthorsLine text={p.authors} />
+                        <p className="archive-meta">
+                          <PubLinks links={p.links} />
+                          <span className="topic-dots">
+                            {p.subtopics.map((id) => (
+                              <span key={id} className={`topic-dot topic-dot--${id}`}>
+                                {SUBTOPIC_SHORT[id]}
+                              </span>
+                            ))}
+                          </span>
+                        </p>
+                      </div>
+                    </li>
                   ))}
-                </div>
-              </article>
-            ))}
-            {archiveHasMore ? (
-              <div className="archive-expand-wrap">
-                <button
-                  type="button"
-                  className="text-btn"
-                  onClick={() => setArchiveExpanded((v) => !v)}
-                  aria-expanded={archiveExpanded}
-                >
-                  {archiveExpanded ? 'Show fewer' : `Show all (${flatArchivePublications.length})`}
-                </button>
+                </ul>
               </div>
-            ) : null}
+            ))}
           </div>
-        </section>
+          {hiddenCount > 0 ? (
+            <button type="button" className="more-btn" onClick={() => setArchiveExpanded((v) => !v)}>
+              {archiveExpanded ? 'Show less' : `Earlier publications (${hiddenCount})`}
+            </button>
+          ) : null}
+        </Section>
 
-        <section id="background" className="page-section">
-          <h2 className="page-section-title">Background</h2>
-          <div className="background-panel">
-            <div className="background-row">
-              <div className="background-label">Education</div>
-              <ul className="background-entries">
+        {/* ── Background ─────────────────────────────────── */}
+        <Section id="background" title="Background">
+          <div className="bg-grid">
+            <div>
+              <h3 className="sub-heading">Education</h3>
+              <ul className="timeline">
                 {education.map((row) => (
-                  <li key={row.school} className="background-entry">
-                    {row.logo ? (
-                      <img className="background-entry-logo" src={row.logo} alt="" loading="lazy" />
-                    ) : (
-                      <div className="background-entry-logo background-entry-logo--empty" aria-hidden />
-                    )}
-                    <span className="background-entry-period">{row.period}</span>
-                    <strong className="background-entry-title">{row.school}</strong>
-                    <span className="background-entry-detail">{row.degree}</span>
+                  <li key={row.school}>
+                    {row.logo ? <img className="timeline-logo" src={row.logo} alt="" loading="lazy" /> : <span />}
+                    <div>
+                      <p className="timeline-title">{row.school}</p>
+                      <p className="timeline-detail">{row.degree}</p>
+                    </div>
+                    <time className="timeline-period">{row.period}</time>
                   </li>
                 ))}
               </ul>
             </div>
-
-            <div className="background-row">
-              <div className="background-label">Internships</div>
-              <ul className="background-entries">
+            <div>
+              <h3 className="sub-heading">Industry</h3>
+              <ul className="timeline">
                 {internships.map((row) => (
-                  <li key={`${row.org}-${row.period}`} className="background-entry">
-                    {row.logo ? (
-                      <img className="background-entry-logo" src={row.logo} alt="" loading="lazy" />
-                    ) : (
-                      <div className="background-entry-logo background-entry-logo--empty" aria-hidden />
-                    )}
-                    <span className="background-entry-period">{row.period}</span>
-                    <strong className="background-entry-title">{row.org}</strong>
-                    <span className="background-entry-detail">{row.role}</span>
+                  <li key={`${row.org}-${row.period}`}>
+                    {row.logo ? <img className="timeline-logo" src={row.logo} alt="" loading="lazy" /> : <span />}
+                    <div>
+                      <p className="timeline-title">{row.org}</p>
+                      <p className="timeline-detail">{row.role}</p>
+                    </div>
+                    <time className="timeline-period">{row.period}</time>
                   </li>
                 ))}
               </ul>
             </div>
+          </div>
 
-            <div className="background-row">
-              <div className="background-label">Talks</div>
-              <ul className="background-entries">
+          <div className="bg-grid">
+            <div>
+              <h3 className="sub-heading">Invited talks</h3>
+              <ul className="plain-list">
                 {serviceAndTalk.talks.map((talk) => {
                   const { period, detail } = parseTalkLine(talk)
                   return (
-                    <li key={talk} className="background-entry background-entry--plain">
-                      <span className="background-entry-period">{period}</span>
-                      <span className="background-entry-detail">{detail}</span>
+                    <li key={talk}>
+                      <time>{period}</time>
+                      <span>{detail.replace(/^Invited talk at /, '').replace(/\.$/, '')}</span>
                     </li>
                   )
                 })}
               </ul>
             </div>
-
-            <div className="background-row">
-              <div className="background-label">Reviewing</div>
-              <div className="background-notes">
-                {serviceAndTalk.reviewing.map((line) => (
-                  <p key={line} className="background-note">
-                    {line}
-                  </p>
-                ))}
+            <div>
+              <h3 className="sub-heading">Service</h3>
+              <div className="service">
+                {serviceAndTalk.reviewing.map((line) => {
+                  const [label, rest] = line.split(': ')
+                  return (
+                    <p key={line}>
+                      <span className="service-label">{label}</span>
+                      {rest}
+                    </p>
+                  )
+                })}
               </div>
             </div>
           </div>
-        </section>
-
+        </Section>
       </main>
+
+      <SiteFooter />
     </div>
   )
 }
-
-const HEADSHOT_FALLBACK = '/headshot-placeholder.svg'
-
-function ProjectCover({
-  title,
-  image,
-  imageAlt,
-  variant,
-}: {
-  title: string
-  image?: string
-  imageAlt?: string
-  variant: 'card' | 'archive' | 'blog'
-}) {
-  const alt = imageAlt ?? `${title} — project figure`
-  const base = `project-cover project-cover--${variant}`
-
-  if (image) {
-    return (
-      <div className={base}>
-        <img src={image} alt={alt} loading="lazy" />
-      </div>
-    )
-  }
-
-  return (
-    <div className={`${base} project-cover--placeholder`}>
-      <span className="project-cover-hint">Project image</span>
-      <span className="project-cover-path">public/projects/…</span>
-    </div>
-  )
-}
-
-function HeroPhoto({ src, alt }: { src: string; alt: string }) {
-  const [activeSrc, setActiveSrc] = useState(src)
-
-  useEffect(() => {
-    setActiveSrc(src)
-  }, [src])
-
-  return (
-    <img
-      className="hero-photo"
-      src={activeSrc}
-      alt={alt}
-      onError={() => setActiveSrc((current) => (current === HEADSHOT_FALLBACK ? current : HEADSHOT_FALLBACK))}
-    />
-  )
-}
-

@@ -2,10 +2,11 @@ import fromVideoPerceptionToAgentsBlog from './content/from_video_perception_to_
 import fromVideoPerceptionToAgentsBlogZh from './content/from_video_perception_to_agents_blog.zh.md?raw'
 
 export const PUBLICATION_SUBTOPICS = [
-  { id: 'multimodal-understanding', label: 'Multimodal Understanding' },
-  { id: 'representation-learning', label: 'Representation Learning' },
-  { id: 'generation-world-model', label: 'Generation and World Model' },
-  { id: 'benchmark', label: 'Benchmark' },
+  { id: 'understanding', label: 'Multimodal Understanding & Reasoning', short: 'Understanding & Reasoning' },
+  { id: 'generation', label: 'Video / 4D Generation & World Models', short: 'Generation & World Models' },
+  { id: 'agents', label: 'Agents & Embodied AI', short: 'Agents & Embodied' },
+  { id: 'benchmark', label: 'Benchmarks & Evaluation', short: 'Benchmarks & Evaluation' },
+  { id: 'safety', label: 'Faithfulness & Safety', short: 'Faithfulness & Safety' },
 ] as const
 
 export type PublicationSubtopicId = (typeof PUBLICATION_SUBTOPICS)[number]['id']
@@ -64,7 +65,8 @@ export const profile = {
   tagline:
     'Generative multimodal AI, video-language understanding & generation, AI safety, and efficient training and scaled inference for large models.',
   location: 'North Carolina, US',
-  email: 'shoubin@cs.unc.edu',
+  /** Stored in pieces so the address never appears verbatim in the HTML or bundle. */
+  emailParts: { user: 'shoubin', domain: ['cs', 'unc', 'edu'] },
   bio: `Fourth-year PhD student at MURGe-Lab (UNC-NLP) at UNC Chapel Hill, advised by Prof. Mohit Bansal. B.Eng. from Shanghai Jiao Tong University (2022).`,
   contactBlurb: `I'm always happy to share ideas, discussion, and collaboration with people from diverse backgrounds—feel free to reach out.`,
   links: [
@@ -79,7 +81,7 @@ export const profile = {
       href: 'https://drive.google.com/file/d/1PmaeZfLzzoqp-3PCBwAkp29_JAWuJaVE/view?usp=sharing',
       variant: 'cv',
     },
-    { label: 'Email', href: 'mailto:shoubin@cs.unc.edu', variant: 'email' },
+    { label: 'Email', href: '#contact', variant: 'email' },
     { label: 'X (Twitter)', href: 'https://x.com/shoubin621', variant: 'twitter' },
   ] satisfies ProfileLink[],
 }
@@ -223,6 +225,7 @@ export const internships: InternshipItem[] = [
 
 export const serviceAndTalk = {
   talks: [
+    '2026.10: Invited talk at Johns Hopkins University (JHU).',
     '2026.10: Invited talk at Google DeepMind.',
     '2026.07: Invited talk at USTC.',
     '2025.02: Invited talk at Twelve Labs.',
@@ -615,51 +618,42 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
 ]
 
 const publicationSubtopicsByTitle: Record<string, PublicationSubtopicId[]> = {
-  'VisionCoach: Reinforcing Grounded Video Reasoning via Visual-Perception Prompting': ['multimodal-understanding'],
+  'VisionCoach: Reinforcing Grounded Video Reasoning via Visual-Perception Prompting': ['understanding'],
   'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning': [
-    'generation-world-model',
+    'generation',
+    'agents',
   ],
   'SciVideoBench: Benchmarking Scientific Video Reasoning in Large Multimodal Models': ['benchmark'],
   'Movie Facts and Fibs (MF2): A Benchmark for Long Movie Understanding': ['benchmark'],
   'Training-free Guidance in Text-to-Video Generation via Multimodal Planning and Structured Noise Initialization': [
-    'generation-world-model',
+    'generation',
   ],
-  'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding': ['benchmark'],
-  'STORM: Internalized Modeling for Spatial-Temporal Reasoning in Video-Language Models': ['multimodal-understanding'],
-  'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos': ['benchmark'],
-  'Prune-Then-Plan: Step-Level Calibration for Stable Frontier Exploration in Embodied Question Answering': [
-    'multimodal-understanding',
+  'EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding': [
+    'benchmark',
+    'understanding',
   ],
-  '4D-LRM: Large Space-Time Reconstruction Model From and To Any View at Any Time': [
-    'generation-world-model',
-    'representation-learning',
-  ],
-  'RACCooN: Remove, Add, and Change Video Content with Auto-Generated Narratives': ['generation-world-model'],
+  'STORM: Internalized Modeling for Spatial-Temporal Reasoning in Video-Language Models': ['understanding'],
+  'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos': ['agents', 'benchmark'],
+  'Prune-Then-Plan: Step-Level Calibration for Stable Frontier Exploration in Embodied Question Answering': ['agents'],
+  '4D-LRM: Large Space-Time Reconstruction Model From and To Any View at Any Time': ['generation'],
+  'RACCooN: Remove, Add, and Change Video Content with Auto-Generated Narratives': ['generation'],
   'VIDEO-RTS: Rethinking Reinforcement Learning and Test-Time Scaling for Efficient and Enhanced Video Reasoning': [
-    'multimodal-understanding',
+    'understanding',
   ],
-  'MEXA: Towards General Multimodal Reasoning with Dynamic Multi-Expert Aggregation': [
-    'multimodal-understanding',
-    'representation-learning',
-  ],
-  'VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation': ['generation-world-model'],
-  'Motion-Grounded Video Reasoning: Understanding and Perceiving Motion at Pixel Level': ['benchmark', 'multimodal-understanding'],
-  'VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos': ['multimodal-understanding'],
-  'SAFREE: Train-free And Adaptive Guard For Safe Text-to-Image And Video Generation': ['generation-world-model'],
-  'CREMA: Generalizable and Efficient Video-Language Reasoning via Multimodal Modular Fusion': [
-    'representation-learning',
-    'multimodal-understanding',
-  ],
-  'Bootstrapping Language-guided Navigation Learning with Self-refining Data Flywheel': ['multimodal-understanding'],
-  'A Simple LLM Framework for Long-Range Video Question-Answering': ['multimodal-understanding'],
-  'Zero-Shot Controllable Image-to-Video Animation via Motion Decomposition': ['generation-world-model'],
-  'Self-Chained Image-Language Model for Video Localization and Question Answering': ['multimodal-understanding'],
-  'Regularity Learning via Explicit Distribution Modeling for Skeletal Video Anomaly Detection': ['representation-learning'],
-  'STAR: A Benchmark for Situated Reasoning in Real-World Videos': ['benchmark'],
+  'MEXA: Towards General Multimodal Reasoning with Dynamic Multi-Expert Aggregation': ['understanding', 'agents'],
+  'VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation': ['generation'],
+  'Motion-Grounded Video Reasoning: Understanding and Perceiving Motion at Pixel Level': ['benchmark', 'understanding'],
+  'VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos': ['understanding'],
+  'SAFREE: Train-free And Adaptive Guard For Safe Text-to-Image And Video Generation': ['safety', 'generation'],
+  'CREMA: Generalizable and Efficient Video-Language Reasoning via Multimodal Modular Fusion': ['understanding'],
+  'Bootstrapping Language-guided Navigation Learning with Self-refining Data Flywheel': ['agents'],
+  'A Simple LLM Framework for Long-Range Video Question-Answering': ['understanding'],
+  'Zero-Shot Controllable Image-to-Video Animation via Motion Decomposition': ['generation'],
+  'Self-Chained Image-Language Model for Video Localization and Question Answering': ['understanding', 'agents'],
+  'Regularity Learning via Explicit Distribution Modeling for Skeletal Video Anomaly Detection': ['understanding'],
+  'STAR: A Benchmark for Situated Reasoning in Real-World Videos': ['benchmark', 'understanding'],
   'A benchmark of expert-level academic questions to assess AI capabilities': ['benchmark'],
-  'Balancing Faithfulness and Performance in Reasoning via Multi-Listener Soft Execution': [
-    'multimodal-understanding',
-  ],
+  'Balancing Faithfulness and Performance in Reasoning via Multi-Listener Soft Execution': ['safety'],
 }
 
 const publicationSource: Publication[] = publicationSourceRaw.map((p) => {
@@ -727,6 +721,7 @@ export type NewsItem = {
 }
 
 export const news: NewsItem[] = [
+  { date: '2026.10', venue: 'JHU', text: 'Invited talk.' },
   { date: '2026.10', venue: 'Google DeepMind', text: 'Invited talk.' },
   { date: '2026.09', venue: 'NeurIPS 2026', text: '1 paper accepted.' },
   { date: '2026.08', venue: 'EMNLP 2026', text: '2 papers accepted (1 main, 1 findings).' },
