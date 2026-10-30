@@ -26,6 +26,8 @@ export type Publication = {
   imageAlt?: string
   /** Optional award line (e.g. best paper at a workshop). */
   award?: string
+  /** Newest work: listed first within its year. */
+  pinned?: boolean
   /** Keyword chips shown on selected-publication cards only. */
   selectedKeywords?: string[]
 }
@@ -123,6 +125,10 @@ export const researchInterestGroups: ResearchInterestGroup[] = [
       { label: 'GroundMoRe', href: 'https://groundmore.github.io/', detail: 'Pixel Reasoning' },
       { label: 'MF2', href: 'https://arxiv.org/pdf/2506.06275', detail: 'Long Video Reasoning' },
       { label: 'EgoMemReason', href: 'https://egomemreason.github.io/', detail: 'Long Video Memory' },
+      { label: 'Ego2Act', href: 'https://ego2act.github.io', detail: 'Egocentric Video Generation' },
+      { label: 'ImagiRep', href: 'https://imagirep.github.io/', detail: 'Spatial Imagination' },
+      { label: '3DCodeEdit', href: 'https://binjiew.github.io/3DCodeEdit', detail: '3D Program Editing' },
+      { label: 'ImpasseBench', href: 'https://arxiv.org/abs/2610.31895', detail: 'Coding Agents' },
     ],
   },
   {
@@ -238,6 +244,70 @@ export const serviceAndTalk = {
 }
 
 const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
+  {
+    title: 'Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation',
+    authors:
+      'Patrick Amadeus Irawan, Iskandar Muda Rizky Parlambang, Rava Maulana, Qinrong Cui, Erland Hilman Fuadi, Zayd M. K. Zuhri, Nanda Ryaas Absar, Ahmed Elshabrawy, Wilfried Ariel Mulyawan, Shoubin Yu, Yue Zhang, Mohit Bansal, Alham Fikri Aji',
+    venue: 'Preprint',
+    year: 2026,
+    summary:
+      'Goal-directed benchmark of 2,640 egocentric videos across 110 real-world tasks testing whether video generation models can simulate multi-step hand-object manipulation; includes the reference-free Ego2ActJudge evaluator.',
+    tags: ['Benchmark', 'Video generation'],
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/abs/2610.01092' },
+      { label: 'Project', href: 'https://ego2act.github.io' },
+      { label: 'Code', href: 'https://github.com/ego2act/ego2act' },
+    ],
+    image: '/projects/ego2act.png',
+    pinned: true,
+    imageAlt: 'Ego2Act benchmark overview',
+  },
+  {
+    title: '3DCodeEdit: Benchmarking Instruction-Guided 3D Program Editing',
+    authors:
+      'Binjie Wang*, Xinran Zhao*, Shoubin Yu, Xiang Li, Silong Yong, Chenyang Yang, Tianyu Chen, Ruofei Du, He He, Chen Zhao, Tongshuang Wu',
+    venue: 'Preprint',
+    year: 2026,
+    summary:
+      '2,592 instruction-guided editing tasks over 108 Blender programs, judged from renders; reveals geometric-foresight failures and shows reviewer feedback helps most.',
+    tags: ['Benchmark', 'Code', '3D'],
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/abs/2610.38231' },
+      { label: 'Project', href: 'https://binjiew.github.io/3DCodeEdit' },
+    ],
+    image: '/projects/3dcodeedit.png',
+    pinned: true,
+    imageAlt: '3DCodeEdit benchmark teaser',
+  },
+  {
+    title: 'Representing the Unseen: Rethinking Visual Imagination for Spatial Reasoning',
+    authors: 'Zengqi Zhao*, Zun Wang*, Shoubin Yu, Mohit Bansal, Yue Zhang',
+    venue: 'Preprint',
+    year: 2026,
+    summary:
+      'ImagiRep: simulator-grounded benchmark comparing RGB and alternative representations (depth, panorama, top-down) of imagined states; GEARS adaptively selects representations at test time.',
+    tags: ['Spatial reasoning', 'World models'],
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/abs/2610.37437' },
+      { label: 'Project', href: 'https://imagirep.github.io/' },
+    ],
+    image: '/projects/imagirep.png',
+    pinned: true,
+    imageAlt: 'ImagiRep teaser',
+  },
+  {
+    title: 'Knowing When to Stop: The Evidence-Action Gap in Coding Agents',
+    authors: 'Tianyu Chen*, Xinran Zhao*, Vijay Viswanathan, Shoubin Yu, Mingyuan Zhou, Tongshuang Wu',
+    venue: 'Preprint',
+    year: 2026,
+    summary:
+      'ImpasseBench: injects realistic environment blockers into repair tasks to measure when coding agents over-persist instead of escalating.',
+    tags: ['Benchmark', 'Code agent'],
+    links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2610.31895' }],
+    image: '/projects/impassebench.png',
+    pinned: true,
+    imageAlt: 'ImpasseBench setup',
+  },
   {
     title: 'VisionCoach: Reinforcing Grounded Video Reasoning via Visual-Perception Prompting',
     authors: 'Daeun Lee, Shoubin Yu, Yue Zhang, Mohit Bansal',
@@ -654,6 +724,10 @@ const publicationSubtopicsByTitle: Record<string, PublicationSubtopicId[]> = {
   'STAR: A Benchmark for Situated Reasoning in Real-World Videos': ['benchmark', 'understanding'],
   'A benchmark of expert-level academic questions to assess AI capabilities': ['benchmark'],
   'Balancing Faithfulness and Performance in Reasoning via Multi-Listener Soft Execution': ['safety'],
+  'Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation': ['benchmark', 'generation'],
+  '3DCodeEdit: Benchmarking Instruction-Guided 3D Program Editing': ['benchmark', 'agents'],
+  'Representing the Unseen: Rethinking Visual Imagination for Spatial Reasoning': ['benchmark', 'understanding'],
+  'Knowing When to Stop: The Evidence-Action Gap in Coding Agents': ['benchmark', 'agents', 'safety'],
 }
 
 const publicationSource: Publication[] = publicationSourceRaw.map((p) => {
@@ -721,6 +795,12 @@ export type NewsItem = {
 }
 
 export const news: NewsItem[] = [
+  {
+    date: '2026.10',
+    venue: 'arXiv',
+    text:
+      '4 new preprints on Ego2Act (benchmarking goal-directed manipulation in egocentric video generation), 3DCodeEdit (benchmarking instruction-guided 3D program editing), ImagiRep (rethinking visual imagination representations for spatial reasoning), and ImpasseBench (when coding agents should stop and escalate).',
+  },
   { date: '2026.10', venue: 'JHU', text: 'Invited talk.' },
   { date: '2026.10', venue: 'Google DeepMind', text: 'Invited talk.' },
   { date: '2026.09', venue: 'NeurIPS 2026', text: '1 paper accepted.' },

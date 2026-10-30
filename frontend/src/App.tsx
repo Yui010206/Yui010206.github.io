@@ -277,9 +277,10 @@ export default function App() {
       if (list) list.push(p)
       else map.set(p.year, [p])
     }
-    // Within a year: published venues first (alphabetical), preprints last.
+    // Within a year: pinned (newest) first, then published venues (alphabetical), preprints last.
     for (const list of map.values()) {
       list.sort((a, b) => {
+        if (a.pinned || b.pinned) return Number(!!b.pinned) - Number(!!a.pinned)
         const ap = isPreprintVenue(a.venue) ? 1 : 0
         const bp = isPreprintVenue(b.venue) ? 1 : 0
         return ap - bp || a.venue.localeCompare(b.venue) || a.title.localeCompare(b.title)
