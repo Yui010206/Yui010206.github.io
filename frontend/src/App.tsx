@@ -1,10 +1,18 @@
-import { useEffect, useMemo, useState, type MouseEvent, type ReactNode } from 'react'
-import type { ProfileLink, ProfileLinkVariant, Publication, PublicationSubtopicId } from './data'
+import { useEffect, useMemo, useState, type CSSProperties, type KeyboardEvent, type MouseEvent, type ReactNode } from 'react'
+import type {
+  ProfileLink,
+  ProfileLinkVariant,
+  Publication,
+  PublicationSubtopicId,
+  ResearchPaperName,
+  ResearchView,
+} from './data'
 import { NAV_ITEMS, SiteFooter, SiteHeader } from './SiteHeader'
 import {
   aboutLogos,
   aboutParagraphs,
-  researchInterestGroups,
+  researchPaperLinks,
+  researchViews,
   allPublications,
   education,
   heroFocus,
@@ -242,6 +250,191 @@ function Section({ id, title, children }: { id: string; title: string; children:
   )
 }
 
+/** Small line icons for Research Interests, keyed by view id, stage id, or part label. */
+const RESEARCH_ICONS: Record<string, ReactNode> = {
+  capability: (
+    <>
+      <path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z" />
+      <path d="M19 15.5v4M17 17.5h4" />
+    </>
+  ),
+  pipeline: (
+    <>
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      <path d="M6.5 10v4.5a3 3 0 0 0 3 3H14" />
+    </>
+  ),
+  perception: (
+    <>
+      <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" />
+      <circle cx="12" cy="12" r="3" />
+    </>
+  ),
+  reasoning: (
+    <>
+      <path d="M12 2.5a6.5 6.5 0 0 0-4 11.6c.7.6 1 1.3 1 2.1v.8h6v-.8c0-.8.3-1.5 1-2.1a6.5 6.5 0 0 0-4-11.6Z" />
+      <path d="M9.5 20h5M10.5 22h3" />
+    </>
+  ),
+  acting: (
+    <>
+      <circle cx="12" cy="12" r="9.5" />
+      <path d="M10 8.2v7.6l6-3.8-6-3.8Z" />
+    </>
+  ),
+  data: (
+    <>
+      <ellipse cx="12" cy="5.5" rx="8" ry="3" />
+      <path d="M4 5.5V12c0 1.7 3.6 3 8 3s8-1.3 8-3V5.5" />
+      <path d="M4 12v6.5c0 1.7 3.6 3 8 3s8-1.3 8-3V12" />
+    </>
+  ),
+  model: (
+    <>
+      <path d="m12 3 9 4.8-9 4.8-9-4.8L12 3Z" />
+      <path d="m3 12.3 9 4.8 9-4.8M3 16.7l9 4.8 9-4.8" />
+    </>
+  ),
+  training: <path d="M6.5 6.5v11M3.5 9v6M17.5 6.5v11M20.5 9v6M6.5 12h11" />,
+  inference: (
+    <>
+      <path d="M4.5 18a9 9 0 1 1 15 0" />
+      <path d="m12 13 4-5" />
+      <circle cx="12" cy="13" r="1.2" />
+    </>
+  ),
+  Inference: <path d="M13 2.5 4.5 13.5H11l-1 8 8.5-11H12l1-8Z" />,
+  Evaluation: <path d="M5 20V10M12 20V4M19 20v-7" />,
+}
+
+function ResearchIcon({ name }: { name: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {RESEARCH_ICONS[name]}
+    </svg>
+  )
+}
+
+/** Research Interests: one set of papers, switchable between two groupings. */
+function ResearchInterests() {
+  const [viewId, setViewId] = useState<ResearchView['id']>(researchViews[0].id)
+  /** Paper under the pointer; every copy of it in the current view is highlighted. */
+  const [linked, setLinked] = useState<ResearchPaperName | null>(null)
+  const activeIndex = Math.max(
+    0,
+    researchViews.findIndex((v) => v.id === viewId),
+  )
+  const view = researchViews[activeIndex]
+
+  const onSwitchKey = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+    event.preventDefault()
+    const step = event.key === 'ArrowRight' ? 1 : -1
+    const next = researchViews[(activeIndex + step + researchViews.length) % researchViews.length]
+    setViewId(next.id)
+    document.getElementById(`interest-tab-${next.id}`)?.focus()
+  }
+
+  return (
+    <>
+      <div
+        className="view-switch"
+        role="tablist"
+        aria-label="Group research by"
+        data-active={activeIndex}
+        onKeyDown={onSwitchKey}
+      >
+        {researchViews.map((v) => (
+          <button
+            key={v.id}
+            id={`interest-tab-${v.id}`}
+            type="button"
+            role="tab"
+            aria-selected={v.id === viewId}
+            aria-controls="interest-panel"
+            tabIndex={v.id === viewId ? 0 : -1}
+            className="view-switch-option"
+            onClick={() => setViewId(v.id)}
+          >
+            <ResearchIcon name={v.id} />
+            <span>
+              <span className="view-switch-label">{v.label}</span>
+              <span className="view-switch-caption">{v.caption}</span>
+            </span>
+          </button>
+        ))}
+      </div>
+      <div key={view.id} id="interest-panel" role="tabpanel" aria-labelledby={`interest-tab-${view.id}`}>
+        <p className="view-note">
+          {view.note}{' '}
+          <span className="view-note-hint">Hover a paper to see what it adds; every stage it belongs to lights up.</span>
+        </p>
+        <ol className="stages">
+          {view.stages.map((stage, i) => (
+            <li key={stage.id} className={`stage stage--${stage.id}`} style={{ '--i': i } as CSSProperties}>
+              <header className="stage-head">
+                <span className="stage-icon">
+                  <ResearchIcon name={stage.id} />
+                </span>
+                <div>
+                  <h3 className="stage-title">{stage.title}</h3>
+                  <p className="stage-blurb">{stage.blurb}</p>
+                </div>
+              </header>
+              <div className="stage-body">
+                {stage.parts.map((part) => (
+                  <div key={part.label ?? stage.id}>
+                    {part.label ? (
+                      <p className="stage-part-label">
+                        <ResearchIcon name={part.label} />
+                        {part.label}
+                      </p>
+                    ) : null}
+                    <div className="stage-groups">
+                      {part.groups.map((group) => (
+                        <div key={group.title}>
+                          <h4 className="stage-group-title">{group.title}</h4>
+                          <p className="paper-chips">
+                            {group.papers.map(([name, detail]) => (
+                              <a
+                                key={name}
+                                href={researchPaperLinks[name] || undefined}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                data-tip={detail}
+                                className={name === linked ? 'is-linked' : undefined}
+                                onMouseEnter={() => setLinked(name)}
+                                onMouseLeave={() => setLinked(null)}
+                                onFocus={() => setLinked(name)}
+                                onBlur={() => setLinked(null)}
+                              >
+                                {name}
+                              </a>
+                            ))}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </>
+  )
+}
+
 function useActiveSection() {
   const [active, setActive] = useState<string>('about')
   useEffect(() => {
@@ -346,30 +539,7 @@ export default function App() {
 
         {/* ── Research interests ─────────────────────────── */}
         <Section id="interests" title="Research Interests">
-          <ol className="interests">
-            {researchInterestGroups.map((group, i) => (
-              <li key={group.title} className="interest">
-                <span className="interest-index">{String(i + 1).padStart(2, '0')}</span>
-                <div>
-                  <h3 className="interest-title">{group.title}</h3>
-                  {group.subtitle ? <p className="interest-sub">{group.subtitle}</p> : null}
-                  <p className="interest-papers">
-                    {group.papers.map((paper) => (
-                      <a
-                        key={paper.label}
-                        href={paper.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tip={paper.detail}
-                      >
-                        {paper.label}
-                      </a>
-                    ))}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <ResearchInterests />
         </Section>
 
         {/* ── News ───────────────────────────────────────── */}

@@ -26,7 +26,7 @@ export type Publication = {
   imageAlt?: string
   /** Optional award line (e.g. best paper at a workshop). */
   award?: string
-  /** Newest work: listed first within its year. */
+  /** Newest work: listed first within its year, in the order written below. */
   pinned?: boolean
   /** Keyword chips shown on selected-publication cards only. */
   selectedKeywords?: string[]
@@ -88,80 +88,365 @@ export const profile = {
   ] satisfies ProfileLink[],
 }
 
-export type ResearchInterestPaper = {
-  label: string
-  href: string
-  /** Short keywords shown on hover, e.g. "RL, Video Reasoning". */
-  detail?: string
-  highlight?: boolean
-}
+/** Project (or paper) page for each short paper name used in Research Interests; '' until one exists. */
+export const researchPaperLinks = {
+  CREMA: 'https://crema-videollm.github.io/',
+  VideoTree: 'https://videotree2024.github.io/',
+  VisionCoach: 'https://visioncoach.github.io/',
+  STORM: 'https://arxiv.org/pdf/2605.26014',
+  'Video-RTS': 'https://sites.google.com/cs.unc.edu/videorts2025/home',
+  LLoVi: 'https://arxiv.org/pdf/2312.17235.pdf',
+  Ego2Web: 'https://ego2web.github.io/',
+  SciVideoBench: 'https://scivideobench.github.io/',
+  STAR: 'http://star.csail.mit.edu/',
+  GroundMoRe: 'https://groundmore.github.io/',
+  MF2: 'https://arxiv.org/pdf/2506.06275',
+  EgoMemReason: 'https://egomemreason.github.io/',
+  Ego2Act: 'https://ego2act.github.io',
+  ImagiRep: 'https://imagirep.github.io/',
+  '3DCodeEdit': 'https://binjiew.github.io/3DCodeEdit',
+  ImpasseBench: 'https://arxiv.org/abs/2610.31895',
+  VEGGIE: 'https://veggie-gen.github.io/',
+  RACCooN: 'https://raccoon-mllm-gen.github.io/',
+  '4D-LRM': 'https://4dlrm.github.io/',
+  'IVA-0': 'https://img2vidanim-0.github.io/',
+  SeViLA: 'https://arxiv.org/pdf/2305.06988.pdf',
+  MEXA: 'https://arxiv.org/pdf/2506.17113',
+  'Video-MSG': 'https://video-msg.github.io/',
+  SAFREE: 'https://safree-safe-t2i-t2v.github.io/',
+  REMUL: 'https://arxiv.org/abs/2602.16154',
+  AVIC: 'https://adaptive-visual-tts.github.io/',
+  PTP: 'https://noahfrahm.github.io/Prune-Then-Plan-project-page/',
+  SRDF: 'https://arxiv.org/abs/2412.08467',
+  MoPRL: 'https://ieeexplore.ieee.org/abstract/document/10185076',
+  VideoCoS: '',
+} satisfies Record<string, string>
 
-export type ResearchInterestGroup = {
+export type ResearchPaperName = keyof typeof researchPaperLinks
+
+/** A paper inside a group: `[name, what it contributes here]` (the second part shows on hover). */
+export type ResearchPaperRef = [ResearchPaperName, string]
+
+export type ResearchGroup = {
   title: string
-  subtitle?: string
-  papers: ResearchInterestPaper[]
+  papers: ResearchPaperRef[]
 }
 
-export const researchInterestGroups: ResearchInterestGroup[] = [
+export type ResearchStage = {
+  id: string
+  title: string
+  blurb: string
+  /** Usually one block of groups; several labelled blocks sit side by side in a wider column. */
+  parts: { label?: string; groups: ResearchGroup[] }[]
+}
+
+export type ResearchView = {
+  id: 'capability' | 'pipeline'
+  label: string
+  /** Stage names shown under the label in the view switch. */
+  caption: string
+  /** One line under the switch on how papers are placed in this view. */
+  note: string
+  stages: ResearchStage[]
+}
+
+/** Research Interests: the same papers grouped two ways. A paper may sit in several stages. */
+export const researchViews: ResearchView[] = [
   {
-    title: 'Long-Context Multimodal (Language/Image/Video/Audio/3D) Reasoning',
-    subtitle: 'Post-training / Alignment / Representation Learning',
-    papers: [
-      { label: 'CREMA', href: 'https://crema-videollm.github.io/', detail: 'Any Modality + Video, PEFT' },
-      { label: 'VideoTree', href: 'https://videotree2024.github.io/', detail: 'Long Video Loc + Understanding' },
-      { label: 'VisionCoach', href: 'https://visioncoach.github.io/', detail: 'Grounded Video Reasoning, RL' },
-      { label: 'STORM', href: 'https://arxiv.org/pdf/2605.26014', detail: 'Latent Reasoning' },
-      { label: 'Video-RTS', href: 'https://sites.google.com/cs.unc.edu/videorts2025/home', detail: 'RL, TTS, PEFT' },
-      { label: 'LLoVi', href: 'https://arxiv.org/pdf/2312.17235.pdf', detail: 'Long Video Understanding' },
+    id: 'capability',
+    label: 'By capability',
+    caption: 'Perception → Reasoning → Acting',
+    note: 'Each paper sits where its main contribution lies; a few bridge two stages.',
+    stages: [
+      {
+        id: 'perception',
+        title: 'Perception',
+        blurb: 'Finding the right evidence in long, multimodal streams.',
+        parts: [
+          {
+            groups: [
+              {
+                title: 'Long-Video Evidence Selection',
+                papers: [
+                  ['SeViLA', 'Language-aware keyframe localization'],
+                  ['VideoTree', 'Hierarchical keyframe selection'],
+                  ['LLoVi', 'Long-range video via clip captions'],
+                ],
+              },
+              {
+                title: 'Spatio-Temporal & Pixel Grounding',
+                papers: [
+                  ['GroundMoRe', 'Pixel-level motion masks'],
+                  ['VisionCoach', 'Spatio-temporal grounding'],
+                  ['VEGGIE', 'Video grounding & reasoning segmentation'],
+                  ['MoPRL', 'Skeletal motion anomaly detection'],
+                ],
+              },
+              {
+                title: 'Any-Modality & 4D Perception',
+                papers: [
+                  ['CREMA', 'Flow, 3D, audio, thermal, touch'],
+                  ['4D-LRM', '4D reconstruction'],
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'reasoning',
+        title: 'Reasoning',
+        blurb: 'Multi-step inference over time, space, and memory.',
+        parts: [
+          {
+            groups: [
+              {
+                title: 'Video Reasoning',
+                papers: [
+                  ['STAR', 'Situated reasoning benchmark'],
+                  ['SciVideoBench', 'Scientific video reasoning'],
+                  ['Video-RTS', 'RL + test-time scaling'],
+                  ['STORM', 'Latent spatial-temporal reasoning'],
+                  ['VisionCoach', 'Grounded video reasoning, RL'],
+                  ['GroundMoRe', 'Causal, sequential, counterfactual questions'],
+                ],
+              },
+              {
+                title: 'Long-Horizon Memory & Narrative',
+                papers: [
+                  ['EgoMemReason', 'Week-long egocentric memory'],
+                  ['MF2', 'Long movie narrative understanding'],
+                ],
+              },
+              {
+                title: 'Spatial Reasoning & Imagination',
+                papers: [
+                  ['AVIC', 'World-model imagination, RL'],
+                  ['ImagiRep', 'Representations for imagined views'],
+                  ['VideoCoS', 'Queries an executable world state'],
+                ],
+              },
+              {
+                title: 'General & Faithful Reasoning',
+                papers: [
+                  ['MEXA', 'Multi-expert, any modality'],
+                  ['REMUL', 'Faithful chain-of-thought'],
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'acting',
+        title: 'Acting',
+        blurb: 'Generating, editing, and acting in visual, embodied, and digital worlds.',
+        parts: [
+          {
+            groups: [
+              {
+                title: 'Video Generation & Editing',
+                papers: [
+                  ['VEGGIE', 'Instructional video editing'],
+                  ['RACCooN', 'Remove, add, change video content'],
+                  ['IVA-0', 'Controllable image-to-video'],
+                  ['Video-MSG', 'Training-free T2V guidance'],
+                  ['SAFREE', 'Safe image & video generation'],
+                ],
+              },
+              {
+                title: 'Embodied Navigation & World Simulation',
+                papers: [
+                  ['SRDF', 'Language-guided navigation'],
+                  ['PTP', 'Embodied QA exploration'],
+                  ['Ego2Act', 'Goal-directed manipulation videos'],
+                  ['AVIC', 'Embodied navigation (R2R)'],
+                ],
+              },
+              {
+                title: 'Web & Code Agents',
+                papers: [
+                  ['VideoCoS', 'Code agent that edits and renders a scene program'],
+                  ['Ego2Web', 'Egocentric video → web agent'],
+                  ['3DCodeEdit', '3D program editing'],
+                  ['ImpasseBench', 'Coding agents knowing when to stop'],
+                ],
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   {
-    title: 'Multimodal Benchmark, Data Curation, and Evaluation',
-    subtitle: 'Long-Context / Neural-Symbolic / AI4Science / Web Agent / Pixel Grounding',
-    papers: [
-      { label: 'Ego2Web', href: 'https://ego2web.github.io/', detail: 'Video + Web Agent' },
-      { label: 'SciVideoBench', href: 'https://scivideobench.github.io/', detail: 'AI4Science' },
-      { label: 'STAR', href: 'http://star.csail.mit.edu/', detail: 'Neuro-symbolic Reasoning' },
-      { label: 'GroundMoRe', href: 'https://groundmore.github.io/', detail: 'Pixel Reasoning' },
-      { label: 'MF2', href: 'https://arxiv.org/pdf/2506.06275', detail: 'Long Video Reasoning' },
-      { label: 'EgoMemReason', href: 'https://egomemreason.github.io/', detail: 'Long Video Memory' },
-      { label: 'Ego2Act', href: 'https://ego2act.github.io', detail: 'Egocentric Video Generation' },
-      { label: 'ImagiRep', href: 'https://imagirep.github.io/', detail: 'Spatial Imagination' },
-      { label: '3DCodeEdit', href: 'https://binjiew.github.io/3DCodeEdit', detail: '3D Program Editing' },
-      { label: 'ImpasseBench', href: 'https://arxiv.org/abs/2610.31895', detail: 'Coding Agents' },
-    ],
-  },
-  {
-    title: 'Video/4D Generation and World Models',
-    papers: [
-      { label: 'VEGGIE', href: 'https://veggie-gen.github.io/', detail: 'Instructional Video Editing' },
-      { label: 'RACCooN', href: 'https://raccoon-mllm-gen.github.io/', detail: 'Instructional Video Editing' },
-      { label: '4D-LRM', href: 'https://4dlrm.github.io/', detail: '4D Reconstruction' },
-      { label: 'IVA-0', href: 'https://img2vidanim-0.github.io/', detail: 'Controllable Video Generation' },
-    ],
-  },
-  {
-    title: 'Agentic Reasoning & Generation System',
-    papers: [
-      { label: 'SeViLA', href: 'https://arxiv.org/pdf/2305.06988.pdf', detail: 'Agentic Video Understanding, PEFT' },
-      { label: 'Ego2Web', href: 'https://ego2web.github.io/', detail: 'Video + Web Agent' },
-      { label: 'MEXA', href: 'https://arxiv.org/pdf/2506.17113', detail: 'Multi-agent, Any Modality' },
-      { label: 'Video-MSG', href: 'https://video-msg.github.io/', detail: 'Controllable Video Generation' },
-    ],
-  },
-  {
-    title: 'AI Faithfulness & Safety',
-    papers: [
-      { label: 'SAFREE', href: 'https://safree-safe-t2i-t2v.github.io/', detail: 'Generation Safety' },
-      { label: 'REMUL', href: 'https://arxiv.org/abs/2602.16154', detail: 'Faithful Language Reasoning' },
-    ],
-  },
-  {
-    title: 'Embodied Spatial AI',
-    papers: [
-      { label: 'AVIC', href: 'https://adaptive-visual-tts.github.io/', detail: 'Spatial Reasoning, RL' },
-      { label: 'PTP', href: 'https://noahfrahm.github.io/Prune-Then-Plan-project-page/', detail: 'Embodied QA' },
-      { label: 'SRDF', href: 'https://arxiv.org/abs/2412.08467', detail: 'VL Navigation' },
+    id: 'pipeline',
+    label: 'By pipeline',
+    caption: 'Data → Model → Training → Inference & Evaluation',
+    note: 'Most papers contribute to several stages of the pipeline.',
+    stages: [
+      {
+        id: 'data',
+        title: 'Data',
+        blurb: 'What the model sees and learns from.',
+        parts: [
+          {
+            groups: [
+              {
+                title: 'Structured Video Representation',
+                papers: [
+                  ['VideoCoS', 'Video codified into an executable scene program'],
+                  ['VideoTree', 'Query-adaptive keyframe tree'],
+                  ['LLoVi', 'Clip captions as LLM input'],
+                  ['RACCooN', 'Structured video-to-paragraph descriptions'],
+                ],
+              },
+              {
+                title: 'Scalable & Efficient Training Data',
+                papers: [
+                  ['VEGGIE', 'Editing-data synthesis pipeline'],
+                  ['SRDF', 'Self-refining data flywheel'],
+                  ['4D-LRM', 'Large-scale 4D training data'],
+                  ['Video-RTS', 'Only 3.6% of the training samples'],
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'model',
+        title: 'Model',
+        blurb: 'Architectures that unify perception, reasoning, and generation.',
+        parts: [
+          {
+            groups: [
+              {
+                title: 'Modular & Any-Modality Architectures',
+                papers: [
+                  ['CREMA', 'Per-modality PEFT modules + fusion'],
+                  ['MEXA', 'Dynamic expert selection & aggregation'],
+                  ['SeViLA', 'Self-chained Localizer + Answerer'],
+                ],
+              },
+              {
+                title: 'Generative & 4D Models',
+                papers: [
+                  ['VEGGIE', 'MLLM + video diffusion'],
+                  ['RACCooN', 'Video-to-paragraph-to-video'],
+                  ['4D-LRM', 'Unified space-time representation'],
+                ],
+              },
+              {
+                title: 'Grounded & Latent Reasoning Models',
+                papers: [
+                  ['GroundMoRe', 'MoRA baseline: MLLM + SAM'],
+                  ['STORM', 'Bounded latent reasoning'],
+                  ['MoPRL', 'Motion-prior transformer'],
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'training',
+        title: 'Training',
+        blurb: 'Learning beyond standard supervision.',
+        parts: [
+          {
+            groups: [
+              {
+                title: 'Reinforcement Learning for Reasoning',
+                papers: [
+                  ['VisionCoach', 'RL + visual prompting, self-distilled'],
+                  ['Video-RTS', 'Pure RL, no SFT'],
+                  ['AVIC', 'AVIC-R: RL-trained imagination policy'],
+                  ['REMUL', 'Multi-listener RL for faithful CoT'],
+                ],
+              },
+              {
+                title: 'Modular & Parameter-Efficient Learning',
+                papers: [
+                  ['CREMA', 'Modality-sequential training'],
+                  ['SeViLA', 'PEFT + pseudo-label self-refinement'],
+                ],
+              },
+              {
+                title: 'Curriculum & Scaled Pretraining',
+                papers: [
+                  ['VEGGIE', 'Curriculum learning'],
+                  ['STORM', 'Two-stage latent training'],
+                  ['4D-LRM', 'Large-scale 4D pretraining'],
+                  ['SRDF', 'Generator–navigator co-training rounds'],
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'inference',
+        title: 'Inference & Evaluation',
+        blurb: 'Adaptive test-time computation, and benchmarks that measure real capability.',
+        parts: [
+          {
+            label: 'Inference',
+            groups: [
+              {
+                title: 'Adaptive Test-Time Scaling',
+                papers: [
+                  ['AVIC', 'When and how much to imagine'],
+                  ['Video-RTS', 'Sparse-to-dense video TTS'],
+                  ['VideoTree', 'Training-free, coarse-to-fine'],
+                ],
+              },
+              {
+                title: 'Training-Free Reasoning & Planning',
+                papers: [
+                  ['VideoCoS', 'Code agent reading and writing Blender scenes'],
+                  ['LLoVi', 'Training-free LLM reasoning'],
+                  ['MEXA', 'Training-free expert aggregation'],
+                  ['PTP', 'Prune frontiers, then plan'],
+                ],
+              },
+              {
+                title: 'Training-Free Generation Control',
+                papers: [
+                  ['SAFREE', 'Training-free safety guard'],
+                  ['Video-MSG', 'Planning + structured noise init'],
+                  ['IVA-0', 'Zero-shot motion decomposition'],
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Evaluation',
+            groups: [
+              {
+                title: 'Understanding & Reasoning Benchmarks',
+                papers: [
+                  ['STAR', 'Situated reasoning'],
+                  ['GroundMoRe', 'Pixel-level motion reasoning'],
+                  ['SciVideoBench', 'Scientific video reasoning'],
+                  ['MF2', 'Long movie understanding'],
+                  ['EgoMemReason', 'Week-long egocentric memory'],
+                  ['ImagiRep', 'Representations for spatial imagination'],
+                ],
+              },
+              {
+                title: 'Agent & Generation Benchmarks',
+                papers: [
+                  ['Ego2Web', 'Egocentric video + web agents'],
+                  ['Ego2Act', 'Egocentric manipulation video generation'],
+                  ['3DCodeEdit', '3D program editing'],
+                  ['ImpasseBench', 'Coding agents knowing when to stop'],
+                  ['VEGGIE', 'Instructional video editing benchmark'],
+                ],
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
 ]
@@ -169,7 +454,7 @@ export const researchInterestGroups: ResearchInterestGroup[] = [
 export const aboutParagraphs = [
   `Hi, thanks for stopping by! I am now a final-year PhD student at MURGe-Lab (UNC-NLP Group) at the {{unc}} University of North Carolina, Chapel Hill, working with Prof. Mohit Bansal.`,
   `Prior to joining UNC, I completed my undergraduate studies at {{sjtu}} Shanghai Jiao Tong University (SJTU) in 2022. I also work at/with {{ibm}} MIT-IBM Watson AI Lab (2021), {{amazon}} Amazon (2023), {{adobe}} Adobe Research (2024), and {{deepmind}} Google DeepMind (2025, 2026) with many amazing collaborators.`,
-  `I mainly work on Multimodal + Agentic AI, including topics like video-language alignment, video/4D generation, web & code agent, long-context modeling, and robust RL.`,
+  `I work on multimodal and agentic AI, spanning long-context video understanding and reasoning, video/4D generation and world models, web and code agents, and RL for multimodal models.`,
 ]
 
 /** Inline org logos for About Me (`{{key}}` in aboutParagraphs). */
@@ -244,6 +529,19 @@ export const serviceAndTalk = {
 }
 
 const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
+  {
+    title: 'VideoCoS: When Do Executable World States Help Video Reasoning and Generation?',
+    authors: 'Shoubin Yu*, Daeun Lee*, Zun Wang, Han Lin, Yue Zhang, Mohit Bansal',
+    venue: 'Preprint',
+    year: 2026,
+    summary:
+      'Codifies a video once into an executable Blender scene program that agents query to reason and edit to generate.',
+    tags: ['World state', 'Code agent', 'Video reasoning', 'Video generation'],
+    links: [],
+    image: '/projects/videocos.png',
+    imageAlt: 'VideoCoS: executable world state for video reasoning and generation',
+    pinned: true,
+  },
   {
     title: 'Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation',
     authors:
@@ -728,6 +1026,11 @@ const publicationSubtopicsByTitle: Record<string, PublicationSubtopicId[]> = {
   '3DCodeEdit: Benchmarking Instruction-Guided 3D Program Editing': ['benchmark', 'agents'],
   'Representing the Unseen: Rethinking Visual Imagination for Spatial Reasoning': ['benchmark', 'understanding'],
   'Knowing When to Stop: The Evidence-Action Gap in Coding Agents': ['benchmark', 'agents', 'safety'],
+  'VideoCoS: When Do Executable World States Help Video Reasoning and Generation?': [
+    'understanding',
+    'generation',
+    'agents',
+  ],
 }
 
 const publicationSource: Publication[] = publicationSourceRaw.map((p) => {
@@ -738,20 +1041,21 @@ const publicationSource: Publication[] = publicationSourceRaw.map((p) => {
 
 export const allPublications: Publication[] = [...publicationSource].sort((a, b) => {
   if (b.year !== a.year) return b.year - a.year
+  if (a.pinned || b.pinned) return Number(!!b.pinned) - Number(!!a.pinned)
   const ap = isPreprintVenue(a.venue) ? 1 : 0
   const bp = isPreprintVenue(b.venue) ? 1 : 0
   if (bp !== ap) return bp - ap
   return a.title.localeCompare(b.title)
 })
 
-/** Selected Work section: SeViLA → CREMA → VEGGIE → Ego2Web → MEXA → AVIC */
+/** Selected Work section: SeViLA → CREMA → VEGGIE → Ego2Web → AVIC → VideoCoS */
 const SELECTED_WORK_TITLES = [
   'Self-Chained Image-Language Model for Video Localization and Question Answering',
   'CREMA: Generalizable and Efficient Video-Language Reasoning via Multimodal Modular Fusion',
   'VEGGIE: Instructional Editing and Reasoning of Video Concepts with Grounded Generation',
   'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos',
-  'MEXA: Towards General Multimodal Reasoning with Dynamic Multi-Expert Aggregation',
   'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning',
+  'VideoCoS: When Do Executable World States Help Video Reasoning and Generation?',
 ] as const
 
 const SELECTED_KEYWORDS: Record<(typeof SELECTED_WORK_TITLES)[number], string[]> = {
@@ -768,14 +1072,15 @@ const SELECTED_KEYWORDS: Record<(typeof SELECTED_WORK_TITLES)[number], string[]>
     'Metrics',
   ],
   'Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos': ['Agent', 'Data', 'Benchmark', 'Metrics'],
-  'MEXA: Towards General Multimodal Reasoning with Dynamic Multi-Expert Aggregation': [
-    'Multi-agent',
-    'Any Modality',
-  ],
   'When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning': [
     'World Models',
     'Test Time Scaling',
     'RL',
+  ],
+  'VideoCoS: When Do Executable World States Help Video Reasoning and Generation?': [
+    'Code Agent',
+    'World State',
+    'Reasoning + Generation',
   ],
 }
 

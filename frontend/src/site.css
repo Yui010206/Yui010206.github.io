@@ -366,83 +366,373 @@ time {
 }
 
 /* ── Interests ──────────────────────────────────────────── */
-.interests {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* Two-way switch: the same papers grouped by capability or by pipeline stage. */
+.view-switch {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.interest {
-  display: grid;
-  grid-template-columns: 34px 1fr;
-  gap: 4px;
-  padding: 18px 20px;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px;
   background: var(--bg-soft);
   border: 1px solid var(--rule);
-  border-radius: 8px;
+  border-radius: 14px;
 }
 
-.interest-index {
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent);
-  padding-top: 2px;
+/* Sliding thumb behind the active option. */
+.view-switch::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(14, 23, 38, 0.06), 0 8px 18px -12px rgba(14, 23, 38, 0.4);
+  transition: transform 0.3s cubic-bezier(0.3, 0.7, 0.2, 1);
 }
 
-.interest-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.4;
+.view-switch[data-active='1']::before {
+  transform: translateX(100%);
 }
 
-.interest-sub {
-  margin-top: 2px;
-  font-size: 0.86rem;
+@media (prefers-color-scheme: dark) {
+  .view-switch {
+    background: var(--bg);
+  }
+
+  .view-switch::before {
+    background: #1f2630;
+    border-color: #323a46;
+    box-shadow: none;
+  }
+}
+
+.view-switch-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 18px;
+  font-family: var(--sans);
+  text-align: left;
   color: var(--muted);
-  line-height: 1.45;
+  background: none;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: color 0.2s;
 }
 
-.interest-papers {
+.view-switch-option:hover {
+  color: var(--ink-2);
+}
+
+.view-switch-option[aria-selected='true'] {
+  color: var(--ink);
+}
+
+.view-switch-option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.view-switch-option svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--faint);
+  transition: color 0.2s;
+}
+
+.view-switch-option[aria-selected='true'] svg {
+  color: var(--accent);
+}
+
+.view-switch-label,
+.view-switch-caption {
+  display: block;
+}
+
+.view-switch-label {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.view-switch-caption {
+  margin-top: 1px;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.view-note {
+  margin-top: 16px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* The hover hint is pointless on touch screens. */
+@media (hover: none) {
+  .view-note-hint {
+    display: none;
+  }
+}
+
+/* One row per stage, top to bottom in pipeline order: icon and name on the left, groups on the right. */
+.stages {
+  list-style: none;
+  margin: 34px 0 0;
+  padding: 0;
+}
+
+.stage {
+  --topic: var(--accent);
+  --topic-ink: color-mix(in srgb, var(--topic) 84%, #000);
+  --chip: color-mix(in srgb, var(--topic) 9%, var(--bg));
+  --chip-on: color-mix(in srgb, var(--topic) 20%, var(--bg));
+  position: relative;
+  display: grid;
+  grid-template-columns: 262px minmax(0, 1fr);
+  column-gap: 40px;
+  padding-bottom: 46px;
+  animation: stage-in 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+.stage:last-child {
+  padding-bottom: 10px;
+}
+
+.stage--perception,
+.stage--model {
+  --topic: #1559b7;
+}
+
+.stage--reasoning,
+.stage--training {
+  --topic: #7b3fbf;
+}
+
+.stage--acting,
+.stage--inference {
+  --topic: #0f8a6b;
+}
+
+.stage--data {
+  --topic: #c26a05;
+}
+
+@media (prefers-color-scheme: dark) {
+  .stage {
+    --topic-ink: var(--topic);
+    --chip: color-mix(in srgb, var(--topic) 15%, var(--bg));
+    --chip-on: color-mix(in srgb, var(--topic) 30%, var(--bg));
+  }
+
+  .stage--perception,
+  .stage--model {
+    --topic: #6ea8fe;
+  }
+
+  .stage--reasoning,
+  .stage--training {
+    --topic: #b995f5;
+  }
+
+  .stage--acting,
+  .stage--inference {
+    --topic: #3fc59d;
+  }
+
+  .stage--data {
+    --topic: #e8a44c;
+  }
+}
+
+/* Rail: a line from this stage's icon down to the next one, ending in an arrowhead. */
+.stage:not(:last-child)::before,
+.stage:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 24px;
+  --rail: color-mix(in srgb, var(--topic) 38%, var(--rule));
+}
+
+.stage:not(:last-child)::before {
+  top: 58px;
+  bottom: 12px;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: var(--rail);
+}
+
+.stage:not(:last-child)::after {
+  bottom: 11px;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-right: 2px solid var(--rail);
+  border-bottom: 2px solid var(--rail);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+@keyframes stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.stage-head {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: start;
+}
+
+.stage-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  color: var(--topic-ink);
+  background: var(--chip);
+  border: 1px solid color-mix(in srgb, var(--topic) 30%, var(--rule));
+  border-radius: 50%;
+}
+
+.stage-icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+.stage-title {
+  margin-top: 1px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.stage-blurb {
+  margin-top: 6px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.stage-body {
+  display: grid;
+  gap: 30px;
+  align-content: start;
+  padding-top: 3px;
+}
+
+.stage-part-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--topic-ink);
+}
+
+.stage-part-label svg {
+  width: 15px;
+  height: 15px;
+}
+
+.stage-part-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  margin-left: 4px;
+  background: color-mix(in srgb, var(--topic) 26%, var(--rule));
+}
+
+.stage-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px 30px;
+}
+
+.stage-group-title {
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.paper-chips {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
-.interest-papers a {
+.paper-chips a {
   position: relative;
-  padding: 2px 9px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent);
-  background: var(--bg);
-  border: 1px solid var(--rule);
-  border-radius: 4px;
+  padding: 3px 12px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--topic-ink);
+  background: var(--chip);
+  border-radius: 999px;
+  transition: background 0.15s, box-shadow 0.15s;
 }
 
-.interest-papers a:hover {
+/* `.is-linked` marks every copy of the hovered paper, so its other stages light up too. */
+.paper-chips a:hover,
+.paper-chips a.is-linked {
   text-decoration: none;
-  border-color: var(--accent);
+  background: var(--chip-on);
 }
 
-.interest-papers a[data-tip]:hover::after {
+.paper-chips a.is-linked {
+  box-shadow: 0 0 0 1.5px var(--topic);
+}
+
+.paper-chips a:hover::after,
+.paper-chips a.is-linked::after {
   content: attr(data-tip);
   position: absolute;
   left: 0;
-  bottom: calc(100% + 6px);
-  white-space: nowrap;
-  padding: 4px 9px;
+  bottom: calc(100% + 8px);
+  width: max-content;
+  max-width: 200px;
+  padding: 6px 10px;
   background: var(--ink);
   color: var(--bg);
   font-size: 0.8rem;
   font-weight: 500;
-  border-radius: 4px;
+  line-height: 1.35;
+  border-radius: 6px;
   pointer-events: none;
   z-index: 5;
+}
+
+/* Last column: open the tip leftwards so it stays on the page. */
+.stage-groups > :nth-child(3n) .paper-chips a::after {
+  left: auto;
+  right: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view-switch::before {
+    transition: none;
+  }
+
+  .stage {
+    animation: none;
+  }
 }
 
 /* ── News ───────────────────────────────────────────────── */
@@ -1205,10 +1495,28 @@ time {
   .topic-picker {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .stage {
+    grid-template-columns: 224px minmax(0, 1fr);
+    column-gap: 30px;
+  }
+
+  .stage-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stage-groups > :nth-child(3n) .paper-chips a::after {
+    left: 0;
+    right: auto;
+  }
+
+  .stage-groups > :nth-child(2n) .paper-chips a::after {
+    left: auto;
+    right: 0;
+  }
 }
 
 @media (max-width: 860px) {
-  .interests,
   .bg-grid {
     grid-template-columns: 1fr;
   }
@@ -1234,6 +1542,46 @@ time {
 @media (max-width: 680px) {
   body {
     font-size: 17px;
+  }
+
+  .stage {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    padding-bottom: 38px;
+  }
+
+  .stages .stage::before,
+  .stages .stage::after {
+    display: none;
+  }
+
+  .stage-head {
+    align-items: center;
+  }
+
+  .stage-groups {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stage-groups > :nth-child(n) .paper-chips a::after {
+    left: 0;
+    right: auto;
+  }
+
+  .view-switch-option {
+    justify-content: center;
+    gap: 9px;
+    padding: 11px 8px;
+  }
+
+  .view-switch-option svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .view-switch-caption {
+    display: none;
   }
 
   .container,
