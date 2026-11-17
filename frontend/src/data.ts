@@ -20,6 +20,7 @@ export type Publication = {
   tags: string[]
   /** For “By topic” archive view; a paper may belong to multiple sub-topics. */
   subtopics: PublicationSubtopicId[]
+  /** An empty `href` means not released yet: the button shows as a muted placeholder. */
   links: { label: string; href: string }[]
   /** Teaser image, e.g. `/projects/visioncoach.jpg` (file under `public/projects/`). */
   image?: string
@@ -537,7 +538,11 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
     summary:
       'Codifies a video once into an executable Blender scene program that agents query to reason and edit to generate.',
     tags: ['World state', 'Code agent', 'Video reasoning', 'Video generation'],
-    links: [],
+    links: [
+      { label: 'Paper', href: '' },
+      { label: 'Project', href: '' },
+      { label: 'Code', href: '' },
+    ],
     image: '/projects/videocos.png',
     imageAlt: 'VideoCoS: executable world state for video reasoning and generation',
     pinned: true,

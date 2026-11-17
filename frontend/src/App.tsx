@@ -48,10 +48,11 @@ function parseTalkLine(line: string): { period: string; detail: string } {
 /** Prefer Paper URL for the title; otherwise Project; otherwise first link. */
 function publicationPrimaryHref(links: Publication['links']): string | undefined {
   const lower = (s: string) => s.toLowerCase()
+  const live = links.filter((l) => l.href)
   return (
-    links.find((l) => lower(l.label) === 'paper')?.href ??
-    links.find((l) => lower(l.label) === 'project')?.href ??
-    links[0]?.href
+    live.find((l) => lower(l.label) === 'paper')?.href ??
+    live.find((l) => lower(l.label) === 'project')?.href ??
+    live[0]?.href
   )
 }
 
@@ -209,11 +210,17 @@ function AuthorsLine({ text }: { text: string }) {
 function PubLinks({ links }: { links: Publication['links'] }) {
   return (
     <span className="pub-links">
-      {links.map((link) => (
-        <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
-          {link.label}
-        </a>
-      ))}
+      {links.map((link) =>
+        link.href ? (
+          <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
+            {link.label}
+          </a>
+        ) : (
+          <span key={link.label} className="pub-link-soon" title="Coming soon">
+            {link.label}
+          </span>
+        ),
+      )}
     </span>
   )
 }
