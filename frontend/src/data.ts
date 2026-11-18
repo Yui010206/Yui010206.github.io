@@ -120,7 +120,7 @@ export const researchPaperLinks = {
   PTP: 'https://noahfrahm.github.io/Prune-Then-Plan-project-page/',
   SRDF: 'https://arxiv.org/abs/2412.08467',
   MoPRL: 'https://ieeexplore.ieee.org/abstract/document/10185076',
-  VideoCoS: '',
+  VideoCoS: '/papers/VideoCoS.pdf',
 } satisfies Record<string, string>
 
 export type ResearchPaperName = keyof typeof researchPaperLinks
@@ -539,7 +539,7 @@ const publicationSourceRaw: Omit<Publication, 'subtopics'>[] = [
       'Codifies a video once into an executable Blender scene program that agents query to reason and edit to generate.',
     tags: ['World state', 'Code agent', 'Video reasoning', 'Video generation'],
     links: [
-      { label: 'Paper', href: '' },
+      { label: 'Paper', href: '/papers/VideoCoS.pdf' },
       { label: 'Project', href: '' },
       { label: 'Code', href: '' },
     ],
