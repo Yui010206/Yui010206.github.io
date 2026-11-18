@@ -1,1 +1,0 @@
-import{m as t,j as e,R as o}from"./site-BebPJcP3.js";import{B as r}from"./BlogPage-Bja60rnL.js";t.createRoot(document.getElementById("root")).render(e.jsx(o.StrictMode,{children:e.jsx(r,{lang:"zh"})}));

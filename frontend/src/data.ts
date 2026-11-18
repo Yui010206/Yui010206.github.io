@@ -156,7 +156,7 @@ export const researchViews: ResearchView[] = [
   {
     id: 'capability',
     label: 'By capability',
-    caption: 'Perception → Reasoning → Acting',
+    caption: 'Perception → Reasoning → Acting / Generating',
     note: 'Each paper sits where its main contribution lies; a few bridge two stages.',
     stages: [
       {
@@ -240,7 +240,7 @@ export const researchViews: ResearchView[] = [
       },
       {
         id: 'acting',
-        title: 'Acting',
+        title: 'Acting / Generating',
         blurb: 'Generating, editing, and acting in visual, embodied, and digital worlds.',
         parts: [
           {
